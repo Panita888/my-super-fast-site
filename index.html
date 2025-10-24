@@ -18,7 +18,7 @@ body {
   line-height: 1.6;
 }
 
-/* Header / Nav */
+/* Header / Nav like TrySetter */
 .site-header {
   display: flex;
   justify-content: space-between;
@@ -32,29 +32,31 @@ body {
 }
 
 .site-title {
-  font-weight: 700;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 700; /* Bold */
   font-size: 2rem;
-  text-decoration: none;
   color: #1B1B1B;
+  text-decoration: none;
 }
 
 .site-nav {
   display: flex;
-  gap: 60px;
+  gap: 60px; /* spacing between links */
   align-items: center;
 }
 
 .site-nav a {
-  font-weight: 500;
-  font-size: 0.95rem;
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500; /* Medium like TrySetter */
+  font-size: 1rem; /* matches their nav size */
+  letter-spacing: 0.8px; /* subtle spacing */
   text-decoration: none;
   color: #1B1B1B;
-  letter-spacing: 1.8px;
   transition: color 0.3s ease;
 }
 
 .site-nav a:hover {
-  color: #14D4C4;
+  color: #14D4C4; /* hover accent */
 }
 
 /* Hero */
