@@ -6,18 +6,19 @@
 <title>MyDataShield.org</title>
 
 <!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
+/* Global */
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
-  background: #fff;
+  background-color: #fff;
   color: #1B1B1B;
   line-height: 1.6;
 }
 
-/* Header */
+/* Header / Nav */
 .site-header {
   display: flex;
   justify-content: space-between;
@@ -39,14 +40,16 @@ body {
 .site-nav {
   display: flex;
   gap: 50px;
-  font-size: 1rem;
-  letter-spacing: 0.5px;
 }
 .site-nav a {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
   text-decoration: none;
-  font-weight: 600;
   color: #1B1B1B;
-  transition: color 0.3s;
+  transition: color 0.3s ease;
 }
 .site-nav a:hover {
   color: #14D4C4;
@@ -55,7 +58,7 @@ body {
 /* Hero */
 .hero {
   text-align: center;
-  padding: 180px 20px 120px;
+  padding: 180px 20px 140px;
 }
 .hero h1 {
   font-family: 'Manrope', sans-serif;
@@ -65,22 +68,24 @@ body {
   margin-bottom: 25px;
 }
 .hero p {
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
   font-size: 1.75rem;
   max-width: 800px;
   margin: 0 auto 50px;
-  color: #333;
   line-height: 1.6;
 }
 .hero .cta-btn {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  padding: 20px 60px;
+  border-radius: 9999px;
   background-color: #14D4C4;
   color: #fff;
-  font-weight: 600;
   border: none;
-  padding: 18px 50px;
-  border-radius: 9999px;
-  font-size: 1.25rem;
   cursor: pointer;
-  transition: transform 0.2s, background 0.3s;
+  transition: transform 0.2s ease, background 0.3s ease;
 }
 .hero .cta-btn:hover {
   background-color: #10b3a6;
@@ -90,31 +95,34 @@ body {
 /* Questions */
 .question {
   text-align: center;
-  padding: 100px 20px;
+  padding: 120px 20px;
 }
 .question-text {
   font-family: 'Manrope', sans-serif;
   font-weight: 600;
   font-size: 2rem;
-  margin-bottom: 15px;
+  margin-bottom: 20px;
 }
 .reg-text {
-  font-size: 1.15rem;
+  font-family: 'Inter', sans-serif;
+  font-weight: 500;
+  font-size: 1.25rem;
   color: #555;
-  margin-bottom: 35px;
+  margin-bottom: 40px;
+  line-height: 1.6;
 }
 
-/* Buttons inline modern */
+/* Buttons inline */
 .btn-traffic {
   min-width: 160px;
-  padding: 16px 0;
+  padding: 18px 0;
   border-radius: 9999px;
   font-weight: 600;
+  font-size: 1.25rem;
   margin: 0 15px;
   border: 2px solid transparent;
   cursor: pointer;
   transition: all 0.3s ease;
-  font-size: 1.25rem;
 }
 .btn-yes {
   border-color: #22c55e;
@@ -156,15 +164,16 @@ body {
   margin: 80px 0;
 }
 .final-cta a {
+  font-family: 'Manrope', sans-serif;
+  font-weight: 600;
+  font-size: 1.5rem;
+  padding: 20px 60px;
+  border-radius: 9999px;
   background-color: #14D4C4;
   color: #fff;
-  font-weight: 600;
-  border-radius: 9999px;
-  padding: 18px 50px;
   text-decoration: none;
   display: inline-block;
-  font-size: 1.25rem;
-  transition: transform 0.2s, background 0.3s;
+  transition: transform 0.2s ease, background 0.3s ease;
 }
 .final-cta a:hover {
   background-color: #10b3a6;
