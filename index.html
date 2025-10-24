@@ -21,18 +21,19 @@ body {
 /* Header / Nav */
 .site-header {
   display: flex;
-  justify-content: center;
+  justify-content: flex-start; /* nav closer to title */
   align-items: center;
-  gap: 60px;
-  padding: 35px 60px; /* taller padding */
+  padding: 35px 60px; /* taller padding for airy feel */
   background: #fff;
   position: sticky;
   top: 0;
   z-index: 100;
   box-shadow: 0 1px 5px rgba(0,0,0,0.06);
+  gap: 60px; /* space between title and nav */
 }
 
 .site-title {
+  font-family: 'Inter', sans-serif; /* matches TrySetter */
   font-weight: 700;
   font-size: 2rem;
   color: #1B1B1B;
@@ -41,29 +42,27 @@ body {
 
 .site-nav {
   display: flex;
-  gap: 80px;
+  gap: 30px; /* spacing between links */
   align-items: center;
 }
 
 .site-nav a {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif; /* TrySetter font */
   font-weight: 500;
   font-size: 1.25rem;
-  line-height: 1.6; /* taller for airy look */
-  text-transform: none;
+  line-height: 1.6; /* airy vertical spacing */
+  text-transform: none; /* natural capitalization */
   letter-spacing: normal;
   color: #1B1B1B;
-  margin-right: 40px;
+  margin: 0; /* remove extra margin */
   text-decoration: none;
-}
-
-.site-nav a:last-child {
-  margin-right: 0;
+  transition: color 0.3s ease;
 }
 
 .site-nav a:hover {
   color: #14D4C4;
 }
+
 
 /* Hero */
 .hero {
