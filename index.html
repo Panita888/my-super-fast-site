@@ -21,19 +21,18 @@ body {
 /* Header / Nav */
 .site-header {
   display: flex;
-  justify-content: flex-start; /* nav closer to title */
+  justify-content: space-between; /* title left, nav right */
   align-items: center;
-  padding: 35px 60px; /* taller padding for airy feel */
+  padding: 35px 60px; /* top/bottom padding 35px, left/right 60px */
   background: #fff;
   position: sticky;
   top: 0;
   z-index: 100;
   box-shadow: 0 1px 5px rgba(0,0,0,0.06);
-  gap: 60px; /* space between title and nav */
 }
 
 .site-title {
-  font-family: 'Inter', sans-serif; /* matches TrySetter */
+  font-family: 'Inter', sans-serif;
   font-weight: 700;
   font-size: 2rem;
   color: #1B1B1B;
@@ -42,19 +41,18 @@ body {
 
 .site-nav {
   display: flex;
-  gap: 30px; /* spacing between links */
+  gap: 40px; /* spacing between links */
   align-items: center;
 }
 
 .site-nav a {
-  font-family: 'Inter', sans-serif; /* TrySetter font */
+  font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 1.25rem;
   line-height: 1.6; /* airy vertical spacing */
   text-transform: none; /* natural capitalization */
   letter-spacing: normal;
   color: #1B1B1B;
-  margin: 0; /* remove extra margin */
   text-decoration: none;
   transition: color 0.3s ease;
 }
