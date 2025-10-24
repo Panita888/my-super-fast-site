@@ -10,19 +10,18 @@
     <!-- 💡 STEP 2: CUSTOM STYLES (LOADED AFTER BOOTSTRAP TO OVERWRITE DEFAULTS) 💡 --><style>
         /* --- MODERN MINIMALIST PALETTE --- */
         :root {
-            /* Using pure black and white for highest contrast */
             --mds-dark: #212529;      /* Muted dark grey for text and UI elements */
-            --mds-blue: #1f4f89;      /* New Professional Corporate Blue (Primary Action Color) */
+            --mds-blue: #1f4f89;      /* Professional Corporate Blue (Primary Action Color) */
+            --mds-green: #2F7E4F;     /* Compliance Green for YES/Success */
             --mds-red: #e53e3e;       /* Danger/No Red */
             
             --bs-primary: var(--mds-blue);
             --bs-danger: var(--mds-red);
-            --bs-success: var(--mds-blue); /* Success is now blue */
+            --bs-success: var(--mds-green);
             --bs-dark: var(--mds-dark);
-            --bs-body-bg: #FFFFFF;
+            --bs-body-bg: #F8F9FA; /* Subtle light gray background for the page */
         }
         
-        /* Set everything to white background for a clean, edge-to-edge feel */
         body {
             background-color: var(--bs-body-bg) !important;
             color: var(--mds-dark);
@@ -30,98 +29,88 @@
         }
         
         /* --- ALIGNMENT FIX (Generous Horizontal Spacing) --- */
-        /* Center the content container and add generous horizontal padding */
-        @media (min-width: 992px) { 
-            /* Standard desktop view: increase max width */
-            .container {
-                max-width: 1100px; /* Wider content area to let it breathe */
-            }
+        .container {
+            max-width: 1000px; /* Limit main container width */
         }
         
-        @media (min-width: 1200px) { 
-            /* Large desktop view: Increase the padding on the sides of the content */
-            .container {
-                padding-left: 6rem !important; /* ~96px padding on the sides */
-                padding-right: 6rem !important; /* ~96px padding on the sides */
-                max-width: 1300px; /* Allow content to grow slightly */
-            }
+        /* --- NAVIGATION BAR --- */
+        .navbar-brand {
+            font-weight: 600; /* Medium-bold for logo */
+            padding-top: 1rem;
+            padding-bottom: 1rem;
         }
-        
-        /* --- TITLE STYLING (NEW PROFESSIONAL LOOK) --- */
+
+        /* --- CONTENT CARD STYLING --- */
+        .assessment-card {
+            background-color: #FFFFFF;
+            border-radius: 12px; /* Soft rounded corners */
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow lift */
+            padding: 3rem; /* Generous padding inside the card */
+            margin-top: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        /* --- TITLE STYLING (CLEAN & PROFESSIONAL) --- */
         .assessment-main-title {
-            font-size: 2.5rem; /* Base size for mobile/tablet */
-            font-weight: 600;  /* Semi-Bold for lighter, modern look */
+            font-size: 2.5rem; 
+            font-weight: 700;  
             color: var(--mds-dark);
-            margin-bottom: 0.5rem; 
             line-height: 1.2;
         }
         
-        /* Massive font size for desktop */
-        @media (min-width: 992px) {
-            .assessment-main-title {
-                font-size: 3.8rem; /* Make it massive on desktop */
-                line-height: 1.1;
-            }
-        }
-        
-        /* New: Subtitle styling for better contrast and presence */
+        /* Subtitle styling */
         .lead-subtitle {
-            font-size: 1.25rem;
-            font-weight: 500;
-            color: var(--mds-dark); /* Use dark color instead of muted gray */
+            font-size: 1.1rem;
+            font-weight: 400;
+            color: #6c757d; 
+            margin-top: 0.5rem;
+            margin-bottom: 3rem;
         }
 
-        /* --- QUESTION BUTTON STYLING (FLAT & PILL-SHAPED) --- */
+        /* --- QUESTION BUTTON STYLING (PILL-SHAPED) --- */
         .btn-qa {
             background-color: #FFFFFF;
             color: var(--mds-dark);
-            border: 1px solid #cbd5e0; /* Very light gray border when inactive */
+            border: 1px solid #cbd5e0; 
             font-weight: 500;
             transition: background-color 0.2s, color 0.2s, border-color 0.2s;
             width: 80px;
             padding: 8px 0;
-            border-radius: 9999px; /* Fully rounded/Pill shape */
+            border-radius: 9999px; 
+            text-align: center;
         }
         
-        .btn-qa:hover:not(.selected) {
-            border-color: var(--mds-dark); /* Dark border on hover */
-        }
-
-        /* Persistent blue state for 'Yes' (FLAT) */
+        /* Selected states - Now Green and Red for compliance */
         .btn-yes.selected {
             background-color: var(--bs-success) !important;
             color: #FFFFFF !important;
             border-color: var(--bs-success);
         }
 
-        /* Persistent red state for 'No' (FLAT) */
         .btn-no.selected {
             background-color: var(--bs-danger) !important;
             color: #FFFFFF !important;
             border-color: var(--bs-danger);
         }
         
-        /* --- QUESTION BLOCK STYLING (LINE DIVIDERS ONLY) --- */
+        /* --- QUESTION BLOCK STYLING --- */
         .question-text {
-            font-size: 1.1rem; 
+            font-size: 1rem; 
             font-weight: 500;
-            line-height: 1.6;
+            line-height: 1.5;
             margin-bottom: 0;
             flex-grow: 1;
         }
 
         .question-block {
-            /* Only a very subtle bottom border separates the questions */
-            border-bottom: 1px solid #e2e8f0; 
-            padding-top: 40px; /* Increased from 25px for more space to match modern design */
-            padding-bottom: 40px; /* Increased from 25px for more space to match modern design */
-            transition: background-color 0.2s;
+            padding-top: 20px; 
+            padding-bottom: 20px; 
+            border-top: 1px solid #e9ecef; /* Light separator line */
         }
-        .question-block:last-child {
-            border-bottom: none; /* No border after the last item */
+        .question-block:first-child {
+            border-top: none; /* No top border on the first item */
         }
         
-        /* Container for the question text and button group */
         .question-container {
             width: 100%;
             display: flex;
@@ -129,10 +118,12 @@
             align-items: center;
         }
 
-        /* FIX: Ensure buttons are always horizontal */
         .button-group {
             display: flex;
-            gap: 10px; /* Space between Yes and No */
+            gap: 10px; 
+            /* Added min-width to prevent buttons from wrapping question text on smaller screens */
+            min-width: 170px; 
+            justify-content: flex-end;
         }
         
         /* --- FOOTER STYLING --- */
@@ -143,28 +134,43 @@
         .footer-dark a {
             color: #ffffff;
             font-weight: 500;
-            text-decoration: underline;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .footer-dark a:hover {
+            color: #ccc;
         }
         
         /* Mobile layout adjustments */
-        @media (max-width: 576px) {
+        @media (max-width: 768px) {
+            .assessment-card {
+                padding: 1.5rem; /* Less padding on small screens */
+            }
             .question-container {
-                /* Keep question text and button group stacked */
+                /* Stack question text and buttons on mobile */
                 flex-direction: column;
                 align-items: flex-start;
             }
             .question-text {
                 margin-bottom: 15px;
             }
-            /* The .button-group remains horizontal due to the FIX above */
+            .button-group {
+                /* On mobile, make buttons full width for better tapping */
+                width: 100%;
+                justify-content: space-around;
+                min-width: unset;
+            }
+            .btn-qa {
+                width: 45%;
+            }
         }
     </style>
 </head>
 <body>
 
-    <!-- ========================================================================= --><!-- 1. NAVIGATION BAR (Clean, white background) --><!-- ========================================================================= --><nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+    <!-- ========================================================================= --><!-- 1. NAVIGATION BAR (Clean, white background, better padding) --><!-- ========================================================================= --><nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm fixed-top">
         <div class="container">
-            <a class="navbar-brand text-dark fw-bold" href="#">mydatashield.org</a>
+            <a class="navbar-brand text-dark" href="#">mydatashield.org</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -183,101 +189,95 @@
             </div>
         </div>
     </nav>
-
-    <!-- ========================================================================= --><!-- 2. MAIN ASSESSMENT AREA (FLAT, SPACIOUS DESIGN) --><!-- ========================================================================= --><main id="hero" class="py-5">
+    
+    <!-- Added margin-top to offset the fixed navbar --><main id="hero" class="py-5" style="margin-top: 5rem;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12">
                     
-                    <h2 class="assessment-main-title mb-3">
-                        MEDICAL DIRECTOR: CRITICAL RISK EXPOSURE
-                    </h2>
-                    
-                    <p class="lead lead-subtitle mb-5">
-                        Regulation X Compliance Self-Assessment for December 2025 Deadlines.
-                    </p>
-                    
-                    <!-- QUESTION CONTAINER (NO BOXES) --><div class="assessment-section">
-                    
-                        <!-- QUESTION 1 --><div class="question-block" data-question-id="q1">
-                            <div class="question-container">
-                                <p class="question-text me-4">Medical Director, could you produce your TOMS in 24 hours if needed?</p>
-                                <div class="button-group">
-                                    <button class="btn btn-qa btn-yes" onclick="selectAnswer('q1', 'yes')">Yes</button>
-                                    <button class="btn btn-qa btn-no" onclick="selectAnswer('q1', 'no')">No</button>
+                    <!-- 2. ASSESSMENT CARD (New Wrapper) --><div class="assessment-card">
+                        
+                        <h1 class="assessment-main-title">
+                            Digital Readiness Assessment
+                        </h1>
+                        
+                        <p class="lead-subtitle">
+                            This self-assessment gauges compliance and preparedness for Regulation X, ensuring readiness for the December 2025 deadlines.
+                        </p>
+                        
+                        <!-- QUESTION CONTAINER --><div class="assessment-section">
+                        
+                            <!-- QUESTION 1 --><div class="question-block" data-question-id="q1">
+                                <div class="question-container">
+                                    <p class="question-text me-4">Medical Director, could you produce your Technical and Organizational Measures (TOMS) in 24 hours if needed?</p>
+                                    <div class="button-group">
+                                        <button class="btn btn-qa btn-yes" onclick="selectAnswer('q1', 'yes')">Yes</button>
+                                        <button class="btn btn-qa btn-no" onclick="selectAnswer('q1', 'no')">No</button>
+                                    </div>
                                 </div>
                             </div>
+                            
+                            <!-- QUESTION 2 (Placeholder) --><div class="question-block" data-question-id="q2">
+                                <div class="question-container">
+                                    <p class="question-text me-4">Do all your patient data systems log access and modification attempts in an unalterable fashion?</p>
+                                    <div class="button-group">
+                                        <button class="btn btn-qa btn-yes" onclick="selectAnswer('q2', 'yes')">Yes</button>
+                                        <button class="btn btn-qa btn-no" onclick="selectAnswer('q2', 'no')">No</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- QUESTION 3 (Placeholder) --><div class="question-block" data-question-id="q3">
+                                <div class="question-container">
+                                    <p class="question-text me-4">Is mandatory security training completed and verified for 100% of staff annually?</p>
+                                    <div class="button-group">
+                                        <button class="btn btn-qa btn-yes" onclick="selectAnswer('q3', 'yes')">Yes</button>
+                                        <button class="btn btn-qa btn-no" onclick="selectAnswer('q3', 'no')">No</button>
+                                    </div>
+                                </div>
+                            </div>
+
                         </div>
                         
-                        <!-- QUESTION 2 (Placeholder) --><div class="question-block" data-question-id="q2">
-                            <div class="question-container">
-                                <p class="question-text me-4">Do all your patient data systems log access and modification attempts?</p>
-                                <div class="button-group">
-                                    <button class="btn btn-qa btn-yes" onclick="selectAnswer('q2', 'yes')">Yes</button>
-                                    <button class="btn btn-qa btn-no" onclick="selectAnswer('q2', 'no')">No</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- QUESTION 3 (Placeholder) --><div class="question-block" data-question-id="q3">
-                            <div class="question-container">
-                                <p class="question-text me-4">Is mandatory security training completed by all staff annually?</p>
-                                <div class="button-group">
-                                    <button class="btn btn-qa btn-yes" onclick="selectAnswer('q3', 'yes')">Yes</button>
-                                    <button class="btn btn-qa btn-no" onclick="selectAnswer('q3', 'no')">No</button>
-                                </div>
-                            </div>
+                        <div class="pt-4 mt-3 text-center">
+                            <p class="text-muted small mb-0">Your progress is automatically saved. Continue at any time.</p>
                         </div>
 
                     </div>
-                    
-                    <!-- 4. RESULTS BUTTON REMOVED: NO COMPLIANCE SCORE BUTTON NEEDED -->
-                    <div class="pt-5 mt-5 border-top">
-                        <p class="text-muted text-center">Data is automatically saved as you answer. There is no final submission button.</p>
-                    </div>
+                    <!-- END ASSESSMENT CARD -->
 
                 </div>
             </div>
         </div>
     </main>
 
-    <!-- ========================================================================= --><!-- 3. FOOTER --><!-- ========================================================================= --><footer id="contact" class="footer-dark py-5 mt-5">
+    <!-- ========================================================================= --><!-- 3. FOOTER --><!-- ========================================================================= --><footer id="contact" class="footer-dark py-4 mt-5">
         <div class="container text-center">
-            <p class="mb-0">&copy; 2025 mydatashield.org. | <a href="#" class="text-white">Privacy</a> | <a href="#" class="text-white">Terms</a></p>
+            <p class="mb-0 small">&copy; 2025 mydatashield.org. | <a href="#about" class="text-white">About</a> | <a href="#" class="text-white">Privacy</a> | <a href="#" class="text-white">Terms</a></p>
         </div>
     </footer>
     
     <!-- ⚡ BOOTSTRAP JAVASCRIPT LINK ⚡ --><script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-    <!-- ========================================================================= --><!-- JAVASCRIPT LOGIC FOR BUTTON STATE (Firestore logic simplified) --><!-- ========================================================================= --><script>
+    <!-- ========================================================================= --><!-- JAVASCRIPT LOGIC FOR BUTTON STATE AND FIREBASE --><!-- ========================================================================= --><script type="module">
+        import { initializeApp as initApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithCustomToken, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, doc, setDoc, onSnapshot, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        
         // Check for Firebase variables and set up authentication if they exist
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-        
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
         let db, auth, userId;
-        
-        // Imported Firestore/Auth functions must be cached if we want to access them outside initializeApp
-        let doc, setDoc, onSnapshot, getFirestore, setLogLevel; 
         
         // --- Core State Variables ---
         const questionIds = ['q1', 'q2', 'q3']; 
-        let currentAnswers = {};
+        window.currentAnswers = {}; // Expose globally for simplicity if needed elsewhere
         // -------------------------------------------------
 
         // Function to initialize Firebase and load saved state
         async function initializeApp() {
-            // Import necessary Firebase modules
-            const firebaseAppModule = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js");
-            const firebaseAuthModule = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js");
-            const firebaseFirestoreModule = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js");
-            
-            const { initializeApp: initApp } = firebaseAppModule;
-            const { getAuth, signInWithCustomToken, signInAnonymously } = firebaseAuthModule;
-            
-            // Cache imported Firestore functions
-            ({ getFirestore, doc, setDoc, onSnapshot, setLogLevel } = firebaseFirestoreModule); 
-            
-            // For debugging/logging Firestore operations
             if (typeof setLogLevel !== 'undefined') {
                 setLogLevel('debug');
             }
@@ -310,15 +310,14 @@
         // --- Core State Management Logic ---
         
         function getDocRef(questionId) {
-            if (!doc || !db || !userId) return null;
-            const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+            if (!db || !userId) return null;
             // Store data privately for the current user in a collection called 'assessment'
             return doc(db, 'artifacts', appId, 'users', userId, 'assessment', questionId);
         }
 
         // Save state using Firestore (or localStorage if DB is unavailable)
         async function saveAssessmentState(questionId, answer) {
-            if (db && userId && setDoc && doc) {
+            if (db && userId) {
                 try {
                     // Update state in Firestore
                     await setDoc(getDocRef(questionId), { answer: answer, timestamp: new Date() }, { merge: true });
@@ -333,12 +332,12 @@
                 localStorage.setItem(questionId, answer);
                 console.log(`State saved to localStorage: ${questionId} = ${answer}`);
             }
-            // Note: applySelectionToDOM already updates currentAnswers
+            // Note: applySelectionToDOM updates currentAnswers
         }
 
         // Load state using Firestore listener (or localStorage if DB is unavailable)
         function loadAssessmentState() {
-            if (!onSnapshot || !doc || !db || !userId) {
+            if (!db || !userId) {
                 // Fallback if Firestore functions aren't available
                 loadStateFromStorage();
                 return;
@@ -392,11 +391,11 @@
             }
             
             // Update local state 
-            currentAnswers[questionId] = answer;
+            window.currentAnswers[questionId] = answer;
         }
-
+        
         // The main function called when a button is clicked
-        function selectAnswer(questionId, answer) {
+        window.selectAnswer = function(questionId, answer) {
             // Apply visual change immediately (which also updates state)
             applySelectionToDOM(questionId, answer); 
 
