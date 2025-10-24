@@ -23,6 +23,20 @@
             background-color: #FFFFFF !important;
             color: var(--bs-dark);
         }
+        
+        /* --- NEW ALIGNMENT FIX --- */
+        /* Target the main container within the header to better center the content on large screens */
+        @media (min-width: 992px) { /* Applies to large screens (desktop) and up */
+            .container {
+                max-width: 1200px; /* Optional: Set a max width for extra large displays */
+            }
+            /* Add horizontal padding to the main assessment area on desktop */
+            #hero .container {
+                padding-left: 100px !important;
+                padding-right: 100px !important;
+            }
+        }
+        /* ------------------------- */
 
         /* Custom styling for the persistent state buttons */
         .btn-qa {
