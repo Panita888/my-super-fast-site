@@ -60,16 +60,30 @@
             margin-bottom: 0; /* Remove default margin for alignment */
         }
 
-        /* Center the button group within its column */
-        .button-group {
+        /* NEW STYLE: Ensure the question text and button group use 100% of the available width 
+           and arrange contents to push the button group next to the question text. */
+        .question-container {
+            width: 100%;
             display: flex;
-            justify-content: flex-start; /* Aligns buttons to the left of their column */
+            justify-content: space-between; /* Pushes content to the edges */
+            align-items: center;
         }
 
-        /* For small screens, ensure the buttons are centered or right-aligned for better mobile layout */
+        /* Button group: used to contain and align the buttons */
+        .button-group {
+            display: flex;
+            flex-shrink: 0; /* Prevent buttons from shrinking */
+        }
+
+        /* For small screens, ensure the buttons are centered or right-aligned for better mobile layout 
+           (though justify-content-between in .question-container will handle the spacing) */
         @media (max-width: 576px) {
-            .button-group {
-                justify-content: flex-end; /* Align to the right on small screens for better question alignment */
+            .question-container {
+                flex-direction: column; /* Stack vertically on small screens */
+                align-items: flex-start; /* Left-align items when stacked */
+            }
+            .question-text {
+                margin-bottom: 10px; /* Add space between text and buttons on mobile */
             }
         }
     </style>
@@ -113,33 +127,23 @@
                     
                     <!-- QUESTION 1 -->
                     <div class="question-block mb-4 p-3" data-question-id="q1">
-                        <div class="row align-items-center">
-                            <!-- Column for the Question Text: Takes 9/12 on large screens -->
-                            <div class="col-lg-9 col-md-8 col-sm-8 col-9">
-                                <p class="question-text">Medical Director, could you produce your TOMS in 24 hours if needed?</p>
-                            </div>
-                            <!-- Column for the Buttons: Takes 3/12 on large screens. Removed 'text-end' for closer alignment. -->
-                            <div class="col-lg-3 col-md-4 col-sm-4 col-3">
-                                <div class="button-group">
-                                    <button class="btn btn-qa btn-yes" onclick="selectAnswer('q1', 'yes')">Yes</button>
-                                    <button class="btn btn-qa btn-no" onclick="selectAnswer('q1', 'no')">No</button>
-                                </div>
+                        <!-- Removed 'row align-items-center' and column classes. Using .question-container (Flexbox) instead. -->
+                        <div class="question-container">
+                            <p class="question-text me-4">Medical Director, could you produce your TOMS in 24 hours if needed?</p>
+                            <div class="button-group">
+                                <button class="btn btn-qa btn-yes" onclick="selectAnswer('q1', 'yes')">Yes</button>
+                                <button class="btn btn-qa btn-no" onclick="selectAnswer('q1', 'no')">No</button>
                             </div>
                         </div>
                     </div>
                     
                     <!-- QUESTION 2 (Placeholder) -->
                     <div class="question-block mb-4 p-3">
-                        <div class="row align-items-center">
-                             <div class="col-lg-9 col-md-8 col-sm-8 col-9">
-                                <p class="question-text text-muted">Next question will go here...</p>
-                            </div>
-                            <!-- Aligned to the left of its column for better desktop proximity -->
-                            <div class="col-lg-3 col-md-4 col-sm-4 col-3">
-                                <div class="button-group">
-                                    <button class="btn btn-qa">Yes</button>
-                                    <button class="btn btn-qa">No</button>
-                                </div>
+                        <div class="question-container">
+                            <p class="question-text text-muted me-4">Next question will go here...</p>
+                            <div class="button-group">
+                                <button class="btn btn-qa">Yes</button>
+                                <button class="btn btn-qa">No</button>
                             </div>
                         </div>
                     </div>
