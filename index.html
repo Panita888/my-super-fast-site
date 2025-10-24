@@ -1,309 +1,199 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Data Shield Assessment</title>
-    
-    <!-- ⚡ LOAD TAILWIND CSS CDN ⚡ --><script src="https://cdn.tailwindcss.com"></script>
+<!doctype html>
+<html lang="en" data-bs-theme="light">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CreatorTwin.AI — Digital AI Twins for Businesses</title>
 
-    <script>
-        // --- Tailwind Configuration for Custom Colors ---
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'mds-blue': '#1f4f89',      /* Primary Blue */
-                        'mds-primary': '#7C3AED',   /* Vibrant Purple (Inspired by Setter AI example) */
-                        'mds-green': '#10B981',     /* Strong Compliance Green */
-                        'mds-red': '#EF4444',       /* Strong Danger Red */
-                        'mds-dark': '#1A1A1A',      /* Near-Black Text */
-                        'mds-separator': '#e5e7eb', /* Very light border */
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                    },
-                },
-            }
-        }
-    </script>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- 💡 CUSTOM STYLES (Focus on modern, vibrant buttons) 💡 --><style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #FFFFFF; /* Pure white background */
-            color: theme('colors.mds-dark');
-        }
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-        /* NEW: Base button style - Rounded, lifted, transition effects */
-        .btn-qa {
-            @apply w-28 py-3 text-lg font-semibold transition-all duration-300 rounded-lg shadow-lg border-2;
-            /* Default non-selected style */
-            @apply border-gray-300 text-gray-700 bg-white hover:bg-gray-50 hover:shadow-xl;
-        }
+    <!-- Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
 
-        /* YES Button specific styling (Default is the primary CTA color) */
-        .btn-yes {
-            @apply bg-mds-primary text-white border-mds-primary shadow-mds-primary/50 hover:shadow-mds-primary/80;
-        }
-        
-        /* NO Button specific styling (Default is outline/secondary) */
-        .btn-no {
-            @apply bg-white text-mds-dark border-gray-300 hover:border-gray-500;
-        }
+    <style>
+      body {
+        font-family: 'Inter', sans-serif;
+        color: #333;
+        scroll-behavior: smooth;
+      }
 
-        /* Selected YES state - High contrast green confirmation */
-        .btn-yes.selected {
-            @apply !bg-mds-green !text-white !border-mds-green !shadow-mds-green/70 scale-105;
-        }
+      /* Navbar */
+      .navbar {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(12px);
+        transition: all 0.3s ease;
+      }
 
-        /* Selected NO state - High contrast red warning */
-        .btn-no.selected {
-            @apply !bg-mds-red !text-white !border-mds-red !shadow-mds-red/70 scale-105;
-        }
+      /* Hero Section */
+      .hero {
+        min-height: 100vh;
+        background: linear-gradient(135deg, #4f46e5, #6d28d9);
+        color: white;
+        display: flex;
+        align-items: center;
+        text-align: center;
+      }
 
-        /* Standard text selection */
-        ::selection {
-            background: #D1E5F8;
-        }
+      .hero h1 {
+        font-size: 3rem;
+        font-weight: 700;
+      }
+
+      .hero p {
+        font-size: 1.25rem;
+        opacity: 0.9;
+      }
+
+      .btn-gradient {
+        background: linear-gradient(135deg, #6366f1, #8b5cf6);
+        color: #fff;
+        border: none;
+        transition: all 0.3s ease;
+      }
+
+      .btn-gradient:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+      }
+
+      /* Features */
+      .feature-card {
+        border: none;
+        border-radius: 1rem;
+        padding: 2rem;
+        box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Footer */
+      footer {
+        background: #111827;
+        color: #9ca3af;
+      }
+
+      footer a {
+        color: #9ca3af;
+        text-decoration: none;
+      }
+
+      footer a:hover {
+        color: white;
+      }
     </style>
-</head>
-<body class="min-h-screen">
+  </head>
 
-    <!-- ========================================================================= --><!-- 1. NAVIGATION BAR (Tailwind) --><!-- ========================================================================= --><nav class="sticky top-0 z-10 w-full bg-white border-b border-gray-200 shadow-sm">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 flex justify-between items-center h-16">
-            <a class="text-xl font-semibold text-mds-dark tracking-tight" href="#">mydatashield.org</a>
-            <div class="hidden md:flex space-x-6 text-md">
-                <a href="#hero" class="text-mds-dark hover:text-mds-blue transition">Assessment</a>
-                <a href="#about" class="text-mds-dark hover:text-mds-blue transition">About</a>
-                <a href="#contact" class="text-mds-dark hover:text-mds-blue transition">Contact</a>
-            </div>
+  <body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+      <div class="container">
+        <a class="navbar-brand fw-bold text-primary" href="#">CreatorTwin.AI</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+            <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
+            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+          </ul>
         </div>
+      </div>
     </nav>
-    
-    <!-- ========================================================================= --><!-- 2. MAIN CONTENT AREA (Updated Layout) --><!-- ========================================================================= --><main id="hero" class="pt-16 pb-24">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="w-full">
-                
-                <h1 class="text-3xl sm:text-4xl font-extrabold text-mds-dark mb-2 leading-tight">
-                    Medical Director: Critical Risk Exposure
-                </h1>
-                
-                <p class="text-lg text-gray-500 mb-12">
-                    Regulation X Compliance Self-Assessment for December 2025 Deadlines.
-                </p>
-                
-                <!-- QUESTION CONTAINER -->
-                <div class="space-y-6">
-                
-                    <!-- QUESTION 1 -->
-                    <div class="question-block border-b border-mds-separator py-6" data-question-id="q1">
-                        <!-- Enforced two-column layout: Question takes 60%, Buttons take 40% (or less) -->
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-                            <p class="text-lg font-medium text-mds-dark mb-4 md:mb-0 md:mr-10 flex-1">
-                                Medical Director, could you produce your Technical and Organizational Measures (TOMS) in 24 hours if needed?
-                            </p>
-                            <!-- High contrast button container -->
-                            <div class="flex space-x-4">
-                                <button class="btn-qa btn-yes" onclick="selectAnswer('q1', 'yes')">Yes</button>
-                                <button class="btn-qa btn-no" onclick="selectAnswer('q1', 'no')">No</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- QUESTION 2 -->
-                    <div class="question-block border-b border-mds-separator py-6" data-question-id="q2">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-                            <p class="text-lg font-medium text-mds-dark mb-4 md:mb-0 md:mr-10 flex-1">
-                                Do all your patient data systems log access and modification attempts in an unalterable fashion?
-                            </p>
-                            <div class="flex space-x-4">
-                                <button class="btn-qa btn-yes" onclick="selectAnswer('q2', 'yes')">Yes</button>
-                                <button class="btn-qa btn-no" onclick="selectAnswer('q2', 'no')">No</button>
-                            </div>
-                        </div>
-                    </div>
 
-                    <!-- QUESTION 3 (Last question, no bottom border) -->
-                    <div class="question-block py-6" data-question-id="q3">
-                        <div class="flex flex-col md:flex-row justify-between items-start md:items-center">
-                            <p class="text-lg font-medium text-mds-dark mb-4 md:mb-0 md:mr-10 flex-1">
-                                Is mandatory security training completed and verified for 100% of staff annually?
-                            </p>
-                            <div class="flex space-x-4">
-                                <button class="btn-qa btn-yes" onclick="selectAnswer('q3', 'yes')">Yes</button>
-                                <button class="btn-qa btn-no" onclick="selectAnswer('q3', 'no')">No</button>
-                            </div>
-                        </div>
-                    </div>
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+      <div class="container">
+        <h1>Build Your Digital AI Twin</h1>
+        <p class="mb-4">Automate communication, workflows, and customer experiences — all powered by AI.</p>
+        <a href="#contact" class="btn btn-gradient btn-lg px-4">Get Started</a>
+      </div>
+    </section>
 
-                </div>
-                <!-- END QUESTION CONTAINER -->
-                
-                <div class="mt-16 pt-8 border-t border-gray-200 text-center">
-                    <p class="text-gray-400 text-sm">Your progress is automatically saved to your secure profile. Continue at any time.</p>
-                </div>
-
+    <!-- Features -->
+    <section id="features" class="py-5">
+      <div class="container text-center">
+        <h2 class="fw-bold mb-5">Why Choose CreatorTwin.AI</h2>
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="feature-card h-100">
+              <i class="bi bi-lightning-charge display-5 text-primary mb-3"></i>
+              <h5 class="fw-semibold">Automate Everything</h5>
+              <p>From WhatsApp to CRM — streamline repetitive tasks and let AI handle the busywork.</p>
             </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card h-100">
+              <i class="bi bi-person-gear display-5 text-primary mb-3"></i>
+              <h5 class="fw-semibold">Your Custom AI Assistant</h5>
+              <p>Create an AI that mirrors your tone, handles clients, and scales your business presence.</p>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="feature-card h-100">
+              <i class="bi bi-shield-check display-5 text-primary mb-3"></i>
+              <h5 class="fw-semibold">Secure & Compliant</h5>
+              <p>Built with data privacy in mind — compliant with ADHICS, PDPL, and international standards.</p>
+            </div>
+          </div>
         </div>
-    </main>
+      </div>
+    </section>
 
-    <!-- ========================================================================= --><!-- 3. FOOTER (Tailwind) --><!-- ========================================================================= --><footer id="contact" class="bg-mds-dark py-6">
-        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <p class="text-white text-sm opacity-80">&copy; 2025 mydatashield.org. | 
-                <a href="#about" class="text-white hover:text-mds-blue transition duration-150">About</a> | 
-                <a href="#" class="text-white hover:text-mds-blue transition duration-150">Privacy</a> | 
-                <a href="#" class="text-white hover:text-mds-blue transition duration-150">Terms</a>
-            </p>
+    <!-- About -->
+    <section id="about" class="py-5 bg-light text-center">
+      <div class="container">
+        <h2 class="fw-bold mb-3">About CreatorTwin.AI</h2>
+        <p class="lead text-muted mx-auto" style="max-width:700px;">
+          We help clinics, influencers, and businesses create their digital AI twins —
+          intelligent systems that engage customers, manage leads, and automate operations.
+        </p>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-5 text-center">
+      <div class="container">
+        <h2 class="fw-bold mb-4">Get in Touch</h2>
+        <p class="mb-4">Ready to build your AI twin? Let’s start the conversation.</p>
+        <form class="mx-auto" style="max-width:600px;">
+          <div class="mb-3">
+            <input type="text" class="form-control" placeholder="Your Name">
+          </div>
+          <div class="mb-3">
+            <input type="email" class="form-control" placeholder="Your Email">
+          </div>
+          <div class="mb-3">
+            <textarea class="form-control" rows="4" placeholder="Your Message"></textarea>
+          </div>
+          <button class="btn btn-gradient px-4" type="submit">Send Message</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="py-4">
+      <div class="container text-center">
+        <p class="mb-2">&copy; 2025 CreatorTwin.AI — All rights reserved.</p>
+        <div>
+          <a href="#"><i class="bi bi-linkedin me-3"></i></a>
+          <a href="#"><i class="bi bi-twitter-x me-3"></i></a>
+          <a href="#"><i class="bi bi-globe"></i></a>
         </div>
+      </div>
     </footer>
-    
-    <!-- ========================================================================= --><!-- JAVASCRIPT LOGIC FOR BUTTON STATE AND FIREBASE --><!-- ========================================================================= --><script type="module">
-        import { initializeApp as initApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInWithCustomToken, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, onSnapshot, setLogLevel } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-        
-        // Check for Firebase variables and set up authentication if they exist
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
 
-        let db, auth, userId;
-        
-        // --- Core State Variables ---
-        const questionIds = ['q1', 'q2', 'q3']; 
-        window.currentAnswers = {}; 
-        // -------------------------------------------------
-
-        // Function to initialize Firebase and load saved state
-        async function initializeApp() {
-            if (typeof setLogLevel !== 'undefined') {
-                setLogLevel('debug');
-            }
-
-            try {
-                const app = initApp(firebaseConfig);
-                db = getFirestore(app);
-                auth = getAuth(app);
-                
-                // Sign in the user
-                if (initialAuthToken) {
-                    await signInWithCustomToken(auth, initialAuthToken);
-                } else {
-                    await signInAnonymously(auth);
-                }
-                
-                userId = auth.currentUser.uid;
-                console.log("Firebase initialized and user signed in:", userId);
-
-                // Start listening for assessment state changes
-                loadAssessmentState();
-
-            } catch (error) {
-                console.error("Firebase initialization failed:", error);
-                // Fallback if Firebase fails: use localStorage
-                loadStateFromStorage();
-            }
-        }
-
-        // --- Core State Management Logic ---
-        
-        function getDocRef(questionId) {
-            if (!db || !userId) return null;
-            // Store data privately for the current user in a collection called 'assessment'
-            return doc(db, 'artifacts', appId, 'users', userId, 'assessment', questionId);
-        }
-
-        // Save state using Firestore (or localStorage if DB is unavailable)
-        async function saveAssessmentState(questionId, answer) {
-            if (db && userId) {
-                try {
-                    // Update state in Firestore
-                    await setDoc(getDocRef(questionId), { answer: answer, timestamp: new Date() }, { merge: true });
-                    console.log(`State saved to Firestore: ${questionId} = ${answer}`);
-                } catch (e) {
-                    console.error("Error saving document to Firestore:", e);
-                    // Fallback to localStorage if Firestore save fails
-                    localStorage.setItem(questionId, answer);
-                }
-            } else {
-                // Fallback to localStorage
-                localStorage.setItem(questionId, answer);
-                console.log(`State saved to localStorage: ${questionId} = ${answer}`);
-            }
-            // Note: applySelectionToDOM updates currentAnswers
-        }
-
-        // Load state using Firestore listener (or localStorage if DB is unavailable)
-        function loadAssessmentState() {
-            if (!db || !userId) {
-                // Fallback if Firestore functions aren't available
-                loadStateFromStorage();
-                return;
-            }
-            
-            questionIds.forEach(questionId => {
-                const qRef = getDocRef(questionId);
-                if (qRef) {
-                    onSnapshot(qRef, (docSnap) => {
-                        if (docSnap.exists()) {
-                            const answer = docSnap.data().answer;
-                            if (answer) {
-                                applySelectionToDOM(questionId, answer);
-                            }
-                        } else {
-                            // Fallback check to localStorage if no Firestore data is found
-                            const localAnswer = localStorage.getItem(questionId);
-                            if(localAnswer) {
-                                applySelectionToDOM(questionId, localAnswer);
-                            }
-                        }
-                    }, (error) => {
-                        console.error(`Error setting up Firestore listener for ${questionId}:`, error);
-                    });
-                }
-            });
-        }
-
-        // Load state from localStorage (used if Firebase initialization fails)
-        function loadStateFromStorage() {
-             questionIds.forEach(questionId => {
-                 const answer = localStorage.getItem(questionId);
-                 if (answer) {
-                    applySelectionToDOM(questionId, answer);
-                 }
-             });
-        }
-
-        // Apply the visual state change to the buttons
-        function applySelectionToDOM(questionId, answer) {
-            const questionBlock = document.querySelector(`[data-question-id="${questionId}"]`);
-            if (questionBlock) {
-                // 1. Remove 'selected' class from all buttons in this block
-                questionBlock.querySelectorAll('.btn-qa').forEach(btn => btn.classList.remove('selected'));
-
-                // 2. Find the selected button and add the 'selected' class
-                const selectedButton = questionBlock.querySelector(`.btn-${answer}`);
-                if (selectedButton) {
-                    selectedButton.classList.add('selected');
-                }
-            }
-            
-            // Update local state 
-            window.currentAnswers[questionId] = answer;
-        }
-        
-        // The main function called when a button is clicked
-        window.selectAnswer = function(questionId, answer) {
-            // Apply visual change immediately (which also updates state)
-            applySelectionToDOM(questionId, answer); 
-
-            // Save state (to Firestore or localStorage)
-            saveAssessmentState(questionId, answer);
-        }
-
-        // Initialize the app and load saved state on page load
-        document.addEventListener('DOMContentLoaded', initializeApp);
-    </script>
-</body>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
 </html>
