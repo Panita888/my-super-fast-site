@@ -83,30 +83,33 @@ body {
   line-height: 1.6;
 }
 
-/* Hero and Final CTA buttons - TrySetter style */
+/* Hero and Final CTA buttons - TrySetter exact style match */
 .hero .cta-btn,
 .final-cta a {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 18px 40px;       /* vertical + horizontal padding to match TrySetter */
-  font-size: 1.125rem;      /* 18px text size */
-  font-weight: 600;
-  border-radius: 12px;       /* moderately rounded corners */
-  background-color: #14D4C4; /* your brand color */
+  padding: 20px 48px;        /* taller and wider for proper height */
+  font-family: 'Inter', sans-serif; /* matches TrySetter */
+  font-weight: 500;           /* medium weight */
+  font-size: 1.25rem;         /* slightly larger text */
+  line-height: 1.5;           /* proper vertical spacing */
+  text-transform: none;       /* no uppercase */
+  border-radius: 12px;        /* moderately rounded rectangle */
+  background-color: #14D4C4;  /* your brand color */
   color: #fff;
   border: none;
   cursor: pointer;
   text-decoration: none;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* subtle shadow for depth */
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
 /* Hover effect */
 .hero .cta-btn:hover,
 .final-cta a:hover {
   transform: translateY(-2px);
-  box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
   background-color: #12b2a6; /* slightly darker on hover */
 }
 
