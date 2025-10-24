@@ -21,12 +21,13 @@ body {
 /* Header / Nav */
 .site-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  padding: 25px 80px;
+  gap: 60px;
+  padding: 35px 60px; /* taller padding */
+  background: #fff;
   position: sticky;
   top: 0;
-  background: #fff;
   z-index: 100;
   box-shadow: 0 1px 5px rgba(0,0,0,0.06);
 }
@@ -45,15 +46,19 @@ body {
 }
 
 .site-nav a {
-  font-family: 'Manrope', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 500;
-  font-size: 1.25rem; /* bigger than your current */
-  letter-spacing: normal; /* remove the uppercase spacing */
-  text-transform: none; /* ensure not uppercase */
+  font-size: 1.25rem;
+  line-height: 1.6; /* taller for airy look */
+  text-transform: none;
+  letter-spacing: normal;
   color: #1B1B1B;
-  margin-left: 40px; /* space between links */
+  margin-right: 40px;
   text-decoration: none;
-  transition: color 0.3s ease;
+}
+
+.site-nav a:last-child {
+  margin-right: 0;
 }
 
 .site-nav a:hover {
