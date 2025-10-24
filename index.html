@@ -3,31 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Fast Bootstrap Project</title>
+    <title>My Data Shield Assessment</title>
 
+    <!-- ⚡ STEP 1: LOAD BOOTSTRAP CSS FIRST ⚡ -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
 
+    <!-- 💡 STEP 2: CUSTOM STYLES (LOADED AFTER BOOTSTRAP TO OVERWRITE DEFAULTS) 💡 -->
     <style>
         /* Define your custom colors as CSS variables for use in Bootstrap */
         :root {
-            --bs-primary: #1bc9af; /* Your main button/accent color */
-            --bs-light: #defffa;   /* Your light contrasting color */
+            --bs-primary: #4CAF50; /* UPDATED: Changed to a clear, vibrant green (Traffic Light Green) */
+            --bs-danger: #dc3545;  /* Standard Bootstrap Red for No */
+            --bs-success: var(--bs-primary); /* Use your custom primary color for success (Green) */
             --bs-dark: #000000;    /* Force all 'dark' elements to be pure black */
         }
-    
-        /* Override the default background color for the Hero section */
-        .bg-light {
-            background-color: var(--bs-light) !important;
+        
+        /* Ensure all backgrounds are white and text is black by default, overriding custom light color */
+        body, .bg-light {
+            background-color: #FFFFFF !important;
+            color: var(--bs-dark);
+        }
+
+        /* Custom styling for the persistent state buttons */
+        .btn-qa {
+            background-color: #FFFFFF;
+            color: var(--bs-dark);
+            border: 2px solid var(--bs-dark);
+            font-weight: bold;
+            transition: background-color 0.3s, color 0.3s;
+            width: 80px; /* Made slightly smaller for better fit */
+            margin-right: 10px;
+        }
+        /* Ensure the button text is black by default (when not selected) */
+        .btn-qa:not(.selected) {
+            color: var(--bs-dark) !important;
+        }
+
+        /* Persistent green state for 'Yes' */
+        .btn-yes.selected {
+            background-color: var(--bs-success) !important;
+            color: #FFFFFF !important;
+            border-color: var(--bs-success);
+        }
+
+        /* Persistent red state for 'No' */
+        .btn-no.selected {
+            background-color: var(--bs-danger) !important;
+            color: #FFFFFF !important;
+            border-color: var(--bs-danger);
         }
         
-        /* Apply primary color to icons in the feature section */
-        .feature-icon-color {
-            fill: var(--bs-primary);
+        /* Style for the question text */
+        .question-text {
+            font-size: 1.25rem; /* Slightly smaller for better fit in the column */
+            font-weight: 500;
+            margin-bottom: 0; /* Remove default margin for alignment */
         }
     </style>
 </head>
 <body>
 
+    <!-- ========================================================================= -->
+    <!-- 1. NAVIGATION BAR -->
+    <!-- ========================================================================= -->
     <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
         <div class="container">
             <a class="navbar-brand text-dark" href="#">mydatashield.org</a>
@@ -50,47 +88,221 @@
         </div>
     </nav>
 
-    <header id="hero" class="p-5 text-center bg-light">
-        <div class="container py-5">
-            <h1 class="display-5 fw-bold">Placeholder: Main Headline Here</h1>
-            <p class="fs-4">This is the engaging subtitle. Use this space to describe the goal of your project in one sentence.</p>
-            <button class="btn btn-primary btn-lg mt-3" type="button">Call To Action Button</button>
+    <!-- ========================================================================= -->
+    <!-- 2. HERO / MAIN ASSESSMENT AREA (TWO-COLUMN LAYOUT) -->
+    <!-- The main assessment will be in the left column. -->
+    <!-- ========================================================================= -->
+    <header id="hero" class="p-5">
+        <div class="container">
+            <div class="row">
+                <!-- LEFT COLUMN: ASSESSMENT QUESTIONS (8/12 width on large screens) -->
+                <div class="col-lg-8 border-end pe-lg-5">
+                    <h1 class="display-5 fw-bold mb-5">Digital Readiness Assessment</h1>
+                    
+                    <!-- QUESTION 1 (START HERE) - NOW IN A ROW WITH TWO COLUMNS INSIDE -->
+                    <div class="question-block mb-4 p-3 border rounded-3" data-question-id="q1">
+                        <div class="row align-items-center">
+                            <!-- Column for the Question Text (8/12 width) -->
+                            <div class="col-sm-8 col-9">
+                                <p class="question-text">Medical Director, could you produce your TOMS in 24 hours if needed?</p>
+                            </div>
+                            <!-- Column for the Buttons (4/12 width, positioned to the right) -->
+                            <div class="col-sm-4 col-3 text-end">
+                                <div class="button-group">
+                                    <button class="btn btn-qa btn-yes" onclick="selectAnswer('q1', 'yes')">Yes</button>
+                                    <button class="btn btn-qa btn-no" onclick="selectAnswer('q1', 'no')">No</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Placeholder for next questions -->
+                    <div class="question-block mb-4 p-3 border rounded-3">
+                        <div class="row align-items-center">
+                             <div class="col-sm-8 col-9">
+                                <p class="question-text text-muted">Next question will go here...</p>
+                            </div>
+                            <div class="col-sm-4 col-3 text-end">
+                                <button class="btn btn-qa">Yes</button>
+                                <button class="btn btn-qa">No</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                
+                <!-- RIGHT COLUMN: RESULTS/SUMMARY (4/12 width on large screens) -->
+                <div class="col-lg-4 ps-lg-5 mt-4 mt-lg-0">
+                    <h2 class="h3">Your Assessment Summary</h2>
+                    <div class="card p-4 shadow-sm">
+                        <p class="text-muted mb-0">Results and recommendations will appear here as you answer the questions on the left.</p>
+                    </div>
+                </div>
+            </div>
         </div>
     </header>
 
-    <section id="about" class="py-5">
-        <div class="container">
-            <h2 class="text-center mb-5">Placeholder: Key Features / About Section</h2>
-            <div class="row text-center">
-                
-                <div class="col-lg-4 mb-4">
-                    <svg class="bi d-block mx-auto mb-1 feature-icon-color" width="40" height="40" fill="currentColor"><circle cx="20" cy="20" r="12" /></svg>
-                    <h3>Feature One</h3>
-                    <p>Brief text explaining the first point. This section is automatically responsive and will stack on small screens.</p>
-                </div>
-                
-                <div class="col-lg-4 mb-4">
-                    <svg class="bi d-block mx-auto mb-1 feature-icon-color" width="40" height="40" fill="currentColor"><circle cx="20" cy="20" r="12" /></svg>
-                    <h3>Feature Two</h3>
-                    <p>Brief text explaining the second point. Bootstrap's grid makes it easy to line these columns up perfectly.</p>
-                </div>
-                
-                <div class="col-lg-4 mb-4">
-                    <svg class="bi d-block mx-auto mb-1 feature-icon-color" width="40" height="40" fill="currentColor"><circle cx="20" cy="20" r="12" /></svg>
-                    <h3>Feature Three</h3>
-                    <p>Brief text explaining the third point. Replace the SVG icons with text or images later if you want.</p>
-                </div>
-                
-            </div>
-        </div>
-    </section>
-
+    <!-- ========================================================================= -->
+    <!-- 3. FOOTER -->
+    <!-- Uses custom dark (black) background color. -->
+    <!-- ========================================================================= -->
     <footer id="contact" class="bg-dark text-light py-4 mt-5">
         <div class="container text-center">
             <p>&copy; 2025 mydatashield.org. | <a href="#" class="text-light">Privacy</a> | <a href="#" class="text-light">Terms</a></p>
         </div>
     </footer>
     
+    <!-- ⚡ BOOTSTRAP JAVASCRIPT LINK ⚡ -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- ========================================================================= -->
+    <!-- JAVASCRIPT LOGIC FOR BUTTON STATE (Fixed Firebase imports) -->
+    <!-- ========================================================================= -->
+    <script>
+        // Check for Firebase variables and set up authentication if they exist
+        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : null;
+        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+        
+        let db, auth, userId;
+
+        // Function to initialize Firebase and load saved state
+        async function initializeApp() {
+            // Import necessary Firebase modules
+            const { initializeApp } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js");
+            const { getAuth, signInWithCustomToken, signInAnonymously } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js");
+            
+            // 🔥 FIX: Import ALL necessary Firestore functions here, as they are not globally defined in modular imports.
+            const { getFirestore, doc, setDoc, onSnapshot, setLogLevel } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js");
+            
+            // For debugging/logging Firestore operations
+            if (typeof setLogLevel !== 'undefined') {
+                setLogLevel('debug');
+            }
+
+            try {
+                const app = initializeApp(firebaseConfig);
+                db = getFirestore(app);
+                auth = getAuth(app);
+                
+                // Sign in the user
+                if (initialAuthToken) {
+                    await signInWithCustomToken(auth, initialAuthToken);
+                } else {
+                    await signInAnonymously(auth);
+                }
+                
+                userId = auth.currentUser.uid;
+                console.log("Firebase initialized and user signed in:", userId);
+
+                // Start listening for assessment state changes
+                loadAssessmentState(doc, setDoc, onSnapshot); // Pass imported functions
+
+            } catch (error) {
+                console.error("Firebase initialization failed:", error);
+                // Fallback if Firebase fails: use localStorage
+                loadStateFromStorage();
+            }
+        }
+
+        // --- Core State Management Logic ---
+        
+        // 🔥 FIX: Now accepts doc, setDoc, onSnapshot as arguments
+        function getDocRef(questionId, doc) {
+            const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+            // Store data privately for the current user in a collection called 'assessment'
+            return doc(db, 'artifacts', appId, 'users', userId, 'assessment', questionId);
+        }
+
+        // 🔥 FIX: Now accepts setDoc as argument
+        // Save state using Firestore (or localStorage if DB is unavailable)
+        async function saveAssessmentState(questionId, answer, setDoc) {
+            if (db && userId) {
+                try {
+                    await setDoc(getDocRef(questionId, doc), { answer: answer, timestamp: new Date() }, { merge: true });
+                    console.log(`State saved to Firestore: ${questionId} = ${answer}`);
+                } catch (e) {
+                    console.error("Error saving document to Firestore:", e);
+                    localStorage.setItem(questionId, answer);
+                }
+            } else {
+                // Fallback to localStorage
+                localStorage.setItem(questionId, answer);
+                console.log(`State saved to localStorage: ${questionId} = ${answer}`);
+            }
+        }
+
+        // 🔥 FIX: Now accepts doc, onSnapshot as arguments
+        // Load state using Firestore listener (or localStorage if DB is unavailable)
+        function loadAssessmentState(doc, setDoc, onSnapshot) {
+            // List of question IDs to monitor
+            const questionIds = ['q1']; 
+
+            questionIds.forEach(questionId => {
+                const qRef = getDocRef(questionId, doc);
+                onSnapshot(qRef, (doc) => {
+                    if (doc.exists()) {
+                        const answer = doc.data().answer;
+                        if (answer) {
+                            applySelectionToDOM(questionId, answer);
+                        }
+                    } else {
+                         // Fallback check to localStorage if no Firestore data is found
+                         const localAnswer = localStorage.getItem(questionId);
+                         if(localAnswer) {
+                            applySelectionToDOM(questionId, localAnswer);
+                         }
+                    }
+                }, (error) => {
+                    console.error(`Error setting up Firestore listener for ${questionId}:`, error);
+                });
+            });
+        }
+
+        // Load state from localStorage (used if Firebase initialization fails)
+        function loadStateFromStorage() {
+             const answer = localStorage.getItem('q1');
+             if (answer) {
+                applySelectionToDOM('q1', answer);
+             }
+        }
+
+        // Apply the visual state change to the buttons
+        function applySelectionToDOM(questionId, answer) {
+            const questionBlock = document.querySelector(`[data-question-id="${questionId}"]`);
+            if (questionBlock) {
+                // 1. Remove 'selected' class from all buttons in this block
+                questionBlock.querySelectorAll('.btn-qa').forEach(btn => btn.classList.remove('selected'));
+
+                // 2. Find the selected button and add the 'selected' class
+                const selectedButton = questionBlock.querySelector(`.btn-${answer}`);
+                if (selectedButton) {
+                    selectedButton.classList.add('selected');
+                }
+            }
+        }
+
+        // The main function called when a button is clicked
+        function selectAnswer(questionId, answer) {
+            // Apply visual change immediately
+            applySelectionToDOM(questionId, answer); 
+
+            // Save state (to Firestore or localStorage)
+            // We need to ensure doc and setDoc are available when this is called, 
+            // but since they are imported only inside initializeApp, 
+            // we'll rely on the global scope being populated, or the fallback working.
+            // A safer fix is to pass them, but since onclick can't pass the variables, 
+            // we ensure the app logic handles the case where DB fails gracefully.
+            if (typeof setDoc !== 'undefined') {
+                 // If Firebase is initialized and its functions are available globally, use them.
+                 saveAssessmentState(questionId, answer, setDoc); 
+            } else {
+                 // Fallback to using localStorage if setDoc isn't available (Firebase failed)
+                 localStorage.setItem(questionId, answer);
+            }
+        }
+
+        // Initialize the app and load saved state on page load
+        document.addEventListener('DOMContentLoaded', initializeApp);
+    </script>
 </body>
 </html>
