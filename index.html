@@ -1,92 +1,148 @@
 <!doctype html>
-<html lang="en" data-bs-theme="light">
+<html lang="en">
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>CreatorTwin.AI — Digital AI Twins for Businesses</title>
+    <title>MyDataShield.org — Protecting Patient Data Compliance</title>
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- Google Fonts -->
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
-    <!-- Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
-
     <style>
+      :root {
+        --navy: #0f172a;
+        --aqua: #06b6d4;
+        --light-bg: #f8fafc;
+      }
+
       body {
         font-family: 'Inter', sans-serif;
-        color: #333;
+        background-color: #fff;
+        color: var(--navy);
         scroll-behavior: smooth;
       }
 
       /* Navbar */
       .navbar {
-        background: rgba(255, 255, 255, 0.9);
-        backdrop-filter: blur(12px);
-        transition: all 0.3s ease;
+        background-color: var(--navy);
+      }
+      .navbar-brand, .nav-link {
+        color: white !important;
       }
 
-      /* Hero Section */
+      /* Hero */
       .hero {
-        min-height: 100vh;
-        background: linear-gradient(135deg, #4f46e5, #6d28d9);
-        color: white;
+        min-height: 90vh;
         display: flex;
         align-items: center;
+        justify-content: center;
         text-align: center;
+        background: linear-gradient(135deg, var(--navy), #1e293b);
+        color: white;
+        padding: 5rem 1rem;
       }
 
       .hero h1 {
-        font-size: 3rem;
         font-weight: 700;
+        font-size: 2.5rem;
+        margin-bottom: 1rem;
       }
 
       .hero p {
-        font-size: 1.25rem;
+        font-size: 1.2rem;
         opacity: 0.9;
       }
 
-      .btn-gradient {
-        background: linear-gradient(135deg, #6366f1, #8b5cf6);
-        color: #fff;
-        border: none;
-        transition: all 0.3s ease;
-      }
-
-      .btn-gradient:hover {
-        opacity: 0.9;
-        transform: translateY(-2px);
-      }
-
-      /* Features */
-      .feature-card {
+      /* Question Cards */
+      .question-card {
+        background-color: var(--light-bg);
         border: none;
         border-radius: 1rem;
         padding: 2rem;
-        box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
+        box-shadow: 0 4px 25px rgba(0,0,0,0.05);
+        transition: transform 0.2s ease;
+      }
+
+      .question-card:hover {
+        transform: translateY(-3px);
+      }
+
+      .question-card h5 {
+        font-weight: 600;
+      }
+
+      .subtext {
+        font-size: 0.9rem;
+        color: #475569;
+        font-style: italic;
+      }
+
+      .btn-choice {
+        width: 100px;
+        margin: 0 0.5rem;
+      }
+
+      .btn-yes.active {
+        background-color: #22c55e !important;
+        color: white !important;
+      }
+
+      .btn-no.active {
+        background-color: #ef4444 !important;
+        color: white !important;
+      }
+
+      /* Result Message */
+      #resultMessage {
+        display: none;
+        border-radius: 1rem;
+        padding: 2rem;
+        margin-top: 2rem;
+      }
+
+      #resultMessage.success {
+        background-color: #ecfdf5;
+        border: 2px solid #22c55e;
+        color: #065f46;
+      }
+
+      #resultMessage.warning {
+        background-color: #fef2f2;
+        border: 2px solid #dc2626;
+        color: #7f1d1d;
+      }
+
+      .cta-btn {
+        background-color: var(--aqua);
+        color: white;
+        border: none;
+        padding: 0.75rem 2rem;
+        border-radius: 50px;
+        font-weight: 600;
         transition: all 0.3s ease;
       }
 
-      .feature-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+      .cta-btn:hover {
+        background-color: #0891b2;
+        transform: translateY(-2px);
       }
 
-      /* Footer */
+      /* Disclaimer */
+      .disclaimer {
+        font-size: 0.9rem;
+        color: #6b7280;
+        margin-top: 2rem;
+      }
+
       footer {
-        background: #111827;
-        color: #9ca3af;
-      }
-
-      footer a {
-        color: #9ca3af;
-        text-decoration: none;
-      }
-
-      footer a:hover {
+        background-color: var(--navy);
         color: white;
+        text-align: center;
+        padding: 1rem;
+        margin-top: 3rem;
       }
     </style>
   </head>
@@ -94,106 +150,140 @@
   <body>
 
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+    <nav class="navbar navbar-expand-lg">
       <div class="container">
-        <a class="navbar-brand fw-bold text-primary" href="#">CreatorTwin.AI</a>
+        <a class="navbar-brand fw-bold" href="#">MyDataShield.org</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
           <ul class="navbar-nav ms-auto">
-            <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
-            <li class="nav-item"><a class="nav-link" href="#features">Features</a></li>
-            <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
-            <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
           </ul>
         </div>
       </div>
     </nav>
 
-    <!-- Hero Section -->
-    <section id="home" class="hero">
+    <!-- Hero -->
+    <section class="hero">
       <div class="container">
-        <h1>Build Your Digital AI Twin</h1>
-        <p class="mb-4">Automate communication, workflows, and customer experiences — all powered by AI.</p>
-        <a href="#contact" class="btn btn-gradient btn-lg px-4">Get Started</a>
+        <h1>Is your clinic truly data compliant in the age of AI?</h1>
+        <p>Answer 3 quick questions below to find out.</p>
       </div>
     </section>
 
-    <!-- Features -->
-    <section id="features" class="py-5">
-      <div class="container text-center">
-        <h2 class="fw-bold mb-5">Why Choose CreatorTwin.AI</h2>
-        <div class="row g-4">
-          <div class="col-md-4">
-            <div class="feature-card h-100">
-              <i class="bi bi-lightning-charge display-5 text-primary mb-3"></i>
-              <h5 class="fw-semibold">Automate Everything</h5>
-              <p>From WhatsApp to CRM — streamline repetitive tasks and let AI handle the busywork.</p>
+    <!-- Questionnaire -->
+    <section class="py-5">
+      <div class="container">
+        <div class="row g-4 justify-content-center">
+
+          <!-- Q1 -->
+          <div class="col-md-8">
+            <div class="question-card text-center" data-question="1">
+              <h5>1. Can you produce your TOMS (Technical & Organisational Measures) within 24 hours if requested?</h5>
+              <p class="subtext">As required under UAE & EU data protection regulations for demonstrating accountability.</p>
+              <div class="mt-3">
+                <button class="btn btn-outline-success btn-choice btn-yes">Yes</button>
+                <button class="btn btn-outline-danger btn-choice btn-no">No</button>
+              </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="feature-card h-100">
-              <i class="bi bi-person-gear display-5 text-primary mb-3"></i>
-              <h5 class="fw-semibold">Your Custom AI Assistant</h5>
-              <p>Create an AI that mirrors your tone, handles clients, and scales your business presence.</p>
+
+          <!-- Q2 -->
+          <div class="col-md-8">
+            <div class="question-card text-center" data-question="2">
+              <h5>2. Can you guarantee your team are not using public LLMs or apps that store patient data outside the UAE?</h5>
+              <p class="subtext">Data residency requirements under PDPL & ADHICS prohibit unverified AI or recording apps.</p>
+              <div class="mt-3">
+                <button class="btn btn-outline-success btn-choice btn-yes">Yes</button>
+                <button class="btn btn-outline-danger btn-choice btn-no">No</button>
+              </div>
             </div>
           </div>
-          <div class="col-md-4">
-            <div class="feature-card h-100">
-              <i class="bi bi-shield-check display-5 text-primary mb-3"></i>
-              <h5 class="fw-semibold">Secure & Compliant</h5>
-              <p>Built with data privacy in mind — compliant with ADHICS, PDPL, and international standards.</p>
+
+          <!-- Q3 -->
+          <div class="col-md-8">
+            <div class="question-card text-center" data-question="3">
+              <h5>3. Do your current policies, training, and consent forms reflect today’s technological landscape?</h5>
+              <p class="subtext">Strong governance is key to mitigating compliance risks as technology evolves.</p>
+              <div class="mt-3">
+                <button class="btn btn-outline-success btn-choice btn-yes">Yes</button>
+                <button class="btn btn-outline-danger btn-choice btn-no">No</button>
+              </div>
             </div>
           </div>
+
         </div>
-      </div>
-    </section>
 
-    <!-- About -->
-    <section id="about" class="py-5 bg-light text-center">
-      <div class="container">
-        <h2 class="fw-bold mb-3">About CreatorTwin.AI</h2>
-        <p class="lead text-muted mx-auto" style="max-width:700px;">
-          We help clinics, influencers, and businesses create their digital AI twins —
-          intelligent systems that engage customers, manage leads, and automate operations.
+        <!-- Result -->
+        <div id="resultMessage" class="text-center"></div>
+
+        <!-- Disclaimer -->
+        <p class="text-center disclaimer">
+          Breaches can result in serious penalties. You cannot delegate your liability — not knowing is not a defence.
         </p>
+
       </div>
     </section>
 
-    <!-- Contact -->
-    <section id="contact" class="py-5 text-center">
-      <div class="container">
-        <h2 class="fw-bold mb-4">Get in Touch</h2>
-        <p class="mb-4">Ready to build your AI twin? Let’s start the conversation.</p>
-        <form class="mx-auto" style="max-width:600px;">
-          <div class="mb-3">
-            <input type="text" class="form-control" placeholder="Your Name">
-          </div>
-          <div class="mb-3">
-            <input type="email" class="form-control" placeholder="Your Email">
-          </div>
-          <div class="mb-3">
-            <textarea class="form-control" rows="4" placeholder="Your Message"></textarea>
-          </div>
-          <button class="btn btn-gradient px-4" type="submit">Send Message</button>
-        </form>
-      </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="py-4">
-      <div class="container text-center">
-        <p class="mb-2">&copy; 2025 CreatorTwin.AI — All rights reserved.</p>
-        <div>
-          <a href="#"><i class="bi bi-linkedin me-3"></i></a>
-          <a href="#"><i class="bi bi-twitter-x me-3"></i></a>
-          <a href="#"><i class="bi bi-globe"></i></a>
-        </div>
-      </div>
+    <footer>
+      <p class="mb-0">&copy; 2025 MyDataShield.org. All rights reserved.</p>
     </footer>
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JS -->
+    <script>
+      const questions = document.querySelectorAll('.question-card');
+      const resultMessage = document.getElementById('resultMessage');
+      let answers = {};
+
+      document.querySelectorAll('.btn-choice').forEach(btn => {
+        btn.addEventListener('click', e => {
+          const card = e.target.closest('.question-card');
+          const qNum = card.dataset.question;
+          const isYes = e.target.classList.contains('btn-yes');
+
+          // Remove active state
+          card.querySelectorAll('.btn-choice').forEach(b => b.classList.remove('active'));
+
+          // Add active to selected
+          e.target.classList.add('active');
+
+          // Record answer
+          answers[qNum] = isYes ? 'yes' : 'no';
+
+          // Check if all answered
+          if (Object.keys(answers).length === 3) showResult();
+        });
+      });
+
+      function showResult() {
+        const noCount = Object.values(answers).filter(a => a === 'no').length;
+
+        resultMessage.style.display = 'block';
+        resultMessage.classList.remove('success', 'warning');
+
+        if (noCount === 0) {
+          resultMessage.classList.add('success');
+          resultMessage.innerHTML = `
+            <h5>✅ You appear compliant at a surface level.</h5>
+            <p>Complete your <strong>Free Audit Checklist</strong> to have verified documentation on file.</p>
+            <a href="https://typeform.com/to/your-form" class="cta-btn mt-2">Complete Free Audit Checklist</a>
+          `;
+        } else {
+          resultMessage.classList.add('warning');
+          resultMessage.innerHTML = `
+            <h5>⚠️ You appear at risk in ${noCount} area${noCount > 1 ? 's' : ''}.</h5>
+            <p>Complete your <strong>Free Audit Checklist</strong> to assess and address these risks immediately.</p>
+            <a href="https://typeform.com/to/your-form" class="cta-btn mt-2">Start Free Audit Checklist</a>
+          `;
+        }
+
+        resultMessage.scrollIntoView({ behavior: 'smooth' });
+      }
+    </script>
   </body>
 </html>
