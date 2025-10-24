@@ -12,45 +12,50 @@
     <style>
         /* Define your custom colors as CSS variables for use in Bootstrap */
         :root {
-            --bs-primary: #4CAF50; /* UPDATED: Changed to a clear, vibrant green (Traffic Light Green) */
-            --bs-danger: #dc3545;  /* Standard Bootstrap Red for No */
-            --bs-success: var(--bs-primary); /* Use your custom primary color for success (Green) */
-            --bs-dark: #000000;    /* Force all 'dark' elements to be pure black */
+            /* Using a more sophisticated, slightly muted palette for a modern feel */
+            --mds-green: #38a169; /* Primary Action Green */
+            --mds-red: #e53e3e;   /* Danger/No Red */
+            --mds-dark: #2d3748;  /* Dark Text/UI elements (near-black) */
+            
+            --bs-primary: var(--mds-green);
+            --bs-danger: var(--mds-red);
+            --bs-success: var(--mds-green);
+            --bs-dark: var(--mds-dark);
         }
         
-        /* Ensure all backgrounds are white and text is black by default, overriding custom light color */
-        body, .bg-light {
-            background-color: #FFFFFF !important;
+        /* Ensure all backgrounds are white and text is dark by default */
+        body {
+            background-color: #f7fafc !important; /* Slight off-white background for depth */
             color: var(--bs-dark);
         }
         
-        /* --- NEW ALIGNMENT FIX (Single Column) --- */
-        /* Re-adding custom padding for better centering on large screens */
+        /* --- ALIGNMENT FIX (Single Column) --- */
+        /* Center the content container and add padding */
         @media (min-width: 992px) { 
             .container {
-                max-width: 1200px; /* Limit overall width */
-            }
-            /* Add horizontal padding to the main assessment area on desktop to push it inwards */
-            #hero .container {
-                padding-left: 120px !important;
-                padding-right: 120px !important;
+                max-width: 1000px; /* Adjusted max width to focus the content */
             }
         }
-        /* ------------------------------------------ */
-
-        /* Custom styling for the persistent state buttons */
+        
+        /* Custom styling for the persistent state buttons (MODERNIZED) */
         .btn-qa {
             background-color: #FFFFFF;
-            color: var(--bs-dark);
-            border: 2px solid var(--bs-dark);
-            font-weight: bold;
-            transition: background-color 0.3s, color 0.3s;
-            width: 80px; /* Made slightly smaller for better fit */
-            margin-right: 10px;
+            color: var(--mds-dark);
+            border: 2px solid var(--mds-dark);
+            font-weight: 600; /* Bolder font */
+            transition: background-color 0.2s, color 0.2s, border-color 0.2s;
+            width: 90px; /* Slightly wider */
+            padding: 8px 0; /* Vertical padding */
+            border-radius: 9999px; /* Rounded-full style */
         }
-        /* Ensure the button text is black by default (when not selected) */
+        
+        /* Ensure the button text is dark by default (when not selected) */
         .btn-qa:not(.selected) {
-            color: var(--bs-dark) !important;
+            color: var(--mds-dark) !important;
+            border-color: #cbd5e0; /* Light border color when inactive */
+        }
+        .btn-qa:hover:not(.selected) {
+            border-color: var(--mds-dark); /* Dark border on hover */
         }
 
         /* Persistent green state for 'Yes' */
@@ -58,6 +63,7 @@
             background-color: var(--bs-success) !important;
             color: #FFFFFF !important;
             border-color: var(--bs-success);
+            box-shadow: 0 4px 6px -1px rgba(56, 161, 105, 0.4), 0 2px 4px -1px rgba(56, 161, 105, 0.2); /* Subtle green shadow */
         }
 
         /* Persistent red state for 'No' */
@@ -65,39 +71,57 @@
             background-color: var(--bs-danger) !important;
             color: #FFFFFF !important;
             border-color: var(--bs-danger);
+            box-shadow: 0 4px 6px -1px rgba(229, 62, 62, 0.4), 0 2px 4px -1px rgba(229, 62, 62, 0.2); /* Subtle red shadow */
         }
         
         /* Style for the question text */
         .question-text {
-            font-size: 1.25rem; /* Slightly smaller for better fit in the column */
+            font-size: 1.15rem; /* Slightly smaller for cleaner look */
             font-weight: 500;
-            margin-bottom: 0; /* Remove default margin for alignment */
+            line-height: 1.6;
+            margin-bottom: 0;
+            flex-grow: 1;
         }
 
-        /* STYLE: Ensure the question text and button group use 100% of the available width 
-           and arrange contents to push the button group next to the question text. */
+        /* Question block styling - NEW */
+        .question-block {
+            border-bottom: 1px solid #e2e8f0; /* Light divider line */
+            transition: background-color 0.3s;
+        }
+        .question-block:hover {
+            background-color: #edf2f7; /* Very light hover effect */
+        }
+        
+        /* Container for the question text and button group */
         .question-container {
             width: 100%;
             display: flex;
-            justify-content: space-between; /* Pushes content to the edges */
+            justify-content: space-between;
             align-items: center;
         }
 
-        /* Button group: used to contain and align the buttons */
-        .button-group {
-            display: flex;
-            flex-shrink: 0; /* Prevent buttons from shrinking */
+        /* Footer styling - MODERNIZED */
+        .footer-dark {
+            background-color: var(--mds-dark) !important;
+            color: #a0aec0; /* Lighter text color for contrast */
         }
-
-        /* For small screens, ensure the buttons are centered or right-aligned for better mobile layout 
-           (though justify-content-between in .question-container will handle the spacing) */
+        .footer-dark a {
+            color: #ffffff;
+            font-weight: 500;
+            text-decoration: none;
+        }
+        
+        /* Mobile layout adjustments */
         @media (max-width: 576px) {
             .question-container {
-                flex-direction: column; /* Stack vertically on small screens */
-                align-items: flex-start; /* Left-align items when stacked */
+                flex-direction: column;
+                align-items: flex-start;
             }
             .question-text {
-                margin-bottom: 10px; /* Add space between text and buttons on mobile */
+                margin-bottom: 15px;
+            }
+            .btn-qa {
+                width: 100px;
             }
         }
     </style>
@@ -107,16 +131,16 @@
     <!-- ========================================================================= -->
     <!-- 1. NAVIGATION BAR -->
     <!-- ========================================================================= -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+    <nav class="navbar navbar-expand-lg navbar-light bg-white border-bottom shadow-sm">
         <div class="container">
-            <a class="navbar-brand text-dark" href="#">mydatashield.org</a>
+            <a class="navbar-brand text-dark fw-bold" href="#">mydatashield.org</a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active text-dark" aria-current="page" href="#hero">Home</a>
+                        <a class="nav-link active text-dark" aria-current="page" href="#hero">Assessment</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link text-dark" href="#about">About</a>
@@ -130,50 +154,78 @@
     </nav>
 
     <!-- ========================================================================= -->
-    <!-- 2. HERO / MAIN ASSESSMENT AREA (SINGLE COLUMN LAYOUT) -->
+    <!-- 2. HERO / MAIN ASSESSMENT AREA (MODERN CARD STYLE) -->
     <!-- ========================================================================= -->
-    <header id="hero" class="p-5">
+    <main id="hero" class="py-5">
         <div class="container">
-            <div class="row">
-                <!-- Assessment Questions now use the full 12/12 width -->
-                <div class="col-12"> 
-                    <!-- We use col-12 to ensure it always spans the whole row -->
-                    <h1 class="display-5 fw-bold mb-5">Digital Readiness Assessment</h1>
+            <div class="row justify-content-center">
+                <div class="col-lg-10 col-md-12">
                     
-                    <!-- QUESTION 1 -->
-                    <div class="question-block mb-4 p-3" data-question-id="q1">
-                        <div class="question-container">
-                            <p class="question-text me-4">Medical Director, could you produce your TOMS in 24 hours if needed?</p>
-                            <div class="button-group">
-                                <button class="btn btn-qa btn-yes" onclick="selectAnswer('q1', 'yes')">Yes</button>
-                                <button class="btn btn-qa btn-no" onclick="selectAnswer('q1', 'no')">No</button>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <!-- QUESTION 2 (Placeholder) -->
-                    <div class="question-block mb-4 p-3">
-                        <div class="question-container">
-                            <p class="question-text text-muted me-4">Next question will go here...</p>
-                            <div class="button-group">
-                                <button class="btn btn-qa">Yes</button>
-                                <button class="btn btn-qa">No</button>
-                            </div>
-                        </div>
+                    <!-- Title Card with MODERN rounded corners and shadow -->
+                    <div class="p-5 bg-white shadow-lg rounded-3xl mb-5">
+                        
+                        <!-- NEW: Floating Title -->
+                        <p class="text-uppercase fw-semibold mb-2" style="color: var(--mds-green); font-size: 0.9rem; letter-spacing: 0.1em;">
+                            Data Security Framework
+                        </p>
+                        
+                        <h1 class="display-4 fw-bolder mb-4" style="color: var(--mds-dark);">
+                            Digital Readiness Assessment
+                        </h1>
+                        
+                        <p class="lead text-muted">
+                            Complete the following self-assessment questions to gauge your organization's compliance and preparedness for modern data security challenges.
+                        </p>
                     </div>
 
+                    <!-- Question Card (MODERNIZED) -->
+                    <div class="bg-white rounded-3xl shadow-lg p-3">
+                    
+                        <!-- QUESTION 1 -->
+                        <div class="question-block py-4 px-3" data-question-id="q1">
+                            <div class="question-container">
+                                <p class="question-text me-4">Medical Director, could you produce your TOMS in 24 hours if needed?</p>
+                                <div class="button-group">
+                                    <button class="btn btn-qa btn-yes" onclick="selectAnswer('q1', 'yes')">Yes</button>
+                                    <button class="btn btn-qa btn-no" onclick="selectAnswer('q1', 'no')">No</button>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- QUESTION 2 (Placeholder) -->
+                        <div class="question-block py-4 px-3">
+                            <div class="question-container">
+                                <p class="question-text text-muted me-4">Do all your patient data systems log access and modification attempts?</p>
+                                <div class="button-group">
+                                    <button class="btn btn-qa">Yes</button>
+                                    <button class="btn btn-qa">No</button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- QUESTION 3 (Placeholder) -->
+                        <div class="question-block py-4 px-3" style="border-bottom: none;">
+                            <div class="question-container">
+                                <p class="question-text text-muted me-4">Is mandatory security training completed by all staff annually?</p>
+                                <div class="button-group">
+                                    <button class="btn btn-qa">Yes</button>
+                                    <button class="btn btn-qa">No</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
-                <!-- The Assessment Summary column has been removed -->
             </div>
         </div>
-    </header>
+    </main>
 
     <!-- ========================================================================= -->
     <!-- 3. FOOTER -->
     <!-- ========================================================================= -->
-    <footer id="contact" class="bg-dark text-light py-4 mt-5">
+    <footer id="contact" class="footer-dark py-5 mt-5">
         <div class="container text-center">
-            <p>&copy; 2025 mydatashield.org. | <a href="#" class="text-light">Privacy</a> | <a href="#" class="text-light">Terms</a></p>
+            <p class="mb-0">&copy; 2025 mydatashield.org. | <a href="#" class="text-white">Privacy</a> | <a href="#" class="text-white">Terms</a></p>
         </div>
     </footer>
     
@@ -181,7 +233,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
     <!-- ========================================================================= -->
-    <!-- JAVASCRIPT LOGIC FOR BUTTON STATE (Fixed Firebase imports) -->
+    <!-- JAVASCRIPT LOGIC FOR BUTTON STATE (Firestore logic preserved) -->
     <!-- ========================================================================= -->
     <script>
         // Check for Firebase variables and set up authentication if they exist
@@ -189,15 +241,22 @@
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
         
         let db, auth, userId;
+        
+        // Imported Firestore/Auth functions must be cached if we want to access them outside initializeApp
+        let doc, setDoc, onSnapshot; 
 
         // Function to initialize Firebase and load saved state
         async function initializeApp() {
             // Import necessary Firebase modules
-            const { initializeApp } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js");
-            const { getAuth, signInWithCustomToken, signInAnonymously } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js");
+            const firebaseAppModule = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js");
+            const firebaseAuthModule = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js");
+            const firebaseFirestoreModule = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js");
             
-            // 🔥 FIX: Import ALL necessary Firestore functions here, as they are not globally defined in modular imports.
-            const { getFirestore, doc, setDoc, onSnapshot, setLogLevel } = await import("https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js");
+            const { initializeApp: initApp } = firebaseAppModule;
+            const { getAuth, signInWithCustomToken, signInAnonymously } = firebaseAuthModule;
+            
+            // Cache imported Firestore functions
+            ({ getFirestore, doc, setDoc, onSnapshot, setLogLevel } = firebaseFirestoreModule); 
             
             // For debugging/logging Firestore operations
             if (typeof setLogLevel !== 'undefined') {
@@ -205,7 +264,7 @@
             }
 
             try {
-                const app = initializeApp(firebaseConfig);
+                const app = initApp(firebaseConfig);
                 db = getFirestore(app);
                 auth = getAuth(app);
                 
@@ -220,7 +279,7 @@
                 console.log("Firebase initialized and user signed in:", userId);
 
                 // Start listening for assessment state changes
-                loadAssessmentState(doc, setDoc, onSnapshot); // Pass imported functions
+                loadAssessmentState();
 
             } catch (error) {
                 console.error("Firebase initialization failed:", error);
@@ -231,19 +290,18 @@
 
         // --- Core State Management Logic ---
         
-        // 🔥 FIX: Now accepts doc, setDoc, onSnapshot as arguments
-        function getDocRef(questionId, doc) {
+        function getDocRef(questionId) {
+            if (!doc || !db || !userId) return null;
             const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
             // Store data privately for the current user in a collection called 'assessment'
             return doc(db, 'artifacts', appId, 'users', userId, 'assessment', questionId);
         }
 
-        // 🔥 FIX: Now accepts setDoc as argument
         // Save state using Firestore (or localStorage if DB is unavailable)
-        async function saveAssessmentState(questionId, answer, setDoc) {
-            if (db && userId) {
+        async function saveAssessmentState(questionId, answer) {
+            if (db && userId && setDoc && doc) {
                 try {
-                    await setDoc(getDocRef(questionId, doc), { answer: answer, timestamp: new Date() }, { merge: true });
+                    await setDoc(getDocRef(questionId), { answer: answer, timestamp: new Date() }, { merge: true });
                     console.log(`State saved to Firestore: ${questionId} = ${answer}`);
                 } catch (e) {
                     console.error("Error saving document to Firestore:", e);
@@ -256,30 +314,37 @@
             }
         }
 
-        // 🔥 FIX: Now accepts doc, onSnapshot as arguments
         // Load state using Firestore listener (or localStorage if DB is unavailable)
-        function loadAssessmentState(doc, setDoc, onSnapshot) {
+        function loadAssessmentState() {
+            if (!onSnapshot || !doc || !db || !userId) {
+                // Fallback if Firestore functions aren't available
+                loadStateFromStorage();
+                return;
+            }
+            
             // List of question IDs to monitor
             const questionIds = ['q1']; 
 
             questionIds.forEach(questionId => {
-                const qRef = getDocRef(questionId, doc);
-                onSnapshot(qRef, (doc) => {
-                    if (doc.exists()) {
-                        const answer = doc.data().answer;
-                        if (answer) {
-                            applySelectionToDOM(questionId, answer);
+                const qRef = getDocRef(questionId);
+                if (qRef) {
+                    onSnapshot(qRef, (docSnap) => {
+                        if (docSnap.exists()) {
+                            const answer = docSnap.data().answer;
+                            if (answer) {
+                                applySelectionToDOM(questionId, answer);
+                            }
+                        } else {
+                            // Fallback check to localStorage if no Firestore data is found
+                            const localAnswer = localStorage.getItem(questionId);
+                            if(localAnswer) {
+                                applySelectionToDOM(questionId, localAnswer);
+                            }
                         }
-                    } else {
-                         // Fallback check to localStorage if no Firestore data is found
-                         const localAnswer = localStorage.getItem(questionId);
-                         if(localAnswer) {
-                            applySelectionToDOM(questionId, localAnswer);
-                         }
-                    }
-                }, (error) => {
-                    console.error(`Error setting up Firestore listener for ${questionId}:`, error);
-                });
+                    }, (error) => {
+                        console.error(`Error setting up Firestore listener for ${questionId}:`, error);
+                    });
+                }
             });
         }
 
@@ -312,16 +377,7 @@
             applySelectionToDOM(questionId, answer); 
 
             // Save state (to Firestore or localStorage)
-            // We need to ensure doc and setDoc are available when this is called, 
-            // but since onclick can't pass the variables, 
-            // we ensure the app logic handles the case where DB fails gracefully.
-            if (typeof setDoc !== 'undefined') {
-                 // If Firebase is initialized and its functions are available globally, use them.
-                 saveAssessmentState(questionId, answer, setDoc); 
-            } else {
-                 // Fallback to using localStorage if setDoc isn't available (Firebase failed)
-                 localStorage.setItem(questionId, answer);
-            }
+            saveAssessmentState(questionId, answer);
         }
 
         // Initialize the app and load saved state on page load
