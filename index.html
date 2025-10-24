@@ -6,13 +6,13 @@
 <title>MyDataShield.org</title>
 
 <!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700&display=swap" rel="stylesheet">
 
 <style>
 /* Global */
 body {
   margin: 0;
-  font-family: 'Inter', sans-serif;
+  font-family: 'Manrope', sans-serif;
   background-color: #fff;
   color: #1B1B1B;
   line-height: 1.6;
@@ -30,27 +30,29 @@ body {
   z-index: 100;
   box-shadow: 0 1px 5px rgba(0,0,0,0.06);
 }
+
 .site-title {
-  font-family: 'Manrope', sans-serif;
   font-weight: 700;
   font-size: 2rem;
   text-decoration: none;
   color: #1B1B1B;
 }
+
 .site-nav {
   display: flex;
-  gap: 50px;
+  gap: 60px;
+  align-items: center;
 }
+
 .site-nav a {
-  font-family: 'Manrope', sans-serif;
   font-weight: 500;
   font-size: 0.95rem;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
   text-decoration: none;
   color: #1B1B1B;
+  letter-spacing: 1.8px;
   transition: color 0.3s ease;
 }
+
 .site-nav a:hover {
   color: #14D4C4;
 }
@@ -60,23 +62,23 @@ body {
   text-align: center;
   padding: 180px 20px 140px;
 }
+
 .hero h1 {
-  font-family: 'Manrope', sans-serif;
   font-weight: 700;
-  font-size: 4.8rem;
+  font-size: 4.5rem;
   line-height: 1.2;
   margin-bottom: 25px;
 }
+
 .hero p {
-  font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 1.75rem;
   max-width: 800px;
   margin: 0 auto 50px;
   line-height: 1.6;
 }
+
 .hero .cta-btn {
-  font-family: 'Manrope', sans-serif;
   font-weight: 600;
   font-size: 1.5rem;
   padding: 20px 60px;
@@ -87,24 +89,25 @@ body {
   cursor: pointer;
   transition: transform 0.2s ease, background 0.3s ease;
 }
+
 .hero .cta-btn:hover {
   background-color: #10b3a6;
   transform: scale(1.05);
 }
 
 /* Questions */
-.question {
+.questions-section {
   text-align: center;
   padding: 120px 20px;
 }
+
 .question-text {
-  font-family: 'Manrope', sans-serif;
   font-weight: 600;
   font-size: 2rem;
   margin-bottom: 20px;
 }
+
 .reg-text {
-  font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 1.25rem;
   color: #555;
@@ -124,20 +127,24 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
 .btn-yes {
   border-color: #22c55e;
   color: #22c55e;
   background: transparent;
 }
+
 .btn-yes.active {
   background: #22c55e;
   color: #fff;
 }
+
 .btn-no {
   border-color: #ef4444;
   color: #ef4444;
   background: transparent;
 }
+
 .btn-no.active {
   background: #ef4444;
   color: #fff;
@@ -148,12 +155,14 @@ body {
   display: none;
   text-align: center;
   font-weight: 600;
-  font-size: 1.35rem;
+  font-size: 1.5rem;
   margin-top: 60px;
 }
+
 .result.success {
   color: #22c55e;
 }
+
 .result.warning {
   color: #ef4444;
 }
@@ -163,8 +172,8 @@ body {
   text-align: center;
   margin: 80px 0;
 }
+
 .final-cta a {
-  font-family: 'Manrope', sans-serif;
   font-weight: 600;
   font-size: 1.5rem;
   padding: 20px 60px;
@@ -175,6 +184,7 @@ body {
   display: inline-block;
   transition: transform 0.2s ease, background 0.3s ease;
 }
+
 .final-cta a:hover {
   background-color: #10b3a6;
   transform: scale(1.05);
@@ -188,11 +198,13 @@ body {
   color: #777;
   border-top: 1px solid #eee;
 }
+
 .site-footer a {
   color: #777;
   margin: 0 12px;
   text-decoration: none;
 }
+
 .site-footer a:hover {
   color: #14D4C4;
 }
@@ -219,7 +231,7 @@ body {
 </section>
 
 <!-- Questions -->
-<section id="audit">
+<section id="audit" class="questions-section">
   <div class="question">
     <div class="question-text">Can you produce your TOMS (Technical & Organisational Measures) within 24 hours?</div>
     <div class="reg-text">Regulation: Data Controllers must demonstrate compliance promptly under PDPL Article 5.</div>
