@@ -24,19 +24,19 @@
             color: var(--bs-dark);
         }
         
-        /* --- NEW ALIGNMENT FIX --- */
-        /* Target the main container within the header to better center the content on large screens */
-        @media (min-width: 992px) { /* Applies to large screens (desktop) and up */
+        /* --- NEW ALIGNMENT FIX (Single Column) --- */
+        /* Re-adding custom padding for better centering on large screens */
+        @media (min-width: 992px) { 
             .container {
-                max-width: 1200px; /* Optional: Set a max width for extra large displays */
+                max-width: 1200px; /* Limit overall width */
             }
-            /* Add horizontal padding to the main assessment area on desktop */
+            /* Add horizontal padding to the main assessment area on desktop to push it inwards */
             #hero .container {
-                padding-left: 100px !important;
-                padding-right: 100px !important;
+                padding-left: 120px !important;
+                padding-right: 120px !important;
             }
         }
-        /* ------------------------- */
+        /* ------------------------------------------ */
 
         /* Custom styling for the persistent state buttons */
         .btn-qa {
@@ -74,7 +74,7 @@
             margin-bottom: 0; /* Remove default margin for alignment */
         }
 
-        /* NEW STYLE: Ensure the question text and button group use 100% of the available width 
+        /* STYLE: Ensure the question text and button group use 100% of the available width 
            and arrange contents to push the button group next to the question text. */
         .question-container {
             width: 100%;
@@ -136,12 +136,12 @@
         <div class="container">
             <div class="row">
                 <!-- Assessment Questions now use the full 12/12 width -->
-                <div class="col-lg-12">
+                <div class="col-12"> 
+                    <!-- We use col-12 to ensure it always spans the whole row -->
                     <h1 class="display-5 fw-bold mb-5">Digital Readiness Assessment</h1>
                     
                     <!-- QUESTION 1 -->
                     <div class="question-block mb-4 p-3" data-question-id="q1">
-                        <!-- Removed 'row align-items-center' and column classes. Using .question-container (Flexbox) instead. -->
                         <div class="question-container">
                             <p class="question-text me-4">Medical Director, could you produce your TOMS in 24 hours if needed?</p>
                             <div class="button-group">
@@ -163,6 +163,7 @@
                     </div>
 
                 </div>
+                <!-- The Assessment Summary column has been removed -->
             </div>
         </div>
     </header>
@@ -312,9 +313,7 @@
 
             // Save state (to Firestore or localStorage)
             // We need to ensure doc and setDoc are available when this is called, 
-            // but since they are imported only inside initializeApp, 
-            // we'll rely on the global scope being populated, or the fallback working.
-            // A safer fix is to pass them, but since onclick can't pass the variables, 
+            // but since onclick can't pass the variables, 
             // we ensure the app logic handles the case where DB fails gracefully.
             if (typeof setDoc !== 'undefined') {
                  // If Firebase is initialized and its functions are available globally, use them.
