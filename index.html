@@ -59,6 +59,19 @@
             font-weight: 500;
             margin-bottom: 0; /* Remove default margin for alignment */
         }
+
+        /* Center the button group within its column */
+        .button-group {
+            display: flex;
+            justify-content: flex-start; /* Aligns buttons to the left of their column */
+        }
+
+        /* For small screens, ensure the buttons are centered or right-aligned for better mobile layout */
+        @media (max-width: 576px) {
+            .button-group {
+                justify-content: flex-end; /* Align to the right on small screens for better question alignment */
+            }
+        }
     </style>
 </head>
 <body>
@@ -90,26 +103,23 @@
 
     <!-- ========================================================================= -->
     <!-- 2. HERO / MAIN ASSESSMENT AREA (SINGLE COLUMN LAYOUT) -->
-    <!-- The assessment now occupies the entire width and the summary is removed. -->
     <!-- ========================================================================= -->
     <header id="hero" class="p-5">
         <div class="container">
             <div class="row">
                 <!-- Assessment Questions now use the full 12/12 width -->
-                <!-- Removed border-end and padding classes from this column -->
                 <div class="col-lg-12">
                     <h1 class="display-5 fw-bold mb-5">Digital Readiness Assessment</h1>
                     
                     <!-- QUESTION 1 -->
-                    <!-- Removed border and rounded-3 classes from question-block -->
                     <div class="question-block mb-4 p-3" data-question-id="q1">
                         <div class="row align-items-center">
-                            <!-- Column for the Question Text (8/12 width) -->
-                            <div class="col-sm-8 col-9">
+                            <!-- Column for the Question Text: Takes 9/12 on large screens -->
+                            <div class="col-lg-9 col-md-8 col-sm-8 col-9">
                                 <p class="question-text">Medical Director, could you produce your TOMS in 24 hours if needed?</p>
                             </div>
-                            <!-- Column for the Buttons (4/12 width, positioned to the right) -->
-                            <div class="col-sm-4 col-3 text-end">
+                            <!-- Column for the Buttons: Takes 3/12 on large screens. Removed 'text-end' for closer alignment. -->
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-3">
                                 <div class="button-group">
                                     <button class="btn btn-qa btn-yes" onclick="selectAnswer('q1', 'yes')">Yes</button>
                                     <button class="btn btn-qa btn-no" onclick="selectAnswer('q1', 'no')">No</button>
@@ -119,30 +129,28 @@
                     </div>
                     
                     <!-- QUESTION 2 (Placeholder) -->
-                    <!-- Removed border and rounded-3 classes from question-block -->
                     <div class="question-block mb-4 p-3">
                         <div class="row align-items-center">
-                             <div class="col-sm-8 col-9">
+                             <div class="col-lg-9 col-md-8 col-sm-8 col-9">
                                 <p class="question-text text-muted">Next question will go here...</p>
                             </div>
-                            <div class="col-sm-4 col-3 text-end">
-                                <button class="btn btn-qa">Yes</button>
-                                <button class="btn btn-qa">No</button>
+                            <!-- Aligned to the left of its column for better desktop proximity -->
+                            <div class="col-lg-3 col-md-4 col-sm-4 col-3">
+                                <div class="button-group">
+                                    <button class="btn btn-qa">Yes</button>
+                                    <button class="btn btn-qa">No</button>
+                                </div>
                             </div>
                         </div>
                     </div>
 
                 </div>
-                
-                <!-- REMOVED: RIGHT COLUMN (Assessment Summary) -->
-                
             </div>
         </div>
     </header>
 
     <!-- ========================================================================= -->
     <!-- 3. FOOTER -->
-    <!-- Uses custom dark (black) background color. -->
     <!-- ========================================================================= -->
     <footer id="contact" class="bg-dark text-light py-4 mt-5">
         <div class="container text-center">
