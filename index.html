@@ -6,9 +6,10 @@
 <title>MyDataShield.org</title>
 
 <!-- Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Manrope:wght@600;700&display=swap" rel="stylesheet">
 
 <style>
+/* Global */
 body {
   margin: 0;
   font-family: 'Inter', sans-serif;
@@ -22,28 +23,30 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 20px 40px;
+  padding: 25px 60px;
   position: sticky;
   top: 0;
   background: #fff;
   z-index: 100;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  box-shadow: 0 1px 5px rgba(0,0,0,0.06);
 }
 .site-title {
   font-family: 'Manrope', sans-serif;
   font-weight: 700;
-  font-size: 1.6rem;
+  font-size: 1.8rem;
   text-decoration: none;
   color: #1B1B1B;
 }
 .site-nav {
   display: flex;
-  gap: 30px;
+  gap: 40px;
 }
 .site-nav a {
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
+  font-size: 1rem;
   color: #1B1B1B;
+  letter-spacing: 0.5px;
   transition: color 0.3s;
 }
 .site-nav a:hover {
@@ -53,27 +56,30 @@ body {
 /* Hero */
 .hero {
   text-align: center;
-  padding: 120px 20px 80px;
+  padding: 180px 20px 120px;
 }
 .hero h1 {
   font-family: 'Manrope', sans-serif;
-  font-size: 3rem;
   font-weight: 700;
-  margin-bottom: 20px;
+  font-size: 4rem;
+  line-height: 1.2;
+  margin-bottom: 25px;
 }
 .hero p {
-  font-size: 1.25rem;
-  max-width: 700px;
-  margin: 0 auto 40px;
+  font-size: 1.5rem;
+  max-width: 800px;
+  margin: 0 auto 50px;
   color: #333;
+  line-height: 1.5;
 }
 .hero .cta-btn {
   background-color: #14D4C4;
   color: #fff;
   font-weight: 600;
   border: none;
-  padding: 14px 36px;
+  padding: 16px 48px;
   border-radius: 12px;
+  font-size: 1.1rem;
   cursor: pointer;
   transition: transform 0.2s, background 0.3s;
 }
@@ -84,31 +90,33 @@ body {
 
 /* Questions */
 .question {
-  padding: 40px 20px;
   text-align: center;
+  padding: 60px 20px;
+  font-size: 1.25rem;
 }
 .question-text {
   font-family: 'Manrope', sans-serif;
   font-weight: 600;
-  font-size: 1.25rem;
-  margin-bottom: 10px;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
 }
 .reg-text {
-  font-size: 0.95rem;
+  font-size: 1rem;
   color: #555;
-  margin-bottom: 25px;
+  margin-bottom: 30px;
 }
 
 /* Buttons inline modern */
 .btn-traffic {
-  min-width: 120px;
-  padding: 12px 0;
+  min-width: 140px;
+  padding: 14px 0;
   border-radius: 9999px;
   font-weight: 600;
-  margin: 0 10px;
+  margin: 0 15px;
   border: 2px solid transparent;
   cursor: pointer;
   transition: all 0.3s ease;
+  font-size: 1rem;
 }
 .btn-yes {
   border-color: #22c55e;
@@ -134,8 +142,8 @@ body {
   display: none;
   text-align: center;
   font-weight: 600;
-  font-size: 1.2rem;
-  margin-top: 40px;
+  font-size: 1.3rem;
+  margin-top: 50px;
 }
 .result.success {
   color: #22c55e;
@@ -147,16 +155,17 @@ body {
 /* Final CTA */
 .final-cta {
   text-align: center;
-  margin-top: 40px;
+  margin: 60px 0;
 }
 .final-cta a {
   background-color: #14D4C4;
   color: #fff;
   font-weight: 600;
   border-radius: 12px;
-  padding: 14px 36px;
+  padding: 16px 48px;
   text-decoration: none;
   display: inline-block;
+  font-size: 1.1rem;
   transition: transform 0.2s, background 0.3s;
 }
 .final-cta a:hover {
@@ -164,11 +173,22 @@ body {
   transform: scale(1.05);
 }
 
-/* Spacing between questions */
-.question + .question {
+/* Footer */
+.site-footer {
+  text-align: center;
+  padding: 40px 20px;
+  font-size: 0.9rem;
+  color: #777;
   border-top: 1px solid #eee;
 }
-
+.site-footer a {
+  color: #777;
+  margin: 0 10px;
+  text-decoration: none;
+}
+.site-footer a:hover {
+  color: #14D4C4;
+}
 </style>
 </head>
 <body>
@@ -226,6 +246,11 @@ body {
     <a href="https://typeform-placeholder.com" target="_blank">Complete Free Audit</a>
   </div>
 </section>
+
+<!-- Footer -->
+<footer class="site-footer">
+  &copy; 2025 MyDataShield.org | <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+</footer>
 
 <script>
 const answers = {};
