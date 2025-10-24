@@ -19,7 +19,7 @@
             --bs-danger: var(--mds-red);
             --bs-success: var(--mds-green);
             --bs-dark: var(--mds-dark);
-            --bs-body-bg: #F8F9FA; /* Subtle light gray background for the page */
+            --bs-body-bg: #FFFFFF; /* Changed to Pure White */
         }
         
         body {
@@ -40,19 +40,18 @@
             padding-bottom: 1rem;
         }
 
-        /* --- CONTENT CARD STYLING --- */
+        /* --- CONTENT CARD STYLING (Now a non-boxed section) --- */
         .assessment-card {
-            background-color: #FFFFFF;
-            border-radius: 12px; /* Soft rounded corners */
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Subtle shadow lift */
-            padding: 3rem; /* Generous padding inside the card */
+            background-color: transparent; /* Now transparent */
+            border-radius: 0; /* No rounded corners */
+            box-shadow: none; /* No shadow */
+            padding: 3rem 0; /* Generous vertical padding */
             margin-top: 2rem;
             margin-bottom: 2rem;
         }
 
         /* --- TITLE STYLING (CLEAN & PROFESSIONAL) --- */
         .assessment-main-title {
-            /* Changed from text-uppercase to standard mixed-case */
             font-size: 2rem; 
             font-weight: 700;  
             color: var(--mds-dark);
@@ -94,22 +93,30 @@
             border-color: var(--bs-danger);
         }
         
-        /* --- QUESTION BLOCK STYLING --- */
+        /* --- QUESTION BLOCK STYLING (Modified for shorter lines) --- */
         .question-text {
-            font-size: 1rem; 
+            font-size: 1.05rem; /* Slight increase for better presence */
             font-weight: 500;
             line-height: 1.5;
             margin-bottom: 0;
             flex-grow: 1;
+            /* New: Limit the maximum width of the text to force wrapping on desktop */
+            max-width: 650px; 
         }
 
         .question-block {
-            padding-top: 20px; 
-            padding-bottom: 20px; 
-            border-top: 1px solid #e9ecef; /* Light separator line */
+            /* Added vertical padding for internal space */
+            padding-top: 15px; 
+            padding-bottom: 15px; 
+            /* Added external margin for white space between questions */
+            margin-bottom: 30px; 
+            /* NEW: Subtle separator line */
+            border-bottom: 1px solid #E9ECEF; /* Very light grey line for separation */
         }
-        .question-block:first-child {
-            border-top: none; /* No top border on the first item */
+        
+        .question-block:last-child {
+            margin-bottom: 0; /* No margin after the last question */
+            border-bottom: none; /* No border on the last question */
         }
         
         .question-container {
@@ -145,7 +152,7 @@
         /* Mobile layout adjustments */
         @media (max-width: 768px) {
             .assessment-card {
-                padding: 1.5rem; /* Less padding on small screens */
+                padding: 1.5rem 0; /* Removed horizontal padding on small screens as well */
             }
             .question-container {
                 /* Stack question text and buttons on mobile */
@@ -154,6 +161,8 @@
             }
             .question-text {
                 margin-bottom: 15px;
+                max-width: 100%; /* Reset max-width on mobile */
+                font-size: 1rem;
             }
             .button-group {
                 /* On mobile, make buttons full width for better tapping */
@@ -191,18 +200,18 @@
         </div>
     </nav>
     
-    <!-- Added margin-top to offset the fixed navbar --><main id="hero" class="py-5" style="margin-top: 5rem;">
+    <!-- Added margin-top to offset the fixed navbar --><main id="hero" class="py-4" style="margin-top: 5rem;">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-12">
                     
-                    <!-- 2. ASSESSMENT CARD (New Wrapper) --><div class="assessment-card">
+                    <!-- 2. ASSESSMENT CARD (Now a non-boxed section) --><div class="assessment-card">
                         
-                        <!-- REMOVED text-uppercase CLASS --><h1 class="assessment-main-title">
+                        <h1 class="assessment-main-title">
                             Medical Director: Critical Risk Exposure
                         </h1>
                         
-                        <!-- REVERTED SUBTITLE TO ORIGINAL USER TEXT --><p class="lead-subtitle">
+                        <p class="lead-subtitle">
                             Regulation X Compliance Self-Assessment for December 2025 Deadlines.
                         </p>
                         
