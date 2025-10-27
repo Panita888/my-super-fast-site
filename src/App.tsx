@@ -23,7 +23,7 @@ const questions = [
 
 // Main App Component
 function App() {
-  // Robust state initialization
+<comment-tag id="1">  // Robust state initialization</comment-tag id="1">
   const [answers, setAnswers] = useState({});
   const [currentStep, setCurrentStep] = useState('intro');
   const [isHovered, setIsHovered] = useState(false);
@@ -525,6 +525,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
