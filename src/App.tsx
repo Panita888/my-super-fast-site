@@ -1,18 +1,30 @@
-import { useState } from 'react';
-import { Shield, ArrowRight } from 'lucide-react';
+import React, { useState } from 'react';
+import { Shield, CheckCircle2, ArrowRight, XCircle, Briefcase, Users, FileText, Zap } from 'lucide-react';
 
-interface Question {
-  id: number;
-  text: string;
-  regulation: string;
-  description: string;
-}
+// --- Compliance Questions (Restored and Unchanged) ---
+const questions = [
+  {
+    id: 1,
+    text: 'Can you produce your TOMS (Technical & Organisational Measures) and all required data governance documents within 24 hours?',
+    regulation: 'Regulation: Demonstrating immediate compliance is mandatory under NDHC Article 5 and Federal Law No. 2 of 2019.',
+  },
+  {
+    id: 2,
+    text: "Can you guarantee your team aren't using unauthorised public LLMs or recording patient information with wearables?",
+    regulation: 'Regulation: Staff monitoring and security obligations under ADHICS & NDHC Article 9. Unauthorized recording is against UAE law.',
+  },
+  {
+    id: 3,
+    text: "Do your current consent forms and staff policies explicitly cover the use of AI tools and personal recording technologies?",
+    regulation: 'Governance & accountability are non-negotiable – lack of documented procedures is not a defense against fines.',
+  }
+];
 
-const questions: Question =;
-
+// Main App Component
 function App() {
   const [answers, setAnswers] = useState<Record<number, boolean | null>>({});
-  const = useState<'intro' | 'questions'>('intro');
+  const [currentStep, setCurrentStep] = useState<'intro' | 'questions' | 'results'>('intro');
+  const [isHovered, setIsHovered] = useState(false);
 
   const handleAnswer = (questionId: number, answer: boolean) => {
     setAnswers(prev => ({...prev, [questionId]: answer }));
@@ -22,175 +34,264 @@ function App() {
   const hasAnyNo = Object.values(answers).some(answer => answer === false);
   const allYes = allAnswered &&!hasAnyNo;
 
-  if (currentStep === 'intro') {
-    // --- REVISED HOMEPAGE START (Problem Focus) ---
-    return (
-      <div className="min-h-screen bg-white">
-        <nav className="bg-white border-b border-slate-100 sticky top-0 z-50">
-          <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-            <div className="flex items-center gap-2.5">
-              <Shield className="w-7 h-7 text-blue-600" />
-              <span className="text-xl font-bold text-slate-900">MyDataShield.org</span>
-            </div>
-            <div className="flex gap-8">
-              <button className="text-slate-600 hover:text-slate-900 transition-colors font-medium text-sm">About</button>
-              <button className="text-slate-600 hover:text-slate-900 transition-colors font-medium text-sm">Contact</button>
-            </div>
-          </div>
-        </nav>
+  const handleProceed = () => {
+    if (allAnswered) {
+      setCurrentStep('results');
+    }
+  }
 
-        <main className="max-w-6xl mx-auto px-6 py-20">
+
+  // --- Shared Navigation (Clean White/Navy) ---
+  const Navigation = () => (
+    <nav className="bg-white sticky top-0 z-50 shadow-sm border-b border-gray-100">
+      <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+        <div className="flex items-center gap-3">
+          <Shield className="w-8 h-8 text-blue-900" />
+          <span className="text-2xl font-extrabold text-blue-900 tracking-tight">MyDataShield.org</span>
+        </div>
+        <div className="hidden sm:flex gap-8">
+          <a href="#" className="text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm">Our Solution</a>
+          <a href="#" className="text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm">Legal Mandate</a>
+          <a href="#" className="text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm">Contact</a>
+        </div>
+      </div>
+    </nav>
+  );
+
+  // --- Shared Footer ---
+  const Footer = () => (
+    <footer className="border-t border-gray-100 mt-24 bg-white">
+      <div className="max-w-7xl mx-auto px-6 py-10 text-center text-sm text-gray-500">
+        <p className="space-x-4">
+          <span>© 2025 MyDataShield.org, a DPO Solutions Partner.</span>
+          <a href="#" className="hover:text-gray-700 transition-colors">Privacy Policy</a>
+          <a href="#" className="hover:text-gray-700 transition-colors">Terms of Service</a>
+        </p>
+      </div>
+    </footer>
+  );
+  
+  // --- INTRO SCREEN (Minimalist and Clean with Full Copy) ---
+  if (currentStep === 'intro') {
+    return (
+      <div className="min-h-screen bg-white font-sans text-gray-900">
+        <Navigation />
+
+        <main className="max-w-7xl mx-auto px-6 py-24">
+          
+          {/* Main Hero Section: Full Approved Copy */}
           <div className="text-center mb-16">
-            <h1 className="text-6xl md:text-7xl font-extrabold text-slate-900 mb-6 leading-tight tracking-tighter">
-              IS YOUR MEDICAL <span className="text-red-600">LICENSE EXPOSED</span>?
+            <h1 className="text-6xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tight">
+              IS YOUR MEDICAL LICENSE <span className="text-red-600">EXPOSED</span>?
             </h1>
-            <p className="text-xl text-slate-700 max-w-4xl mx-auto leading-relaxed">
-              The silent threat of staff using public Large Language Models (LLMs) for patient data is an unauthorized **cross-border data transfer** violation.
+            <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed font-normal">
+              The Uncontrolled Use of Public AI Risks Your Clinic’s Future and Your Professional License.
+            </p>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4 leading-relaxed">
+              The silent threat of staff using public Large Language Models (LLMs) for patient notes or administrative tasks is now an unauthorized **cross-border data transfer**, constituting a direct violation of two key federal mandates:
             </p>
           </div>
 
-          <div className="bg-slate-900 text-white rounded-3xl p-10 md:p-16 max-w-5xl mx-auto shadow-2xl shadow-slate-300/50">
-            <h2 className="text-3xl font-bold mb-4 text-amber-300">The Regulatory Stakes Are Immediate:</h2>
-            <div className="grid md:grid-cols-3 gap-8 text-lg font-medium">
-              <div className="space-y-2">
-                <p className="font-extrabold text-2xl text-red-400">AED 1M FINE</p>
-                <p>Violation of **PDPL** risks administrative fines up to AED 1,000,000 for the clinic owner. [1]</p>
+          {/* Regulatory Stakes Block - Structured to show mandates and risks */}
+          <div className="bg-white rounded-3xl p-8 md:p-12 max-w-5xl mx-auto shadow-2xl shadow-gray-100 border border-gray-100">
+            <h2 className="text-3xl font-extrabold mb-8 text-blue-900 border-b border-gray-200 pb-4">The Stakes are Immediate:</h2>
+            <div className="grid md:grid-cols-3 gap-10 text-lg">
+              
+              {/* Column 1: Mandates */}
+              <div className="space-y-3 p-4 border border-gray-100 rounded-xl bg-gray-50/50">
+                <FileText className="w-6 h-6 text-blue-900"/>
+                <p className="font-bold text-lg text-blue-900">FEDERAL MANDATES</p>
+                <p className="text-gray-700 text-sm leading-relaxed">**Federal Decree-Law No. 45/2021 (PDPL):** Governing confidentiality and cross-border security of all Personal Data.</p>
+                <p className="text-gray-700 text-sm leading-relaxed">**Federal Law No. 2 of 2019:** Explicitly safeguarding the confidentiality and security of Electronic Health Data.</p>
               </div>
-              <div className="space-y-2">
-                <p className="font-extrabold text-2xl text-red-400">LICENSE RISK</p>
-                <p>Failure to implement **TOMS** risks suspension or withdrawal of the Medical Director’s operating license. [2]</p>
+              
+              {/* Column 2: Financial Risk */}
+              <div className="space-y-3 p-4 border border-gray-100 rounded-xl bg-gray-50/50">
+                <Briefcase className="w-6 h-6 text-red-600"/>
+                <p className="font-bold text-lg text-blue-900">FINANCIAL LIABILITY</p>
+                <p className="text-gray-700 text-sm leading-relaxed">Violations expose the clinic owner to administrative fines up to **AED 1,000,000**.</p>
+                <p className="text-gray-700 text-sm leading-relaxed">The transition to **full PDPL enforcement in 2025** means the window for achieving auditable compliance is closing.</p>
               </div>
-              <div className="space-y-2">
-                <p className="font-extrabold text-2xl text-red-400">FEDERAL LAW</p>
-                <p>Compliance is mandated by **PDPL** (45/2021) and **Electronic Health Data Law** (2/2019). [3, 4]</p>
+              
+              {/* Column 3: Career Risk */}
+              <div className="space-y-3 p-4 border border-gray-100 rounded-xl bg-gray-50/50">
+                <Users className="w-6 h-6 text-red-600"/>
+                <p className="font-bold text-lg text-blue-900">CAREER RISK</p>
+                <p className="text-gray-700 text-sm leading-relaxed">The failure to implement necessary controls (Technical and Organizational Measures, or **TOMS**) risks suspension or withdrawal of the Medical Director’s license.</p>
               </div>
             </div>
-            <p className="mt-8 text-base text-slate-400 italic">
-              A contractual ban on AI use is insufficient. Regulators demand provable **Technical and Organizational Measures (TOMS)**.
+            
+            {/* Disclaimer/Contractual Ban Statement */}
+            <p className="mt-10 text-base text-gray-500 italic font-medium border-t border-gray-100 pt-4">
+              **A Contractual Ban Is Not Enough.** Regulators require provable **Technical and Organizational Measures (TOMS)** to secure health data from digital leakage.
             </p>
           </div>
           
+          {/* CTA Button */}
           <div className="text-center mt-16">
             <button
               onClick={() => setCurrentStep('questions')}
-              className="inline-flex items-center gap-3 bg-red-600 text-white px-12 py-6 rounded-2xl font-extrabold text-xl uppercase hover:bg-red-700 transition-all shadow-xl shadow-red-300/60 hover:-translate-y-1"
+              onMouseEnter={() => setIsHovered(true)}
+              onMouseLeave={() => setIsHovered(false)}
+              className="inline-flex items-center justify-center gap-4 bg-blue-900 text-white px-14 py-6 rounded-xl font-extrabold text-xl 
+                         shadow-2xl shadow-blue-900/30 transition-all duration-300 
+                         hover:bg-blue-800 hover:shadow-blue-900/50 hover:-translate-y-1 transform
+                         w-full sm:w-auto uppercase tracking-wider"
             >
               START YOUR 30-SECOND RISK CHECK
-              <ArrowRight className="w-5 h-5" />
+              <ArrowRight className={`w-6 h-6 transition-transform duration-300 ${isHovered? 'translate-x-1' : ''}`} />
             </button>
-            <p className="text-sm text-slate-500 mt-5">3 quick questions • Takes under 1 minute</p>
+            <p className="text-sm text-gray-500 mt-5 font-normal">Answer 3 quick questions to instantly assess your clinic’s PDPL/AI exposure.</p>
           </div>
         </main>
 
-        <footer className="border-t border-slate-100 mt-24">
-          <div className="max-w-7xl mx-auto px-6 py-10 text-center text-sm text-slate-500">
-            <p>© 2025 MyDataShield.org • <button className="hover:text-slate-700 transition-colors">Privacy Policy</button> • <button className="hover:text-slate-700 transition-colors">Terms of Service</button></p>
-          </div>
-        </footer>
+        <Footer />
       </div>
     );
   }
-  // --- REVISED HOMEPAGE END ---
 
-  // --- QUESTIONS STEP (STEP 2) ---
-  return (
-    <div className="min-h-screen bg-white">
-      <nav className="bg-white border-b border-slate-100 sticky top-0 z-50">
-        <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-          <div className="flex items-center gap-2.5">
-            <Shield className="w-7 h-7 text-blue-600" />
-            <span className="text-xl font-bold text-slate-900">MyDataShield.org</span>
+  // --- QUESTIONS SCREEN (Clean and Focused) ---
+  if (currentStep === 'questions') {
+    return (
+      <div className="min-h-screen bg-white font-sans text-gray-900">
+        <Navigation />
+
+        <main className="max-w-4xl mx-auto px-6 py-20">
+          <div className="text-center mb-16">
+            <h1 className="text-4xl font-extrabold text-blue-900 mb-4 tracking-tight">The 30-Second Compliance Check</h1>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Answer honestly to see your clinic's immediate risk profile regarding modern data security threats.
+            </p>
           </div>
-          <div className="flex gap-8">
-            <button className="text-slate-600 hover:text-slate-900 transition-colors font-medium text-sm">About</button>
-            <button className="text-slate-600 hover:text-slate-900 transition-colors font-medium text-sm">Contact</button>
+
+          <div className="space-y-8 mb-12">
+            {questions.map((question, index) => (
+              <div 
+                key={question.id} 
+                className={`bg-white p-6 sm:p-8 rounded-2xl shadow-xl transition-all duration-300 border
+                            ${answers[question.id] === false? 'border-red-500 ring-2 ring-red-100' : 
+                              answers[question.id] === true? 'border-emerald-600 ring-2 ring-emerald-100' : 
+                              'border-gray-200 shadow-gray-50/50'}`}
+              >
+                <h3 className="text-xl font-bold text-gray-800 mb-4 leading-relaxed">
+                  <span className="text-blue-900 font-extrabold mr-2">{index + 1}.</span> {question.text}
+                </h3>
+                {/* Regulation details are clean and clearly separated */}
+                <p className="text-xs text-gray-500 mb-6 font-mono bg-gray-50 p-3 rounded border border-gray-100">{question.regulation}</p>
+
+                <div className="flex gap-4 justify-start max-w-lg mx-auto">
+                  <button
+                    onClick={() => handleAnswer(question.id, true)}
+                    className={`flex-1 py-3 px-8 rounded-lg font-bold transition-all duration-200 text-sm sm:text-base
+                      ${answers[question.id] === true
+                      ? 'bg-emerald-600 text-white shadow-md shadow-emerald-300'
+                        : 'bg-white text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 border border-gray-300'
+                    }`}
+                  >
+                    Yes, We're Covered
+                  </button>
+                  <button
+                    onClick={() => handleAnswer(question.id, false)}
+                    className={`flex-1 py-3 px-8 rounded-lg font-bold transition-all duration-200 text-sm sm:text-base
+                      ${answers[question.id] === false
+                      ? 'bg-red-600 text-white shadow-md shadow-red-300'
+                        : 'bg-white text-gray-700 hover:bg-red-50 hover:text-red-700 border border-gray-300'
+                    }`}
+                  >
+                    No, We Are Exposed
+                  </button>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
-      </nav>
 
-      <main className="max-w-4xl mx-auto px-6 py-16">
-        <div className="text-center mb-16">
-          <h1 className="text-5xl font-bold text-slate-900 mb-4 tracking-tight">30-Second Compliance Check</h1>
-          <p className="text-lg text-slate-600">These questions identify immediate gaps in your **TOMS (Technical & Organizational Measures)**.</p>
-        </div>
-
-        <div className="space-y-10 mb-12">
-          {questions.map((question) => (
-            <div key={question.id} className="text-center bg-slate-50 p-8 rounded-xl border border-slate-200">
-              <h3 className="text-xl font-semibold text-slate-900 mb-3 leading-relaxed max-w-3xl mx-auto">
-                {question.text}
-              </h3>
-              <p className="text-sm text-red-700 bg-red-50/50 p-2 rounded-lg mb-6 max-w-xl mx-auto">{question.regulation}</p>
-
-              <div className="flex gap-4 justify-center max-w-md mx-auto">
-                <button
-                  onClick={() => handleAnswer(question.id, true)}
-                  className={`flex-1 py-3.5 px-8 rounded-xl font-semibold transition-all ${
-                    answers[question.id] === true
-                     ? 'bg-emerald-600 text-white shadow-lg shadow-emerald-200 hover:bg-emerald-700'
-                      : 'bg-white text-slate-700 hover:bg-emerald-50 hover:text-emerald-700 border-2 border-slate-200 hover:border-emerald-300'
-                  }`}
-                >
-                  Yes
-                </button>
-                <button
-                  onClick={() => handleAnswer(question.id, false)}
-                  className={`flex-1 py-3.5 px-8 rounded-xl font-semibold transition-all ${
-                    answers[question.id] === false
-                     ? 'bg-red-600 text-white shadow-lg shadow-red-200 hover:bg-red-700'
-                      : 'bg-white text-slate-700 hover:bg-red-50 hover:text-red-700 border-2 border-slate-200 hover:border-red-300'
-                  }`}
-                >
-                  No
-                </button>
-              </div>
-            </div>
-          ))}
-        </div>
-
-        {allAnswered && (
-          <div className="mb-12">
-            {allYes? (
-              <div className="bg-emerald-50 border-2 border-emerald-500 rounded-2xl p-6 text-center">
-                <p className="text-emerald-700 font-semibold text-lg">
-                  **Initial Positive Assessment.** You appear compliant – complete your **Free Full Audit Checklist** to verify and maintain auditable records.
-                </p>
-              </div>
-            ) : (
-              <div className="bg-red-50 border-2 border-red-500 rounded-2xl p-6 text-center">
-                <p className="text-red-700 font-semibold text-lg">
-                  **Immediate Risk Identified.** You have flagged areas of critical compliance failure. Don't delay – proceed immediately to the **Free Full Audit Checklist** to identify next steps.
+          <div className="text-center pt-8">
+            {allAnswered && (
+              <div className="bg-gray-50 p-8 rounded-2xl shadow-inner mb-8 border border-gray-200">
+                {allYes? (
+                  <div className="text-emerald-700 flex items-center justify-center gap-3">
+                    <CheckCircle2 className="w-8 h-8" />
+                    <p className="font-bold text-xl">
+                      Excellent! You show high compliance.
+                    </p>
+                  </div>
+                ) : (
+                  <div className="text-red-700 flex items-center justify-center gap-3">
+                    <XCircle className="w-8 h-8" />
+                    <p className="font-bold text-xl">
+                      Risk Detected! You have critical areas of exposure.
+                    </p>
+                  </div>
+                )}
+                
+                <p className="text-gray-600 mt-4 max-w-xl mx-auto">
+                    Take the next step: our **free, comprehensive audit** details your specific vulnerabilities and provides an actionable compliance roadmap.
                 </p>
               </div>
             )}
+
+            <button
+              onClick={handleProceed}
+              disabled={!allAnswered}
+              className={`inline-flex items-center gap-4 px-14 py-6 rounded-xl font-extrabold text-xl transition-all duration-300 w-full sm:w-auto uppercase tracking-wider
+                ${allAnswered
+                ? 'bg-blue-900 text-white hover:bg-blue-800 shadow-xl shadow-blue-900/30 hover:-translate-y-1 transform'
+                  : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+              }`}
+            >
+              Book Your Free Compliance Audit
+              <ArrowRight className="w-6 h-6" />
+            </button>
           </div>
-        )}
+        </main>
 
-        <div className="text-center">
-          <button
-            disabled={!allAnswered}
-            className={`inline-flex items-center gap-3 px-10 py-5 rounded-2xl font-bold text-lg transition-all ${
-              allAnswered
-               ? 'bg-blue-600 text-white hover:bg-blue-700 hover:shadow-xl hover:shadow-blue-300/50 hover:-translate-y-1'
-                : 'bg-slate-200 text-slate-400 cursor-not-allowed'
-            }`}
-          >
-            Complete Free Audit Checklist
-            <ArrowRight className="w-5 h-5" />
-          </button>
-        </div>
-      </main>
+        <Footer />
+      </div>
+    );
+  }
 
-      <footer className="border-t border-slate-100 mt-24">
-        <div className="max-w-7xl mx-auto px-6 py-10 text-center text-sm text-slate-500">
-          <p>© 2025 MyDataShield.org • <button className="hover:text-slate-700 transition-colors">Privacy Policy</button> • <button className="hover:text-slate-700 transition-colors">Terms of Service</button></p>
-        </div>
-      </footer>
-    </div>
-  );
+  // --- RESULTS SCREEN (Updated Aesthetic) ---
+  if (currentStep === 'results') {
+    return (
+      <div className="min-h-screen bg-white font-sans text-gray-900">
+        <Navigation />
+        <main className="max-w-4xl mx-auto px-6 py-32 text-center">
+          <div className={`bg-gray-50 p-12 rounded-2xl shadow-xl border ${hasAnyNo? 'border-red-400' : 'border-emerald-400'}`}>
+            <div className={`mx-auto w-20 h-20 rounded-full flex items-center justify-center mb-6 
+                            ${hasAnyNo? 'bg-red-100 text-red-600' : 'bg-emerald-100 text-emerald-600'}`}>
+              {hasAnyNo? <XCircle className="w-10 h-10" /> : <CheckCircle2 className="w-10 h-10" />}
+            </div>
+            <h2 className="text-3xl font-bold text-blue-900 mb-4">
+              {hasAnyNo? 'Immediate Action Recommended.' : 'Compliance Confirmed. Next Steps.'}
+            </h2>
+            <p className="text-lg text-gray-700 mb-8">
+              {hasAnyNo
+              ? "Your 30-Second Check identified critical gaps in governance, staff training, or policy required by UAE law. Don't risk AED 2M fines."
+                : "Your foundation is strong! Now, let's verify every detail and ensure you have the full documentation (TOMS) required for inspection."
+              }
+            </p>
+            
+            <button
+              className="inline-flex items-center gap-4 bg-blue-900 text-white px-14 py-6 rounded-xl font-extrabold text-xl 
+                         shadow-lg shadow-blue-900/40 transition-all duration-300 
+                         hover:bg-blue-800 hover:shadow-blue-900/60 hover:-translate-y-1 transform uppercase tracking-wider"
+            >
+              Book Your Free Compliance Audit
+              <ArrowRight className="w-6 h-6" />
+            </button>
+            <p className="text-sm text-gray-500 mt-4">Takes 15 minutes • Find your blindspots</p>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+  
+  return null;
 }
 
 export default App;
+
 
 
 
