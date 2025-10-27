@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useMemo } from 'react';
 // Imported all necessary Lucide icons
 import { Shield, CheckCircle2, ArrowRight, XCircle, Briefcase, Users, FileText, Zap, BookOpen, Lock, Globe } from 'lucide-react';
 
@@ -28,15 +28,17 @@ function App() {
   const [currentStep, setCurrentStep] = useState('intro');
   const [isHovered, setIsHovered] = useState(false);
 
-  // Defined function arguments explicitly for stability
-  const handleAnswer = (questionId, answer) => {
-    setAnswers(prev => ({...prev, [questionId]: answer }));
-  };
+  // Logic for quiz status, memoized for efficiency and safety
+  const { allAnswered, hasAnyNo, allYes } = useMemo(() => {
+      const allAnswered = questions.every(q => answers[q.id] !== undefined && answers[q.id] !== null);
+      const hasAnyNo = Object.values(answers).some(answer => answer === false);
+      const allYes = allAnswered && !hasAnyNo;
+      return { allAnswered, hasAnyNo, allYes };
+  }, [answers]);
 
-  // Logic to determine quiz status
-  const allAnswered = questions.every(q => answers[q.id] !== undefined && answers[q.id] !== null);
-  const hasAnyNo = Object.values(answers).some(answer => answer === false);
-  const allYes = allAnswered && !hasAnyNo;
+  const handleAnswer = (questionId, answer) => {
+    setAnswers(prev => ({ ...prev, [questionId]: answer }));
+  };
 
   const handleProceed = () => {
     if (allAnswered) {
@@ -381,16 +383,17 @@ function App() {
     );
   }
   
-  // Final fallback to ensure the screen is never truly blank
+  // This is the absolute final fallback, guaranteed to render if a state-checking error occurs.
   return (
-    <div className="flex items-center justify-center min-h-screen text-lg text-gray-500">
-      Loading Application...
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-8">
+      <Zap className="w-12 h-12 text-blue-600 animate-pulse mb-4" />
+      <h1 className="text-xl font-semibold text-gray-700">Initializing Application...</h1>
+      <p className="text-sm text-gray-500 mt-2">If this screen persists, please refresh.</p>
     </div>
   );
 }
 
 export default App;
-
 
 
 
