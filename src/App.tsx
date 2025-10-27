@@ -446,9 +446,9 @@ function App() {
             </p>
           </div>
 
-          <div className="bg-white p-8 sm:p-12 rounded-3xl shadow-2xl shadow-gray-100/80 border border-red-200/50">
+          <div className="bg-white p-8 sm:p-12 rounded-3xl shadow-2xl shadow-gray-100/80 border border-gray-200">
             <div className="space-y-10">
-              
+
               {/* Federal Decree-Law No. 45/2021 (PDPL) */}
               <div className="flex items-start gap-6">
                 <div className="flex-shrink-0">
@@ -480,7 +480,7 @@ function App() {
               </div>
 
               {/* The Penalty Threshold */}
-              <div className="bg-red-50 border-l-4 border-red-500 p-8 rounded-lg mt-8">
+              <div className="bg-red-50 border-l-4 border-red-500 p-8 rounded-xl mt-8">
                 <div className="flex items-start gap-4">
                   <div className="flex-shrink-0">
                     <FileWarning className="w-8 h-8 text-red-700 mt-1" />
