@@ -21,6 +21,12 @@
             display: inline-block;
             vertical-align: middle;
         }
+        /* Style for disabled buttons */
+        .btn-disabled {
+            background-color: #e5e7eb;
+            color: #9ca3af;
+            cursor: not-allowed;
+        }
     </style>
 </head>
 <body>
@@ -74,44 +80,81 @@
             return { allAnswered, hasAnyNo, allYes };
         };
 
+        // This function handles a question answer and triggers a re-render
         const handleAnswer = (questionId, answer) => {
             answers[questionId] = answer;
-            renderApp(); // Re-render to update the visual state
-        };
-
-        const handleProceed = () => {
-            if (getStatus().allAnswered) {
-                setPage('results');
-            }
+            renderApp(); 
         };
 
         // Helper function for icon rendering
         const getIcon = (name, classes) => {
-            // Lucide icons are used here
             return `<i data-lucide="${name}" class="icon ${classes}"></i>`;
         };
 
-        // --- Component Rendering Functions (for Navigation, Footer, and different pages) ---
+        // --- Event Listener Setup ---
+
+        const attachListeners = () => {
+            // Navigation Listeners (Delegated)
+            const nav = document.getElementById('navigation-bar');
+            if (nav) {
+                nav.querySelectorAll('[data-page]').forEach(el => {
+                    el.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        setPage(e.currentTarget.getAttribute('data-page'));
+                    });
+                });
+            }
+
+            // Intro Page Listener
+            const startBtn = document.getElementById('start-check-btn');
+            if (startBtn) {
+                startBtn.addEventListener('click', () => setPage('questions'));
+            }
+
+            // Questions Page Listeners (Delegated)
+            const questionContainer = document.getElementById('question-container');
+            if (questionContainer) {
+                questionContainer.addEventListener('click', (e) => {
+                    const btn = e.target.closest('[data-answer]');
+                    if (btn) {
+                        const questionId = parseInt(btn.closest('[data-question-id]').getAttribute('data-question-id'));
+                        const answer = btn.getAttribute('data-answer') === 'yes';
+                        handleAnswer(questionId, answer);
+                    }
+                });
+
+                // Proceed Button Listener
+                const proceedBtn = document.getElementById('proceed-btn');
+                if (proceedBtn) {
+                    proceedBtn.addEventListener('click', () => {
+                        if (getStatus().allAnswered) {
+                            setPage('results');
+                        }
+                    });
+                }
+            }
+        };
+
+        // --- Component Rendering Functions ---
 
         const renderNavigation = () => {
             const navHtml = `
                 <nav class="bg-white sticky top-0 z-50 shadow-sm border-b border-gray-100">
                     <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-                        <div class="flex items-center gap-3 cursor-pointer" onclick="setPage('intro')">
+                        <div class="flex items-center gap-3 cursor-pointer" data-page="intro">
                             ${getIcon('shield', 'w-8 h-8 text-blue-900')}
                             <span class="text-2xl font-extrabold text-blue-900 tracking-tight">MyDataShield.org</span>
                         </div>
                         <div class="hidden sm:flex gap-8">
-                            <a onclick="setPage('solution')" class="text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentPage === 'solution' ? 'text-blue-900 border-b-2 border-blue-900' : ''}">Our Solution</a>
-                            <a onclick="setPage('about')" class="text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentPage === 'about' ? 'text-blue-900 border-b-2 border-blue-900' : ''}">About Us</a>
-                            <a onclick="setPage('legal')" class="text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentPage === 'legal' ? 'text-blue-900 border-b-2 border-blue-900' : ''}">Legal Mandate</a>
+                            <a data-page="solution" class="text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentPage === 'solution' ? 'text-blue-900 border-b-2 border-blue-900' : ''}">Our Solution</a>
+                            <a data-page="about" class="text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentPage === 'about' ? 'text-blue-900 border-b-2 border-blue-900' : ''}">About Us</a>
+                            <a data-page="legal" class="text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentPage === 'legal' ? 'text-blue-900 border-b-2 border-blue-900' : ''}">Legal Mandate</a>
                             <a href="#" class="text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm">Contact</a>
                         </div>
                     </div>
                 </nav>
             `;
             document.getElementById('navigation-bar').innerHTML = navHtml;
-            lucide.createIcons(); // Must re-render icons after DOM update
         };
 
         const renderFooter = () => {
@@ -181,7 +224,6 @@
                                    shadow-2xl shadow-blue-900/30 transition-all duration-300 
                                    hover:bg-blue-800 hover:shadow-blue-900/50 hover:-translate-y-1 transform
                                    w-full sm:w-auto uppercase tracking-wider"
-                            onclick="setPage('questions')"
                         >
                             START YOUR 30-SECOND RISK CHECK
                             ${getIcon('arrow-right', 'w-6 h-6 transition-transform duration-300')}
@@ -191,30 +233,29 @@
                 </div>
             `;
             document.getElementById('main-content').innerHTML = content;
-            lucide.createIcons();
         };
 
         const renderQuestions = () => {
             const { allAnswered, allYes } = getStatus();
 
-            const questionBlocks = questions.map((q, index) => {
+            const questionBlocks = questions.map((q) => {
                 const isYes = answers[q.id] === true;
                 const isNo = answers[q.id] === false;
                 
                 return `
-                    <div class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl transition-all duration-300 border
+                    <div data-question-id="${q.id}" class="bg-white p-6 sm:p-8 rounded-2xl shadow-xl transition-all duration-300 border
                         ${isNo ? 'border-red-500 ring-2 ring-red-100' : 
                           isYes ? 'border-emerald-600 ring-2 ring-emerald-100' : 
                           'border-gray-200 shadow-gray-50/50'}">
                         
                         <h3 class="text-xl font-bold text-gray-800 mb-4 leading-relaxed">
-                            <span class="text-blue-900 font-extrabold mr-2">${index + 1}.</span> ${q.text}
+                            <span class="text-blue-900 font-extrabold mr-2">${q.id}.</span> ${q.text}
                         </h3>
                         <p class="text-xs text-gray-500 mb-6 font-mono bg-gray-50 p-3 rounded border border-gray-200">${q.regulation}</p>
 
                         <div class="flex gap-4 justify-start max-w-lg mx-auto">
                             <button
-                                onclick="handleAnswer(${q.id}, true)"
+                                data-answer="yes"
                                 class="flex-1 py-3 px-8 rounded-lg font-bold transition-all duration-200 text-sm sm:text-base
                                   ${isYes
                                     ? 'bg-emerald-600 text-white shadow-md shadow-emerald-300'
@@ -224,7 +265,7 @@
                                 Yes, We're Covered
                             </button>
                             <button
-                                onclick="handleAnswer(${q.id}, false)"
+                                data-answer="no"
                                 class="flex-1 py-3 px-8 rounded-lg font-bold transition-all duration-200 text-sm sm:text-base
                                   ${isNo
                                     ? 'bg-red-600 text-white shadow-md shadow-red-300'
@@ -270,19 +311,18 @@
                         </p>
                     </div>
 
-                    <div class="space-y-8 mb-12">
+                    <div id="question-container" class="space-y-8 mb-12">
                         ${questionBlocks}
                     </div>
 
                     <div class="text-center pt-8">
                         ${proceedBlock}
                         <button
-                            onclick="handleProceed()"
-                            ${!allAnswered ? 'disabled' : ''}
+                            id="proceed-btn"
                             class="inline-flex items-center gap-4 px-14 py-6 rounded-xl font-extrabold text-xl transition-all duration-300 w-full sm:w-auto uppercase tracking-wider
                                 ${allAnswered
                                     ? 'bg-blue-900 text-white hover:bg-blue-800 shadow-xl shadow-blue-900/30 hover:-translate-y-1 transform'
-                                    : 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                                    : 'btn-disabled'
                                 }"
                         >
                             Book Your Free Compliance Audit
@@ -292,7 +332,6 @@
                 </div>
             `;
             document.getElementById('main-content').innerHTML = content;
-            lucide.createIcons();
         };
 
         const renderResults = () => {
@@ -331,11 +370,10 @@
                 </div>
             `;
             document.getElementById('main-content').innerHTML = content;
-            lucide.createIcons();
         };
 
         const renderAbout = () => {
-            const content = `
+             const content = `
                 <div class="max-w-4xl mx-auto px-6 py-20">
                     <div class="text-center mb-16">
                         <h1 class="text-5xl font-extrabold text-blue-900 mb-4 tracking-tight">
@@ -377,7 +415,7 @@
                         
                         <div class="text-center pt-6">
                             <button
-                                onclick="setPage('questions')"
+                                data-page="questions"
                                 class="inline-flex items-center gap-4 bg-blue-900 text-white px-10 py-5 rounded-xl font-extrabold text-lg 
                                    shadow-lg shadow-blue-900/30 transition-all duration-300 hover:bg-blue-800 hover:-translate-y-0.5"
                             >
@@ -389,7 +427,6 @@
                 </div>
             `;
             document.getElementById('main-content').innerHTML = content;
-            lucide.createIcons();
         };
 
         const renderLegal = () => {
@@ -445,7 +482,7 @@
                     
                     <div class="text-center pt-10">
                         <button
-                            onclick="setPage('questions')"
+                            data-page="questions"
                             class="inline-flex items-center gap-4 bg-blue-900 text-white px-10 py-5 rounded-xl font-extrabold text-lg 
                                    shadow-lg shadow-blue-900/30 transition-all duration-300 hover:bg-blue-800 hover:-translate-y-0.5"
                         >
@@ -456,7 +493,6 @@
                 </div>
             `;
             document.getElementById('main-content').innerHTML = content;
-            lucide.createIcons();
         };
 
         const renderSolution = () => {
@@ -522,7 +558,7 @@
 
                         <div class="text-center pt-10">
                             <button
-                                onclick="setPage('questions')"
+                                data-page="questions"
                                 class="inline-flex items-center gap-4 bg-red-600 text-white px-10 py-5 rounded-xl font-extrabold text-lg 
                                    shadow-lg shadow-red-600/30 transition-all duration-300 hover:bg-red-700 hover:-translate-y-0.5"
                             >
@@ -534,7 +570,6 @@
                 </div>
             `;
             document.getElementById('main-content').innerHTML = content;
-            lucide.createIcons();
         };
 
 
@@ -544,8 +579,9 @@
             renderNavigation();
             renderFooter();
 
+            // Clear and render new main content
             const mainContent = document.getElementById('main-content');
-            mainContent.innerHTML = ''; // Clear main content
+            mainContent.innerHTML = ''; 
 
             switch (currentPage) {
                 case 'intro':
@@ -569,6 +605,12 @@
                 default:
                     renderIntro(); // Default to intro
             }
+            
+            // Re-create icons and attach listeners after the DOM content has been updated
+            if (typeof lucide !== 'undefined' && lucide.createIcons) {
+                lucide.createIcons();
+            }
+            attachListeners();
         };
 
         // Initialize the app on window load
