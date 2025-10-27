@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [react()],
   base: '/my-super-fast-site/', // This is the line to add
   optimizeDeps: {
-    exclude: ['lucide-react'],
+    include: ['lucide-react'],
   },
 });
