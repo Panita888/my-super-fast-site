@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Executive Compliance Checker</title>
-    <!-- Load Tailwind CSS -->
+    <!-- Load Tailwind CSS for utility styling -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Load Lucide Icons -->
+    <!-- Load Lucide Icons for visual elements -->
     <script src="https://unpkg.com/lucide@latest"></script>
     <style>
-        /* Define the Inter font family */
+        /* Define the Inter font family and background style */
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
         
         body {
             font-family: 'Inter', sans-serif;
             background-color: #f9fafb;
         }
-        /* Style for the Lucide icons to look like components */
+        /* Basic styling for Lucide icons */
         .icon {
             display: inline-block;
             vertical-align: middle;
@@ -26,22 +26,22 @@
 <body>
 
     <div id="app-container" class="min-h-screen flex flex-col">
-        <!-- Navigation Area (Will be populated by JS) -->
+        <!-- Navigation Area -->
         <header id="navigation-bar"></header>
 
-        <!-- Main Content Area (Will be populated by JS) -->
+        <!-- Main Content Area -->
         <main id="main-content" class="flex-grow"></main>
 
-        <!-- Footer Area (Will be populated by JS) -->
+        <!-- Footer Area -->
         <footer id="footer-area"></footer>
     </div>
 
     <script>
-        // Use a simple global state object for the application logic
+        // Global state management
         let currentPage = 'intro';
         let answers = {};
         
-        // --- Compliance Questions ---
+        // --- Compliance Questions Data ---
         const questions = [
             {
                 id: 1,
@@ -87,10 +87,11 @@
 
         // Helper function for icon rendering
         const getIcon = (name, classes) => {
+            // Lucide icons are used here
             return `<i data-lucide="${name}" class="icon ${classes}"></i>`;
         };
 
-        // --- Component Rendering Functions ---
+        // --- Component Rendering Functions (for Navigation, Footer, and different pages) ---
 
         const renderNavigation = () => {
             const navHtml = `
@@ -110,7 +111,7 @@
                 </nav>
             `;
             document.getElementById('navigation-bar').innerHTML = navHtml;
-            lucide.createIcons(); // Re-render icons
+            lucide.createIcons(); // Must re-render icons after DOM update
         };
 
         const renderFooter = () => {
@@ -129,8 +130,6 @@
         };
 
         const renderIntro = () => {
-            let isHovered = false; // Local hover state for button animation
-            
             const content = `
                 <div class="max-w-7xl mx-auto px-6 py-24">
                     <div class="text-center mb-16">
@@ -170,7 +169,7 @@
                             </div>
                         </div>
                         
-                        <p class="mt-10 text-base text-gray-500 italic font-medium border-t border-gray-100 pt-4">
+                        <p class="mt-10 text-base text-gray-500 italic font-medium border-t border-gray-200 pt-4">
                             <strong>A Contractual Ban Is Not Enough.</strong> Regulators require provable <strong>Technical and Organizational Measures (TOMS)</strong> to secure health data from digital leakage.
                         </p>
                     </div>
@@ -192,7 +191,7 @@
                 </div>
             `;
             document.getElementById('main-content').innerHTML = content;
-            lucide.createIcons(); // Re-render icons
+            lucide.createIcons();
         };
 
         const renderQuestions = () => {
@@ -211,7 +210,7 @@
                         <h3 class="text-xl font-bold text-gray-800 mb-4 leading-relaxed">
                             <span class="text-blue-900 font-extrabold mr-2">${index + 1}.</span> ${q.text}
                         </h3>
-                        <p class="text-xs text-gray-500 mb-6 font-mono bg-gray-50 p-3 rounded border border-gray-100">${q.regulation}</p>
+                        <p class="text-xs text-gray-500 mb-6 font-mono bg-gray-50 p-3 rounded border border-gray-200">${q.regulation}</p>
 
                         <div class="flex gap-4 justify-start max-w-lg mx-auto">
                             <button
@@ -293,7 +292,7 @@
                 </div>
             `;
             document.getElementById('main-content').innerHTML = content;
-            lucide.createIcons(); // Re-render icons
+            lucide.createIcons();
         };
 
         const renderResults = () => {
@@ -301,10 +300,9 @@
             const icon = hasAnyNo ? getIcon('x-circle', 'w-10 h-10') : getIcon('check-circle-2', 'w-10 h-10');
             const borderColor = hasAnyNo ? 'border-red-400' : 'border-emerald-400';
             const bgColor = hasAnyNo ? 'bg-red-100 text-red-600' : 'bg-emerald-100 text-emerald-600';
-            const textClass = hasAnyNo ? 'text-red-700' : 'text-emerald-700';
             const title = hasAnyNo ? 'Immediate Action Recommended.' : 'Compliance Confirmed. Next Steps.';
             const message = hasAnyNo
-                ? "Your 30-Second Check identified critical gaps in governance, staff training, or policy required by UAE law. Don't risk AED 2M fines."
+                ? "Your 30-Second Check identified critical gaps in governance, staff training, or policy required by UAE law. Don't risk AED 1M+ fines."
                 : "Your foundation is strong! Now, let's verify every detail and ensure you have the full documentation (TOMS) required for inspection.";
 
             const content = `
@@ -333,7 +331,7 @@
                 </div>
             `;
             document.getElementById('main-content').innerHTML = content;
-            lucide.createIcons(); // Re-render icons
+            lucide.createIcons();
         };
 
         const renderAbout = () => {
@@ -515,24 +513,21 @@
                                 ${getIcon('book-open', 'w-8 h-8 text-blue-900')}
                                 <p class="text-xl font-extrabold text-blue-900">3. Auditable Staff Competency</p>
                                 <p class="text-sm text-gray-700 leading-relaxed">
-                                    <strong>Requirement:</strong> Provable evidence that all staff understand the risks.
+                                    <strong>Requirement:</strong> Proof that staff are continuously trained on modern threats.
                                     <br /><br />
-                                    <strong>The Gap:</strong> You must demonstrate not just that training occurred, but that competency was tracked and that staff understand the specific nuances of PDPL and NDHC on modern technology.
+                                    <strong>The Gap:</strong> A simple policy signing is insufficient. Regulators demand documented, recurring training specific to AI data handling, proving due diligence was exercised.
                                 </p>
                             </div>
                         </div>
 
-                        <div class="text-center mt-12 pt-6 border-t border-gray-200">
-                            <h3 class="text-2xl font-bold text-gray-800 mb-4">
-                                We provide the necessary framework, tools, and documentation.
-                            </h3>
+                        <div class="text-center pt-10">
                             <button
                                 onclick="setPage('questions')"
-                                class="inline-flex items-center gap-4 bg-blue-900 text-white px-10 py-5 rounded-xl font-extrabold text-lg 
-                                       shadow-lg shadow-blue-900/30 transition-all duration-300 hover:bg-blue-800 hover:-translate-y-0.5"
+                                class="inline-flex items-center gap-4 bg-red-600 text-white px-10 py-5 rounded-xl font-extrabold text-lg 
+                                   shadow-lg shadow-red-600/30 transition-all duration-300 hover:bg-red-700 hover:-translate-y-0.5"
                             >
-                                Assess Your Gaps Now
-                                ${getIcon('arrow-right', 'w-5 h-5')}
+                                Re-Assess Your Risk Now
+                                ${getIcon('alert-triangle', 'w-5 h-5')}
                             </button>
                         </div>
                     </div>
@@ -543,12 +538,15 @@
         };
 
 
-        // --- Main Application Render Loop ---
+        // --- Application Initialization ---
+
         const renderApp = () => {
             renderNavigation();
             renderFooter();
-            
-            // This acts as the router/switch statement
+
+            const mainContent = document.getElementById('main-content');
+            mainContent.innerHTML = ''; // Clear main content
+
             switch (currentPage) {
                 case 'intro':
                     renderIntro();
@@ -569,24 +567,19 @@
                     renderSolution();
                     break;
                 default:
-                    document.getElementById('main-content').innerHTML = `
-                        <div class="text-center py-32">
-                            <h1 class="text-2xl font-bold text-red-600">Page Not Found</h1>
-                            <p class="text-gray-600">The requested page does not exist or an error occurred.</p>
-                            <button onclick="setPage('intro')" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded">Go to Home</button>
-                        </div>
-                    `;
+                    renderIntro(); // Default to intro
             }
-            // Re-run lucide icon processing after any content update
-            lucide.createIcons();
         };
 
-        // Initial render when the script loads
-        window.onload = renderApp;
+        // Initialize the app on window load
+        window.onload = function() {
+            renderApp();
+        };
 
     </script>
 </body>
 </html>
+
 
 
 // import React, { useState, useMemo } from 'react';
