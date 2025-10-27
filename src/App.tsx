@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+// Imported all necessary Lucide icons
 import { Shield, CheckCircle2, ArrowRight, XCircle, Briefcase, Users, FileText, Zap, BookOpen, Lock, Globe } from 'lucide-react';
 
 // --- Compliance Questions (Unchanged) ---
@@ -22,25 +23,26 @@ const questions = [
 
 // Main App Component
 function App() {
+  // Robust state initialization
   const [answers, setAnswers] = useState({});
-  // Added 'solution' state for the new page
   const [currentStep, setCurrentStep] = useState('intro');
   const [isHovered, setIsHovered] = useState(false);
 
+  // Defined function arguments explicitly for stability
   const handleAnswer = (questionId, answer) => {
     setAnswers(prev => ({...prev, [questionId]: answer }));
   };
 
-  const allAnswered = questions.every(q => answers[q.id]!== undefined && answers[q.id]!== null);
+  // Logic to determine quiz status
+  const allAnswered = questions.every(q => answers[q.id] !== undefined && answers[q.id] !== null);
   const hasAnyNo = Object.values(answers).some(answer => answer === false);
-  const allYes = allAnswered &&!hasAnyNo;
+  const allYes = allAnswered && !hasAnyNo;
 
   const handleProceed = () => {
     if (allAnswered) {
       setCurrentStep('results');
     }
   }
-
 
   // --- Shared Navigation (Clean White/Navy) ---
   const Navigation = () => (
@@ -73,7 +75,7 @@ function App() {
     </footer>
   );
   
-  // --- INTRO SCREEN (Minimalist and Clean with Full Copy) ---
+  // --- INTRO SCREEN ---
   if (currentStep === 'intro') {
     return (
       <div className="min-h-screen bg-white font-sans text-gray-900">
@@ -141,7 +143,7 @@ function App() {
                          w-full sm:w-auto uppercase tracking-wider"
             >
               START YOUR 30-SECOND RISK CHECK
-              <ArrowRight className={`w-6 h-6 transition-transform duration-300 ${isHovered? 'translate-x-1' : ''}`} />
+              <ArrowRight className={`w-6 h-6 transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`} />
             </button>
             <p className="text-sm text-gray-500 mt-5 font-normal">Answer 3 quick questions to instantly assess your clinic’s PDPL/AI exposure.</p>
           </div>
@@ -261,8 +263,8 @@ function App() {
               <div 
                 key={question.id} 
                 className={`bg-white p-6 sm:p-8 rounded-2xl shadow-xl transition-all duration-300 border
-                            ${answers[question.id] === false? 'border-red-500 ring-2 ring-red-100' : 
-                              answers[question.id] === true? 'border-emerald-600 ring-2 ring-emerald-100' : 
+                            ${answers[question.id] === false ? 'border-red-500 ring-2 ring-red-100' : 
+                              answers[question.id] === true ? 'border-emerald-600 ring-2 ring-emerald-100' : 
                               'border-gray-200 shadow-gray-50/50'}`}
               >
                 <h3 className="text-xl font-bold text-gray-800 mb-4 leading-relaxed">
@@ -300,7 +302,7 @@ function App() {
           <div className="text-center pt-8">
             {allAnswered && (
               <div className="bg-gray-50 p-8 rounded-2xl shadow-inner mb-8 border border-gray-200">
-                {allYes? (
+                {allYes ? (
                   <div className="text-emerald-700 flex items-center justify-center gap-3">
                     <CheckCircle2 className="w-8 h-8" />
                     <p className="font-bold text-xl">
@@ -348,13 +350,13 @@ function App() {
       <div className="min-h-screen bg-white font-sans text-gray-900">
         <Navigation />
         <main className="max-w-4xl mx-auto px-6 py-32 text-center">
-          <div className={`bg-gray-50 p-12 rounded-2xl shadow-xl border ${hasAnyNo? 'border-red-400' : 'border-emerald-400'}`}>
+          <div className={`bg-gray-50 p-12 rounded-2xl shadow-xl border ${hasAnyNo ? 'border-red-400' : 'border-emerald-400'}`}>
             <div className={`mx-auto w-20 h-20 rounded-full flex items-center justify-center mb-6 
-                            ${hasAnyNo? 'bg-red-100 text-red-600' : 'bg-emerald-100 text-emerald-600'}`}>
-              {hasAnyNo? <XCircle className="w-10 h-10" /> : <CheckCircle2 className="w-10 h-10" />}
+                            ${hasAnyNo ? 'bg-red-100 text-red-600' : 'bg-emerald-100 text-emerald-600'}`}>
+              {hasAnyNo ? <XCircle className="w-10 h-10" /> : <CheckCircle2 className="w-10 h-10" />}
             </div>
             <h2 className="text-3xl font-bold text-blue-900 mb-4">
-              {hasAnyNo? 'Immediate Action Recommended.' : 'Compliance Confirmed. Next Steps.'}
+              {hasAnyNo ? 'Immediate Action Recommended.' : 'Compliance Confirmed. Next Steps.'}
             </h2>
             <p className="text-lg text-gray-700 mb-8">
               {hasAnyNo
@@ -379,10 +381,16 @@ function App() {
     );
   }
   
-  return null;
+  // Final fallback to ensure the screen is never truly blank
+  return (
+    <div className="flex items-center justify-center min-h-screen text-lg text-gray-500">
+      Loading Application...
+    </div>
+  );
 }
 
 export default App;
+
 
 
 
