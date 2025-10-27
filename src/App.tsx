@@ -23,9 +23,7 @@ const questions = [
 
 // Main App Component
 function App() {
-  // Robust state initialization
   const [answers, setAnswers] = useState({});
-  // Added 'about' and 'legal' as possible states
   const [currentStep, setCurrentStep] = useState('intro');
   const [isHovered, setIsHovered] = useState(false);
 
@@ -47,11 +45,6 @@ function App() {
     }
   }
 
-  // Helper function for nav item styling
-  const getNavLinkClass = (step) => (
-    `text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === step ? 'text-blue-900 border-b-2 border-blue-900' : ''}`
-  );
-
   // --- Shared Navigation (Clean White/Navy) ---
   const Navigation = () => (
     <nav className="bg-white sticky top-0 z-50 shadow-sm border-b border-gray-100">
@@ -61,9 +54,10 @@ function App() {
           <span className="text-2xl font-extrabold text-blue-900 tracking-tight">MyDataShield.org</span>
         </div>
         <div className="hidden sm:flex gap-8">
-          <a onClick={() => setCurrentStep('solution')} className={getNavLinkClass('solution')}>Our Solution</a>
-          <a onClick={() => setCurrentStep('about')} className={getNavLinkClass('about')}>About Us</a>
-          <a onClick={() => setCurrentStep('legal')} className={getNavLinkClass('legal')}>Legal Mandate</a>
+          {/* Navigation items use inline class assignment for maximum stability */}
+          <a onClick={() => setCurrentStep('solution')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'solution' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>Our Solution</a>
+          <a onClick={() => setCurrentStep('about')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'about' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>About Us</a>
+          <a onClick={() => setCurrentStep('legal')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'legal' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>Legal Mandate</a>
           <a href="#" className="text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm">Contact</a>
         </div>
       </div>
@@ -155,7 +149,7 @@ function App() {
     );
   }
 
-  // --- NEW: ABOUT US SCREEN ---
+  // --- RE-VERIFIED: ABOUT US SCREEN ---
   if (currentStep === 'about') {
     return (
       <div className="min-h-screen bg-white font-sans text-gray-900">
@@ -171,7 +165,7 @@ function App() {
             </p>
           </div>
 
-          <div className="bg-white p-8 md:p-12 max-w-5xl mx-auto border border-gray-100 rounded-3xl shadow-xl shadow-gray-100/70 space-y-10">
+          <div className="bg-white p-8 md:p-12 border border-gray-100 rounded-3xl shadow-xl shadow-gray-100/70 space-y-10">
             
             <section>
               <h2 className="flex items-center text-3xl font-bold text-blue-900 mb-4 border-b border-gray-200 pb-3">
@@ -218,7 +212,7 @@ function App() {
     );
   }
 
-  // --- NEW: LEGAL MANDATE SCREEN ---
+  // --- RE-VERIFIED: LEGAL MANDATE SCREEN ---
   if (currentStep === 'legal') {
     return (
       <div className="min-h-screen bg-white font-sans text-gray-900">
@@ -234,7 +228,7 @@ function App() {
             </p>
           </div>
 
-          <div className="bg-white p-8 md:p-12 max-w-5xl mx-auto border border-red-100 rounded-3xl shadow-xl shadow-red-50/70 space-y-10">
+          <div className="bg-white p-8 md:p-12 border border-red-100 rounded-3xl shadow-xl shadow-red-50/70 space-y-10">
             
             <div className="flex items-start gap-4">
                 <Scale className="w-10 h-10 text-red-600 flex-shrink-0 mt-1" />
@@ -528,6 +522,7 @@ function App() {
 }
 
 export default App;
+
 
 
 // import React, { useState, useMemo } from 'react';
