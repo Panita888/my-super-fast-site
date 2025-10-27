@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Shield, CheckCircle2, ArrowRight, XCircle, Briefcase, Users, FileText, Zap } from 'lucide-react';
 
-// --- Compliance Questions (Restored and Unchanged) ---
+// --- Compliance Questions (Unchanged) ---
 const questions = [
   {
     id: 1,
@@ -22,11 +22,12 @@ const questions = [
 
 // Main App Component
 function App() {
-  const [answers, setAnswers] = useState<Record<number, boolean | null>>({});
-  const [currentStep, setCurrentStep] = useState<'intro' | 'questions' | 'results'>('intro');
+  // FIX: Simplified useState initialization to prevent possible type errors
+  const [answers, setAnswers] = useState({});
+  const [currentStep, setCurrentStep] = useState('intro');
   const [isHovered, setIsHovered] = useState(false);
 
-  const handleAnswer = (questionId: number, answer: boolean) => {
+  const handleAnswer = (questionId, answer) => {
     setAnswers(prev => ({...prev, [questionId]: answer }));
   };
 
@@ -291,6 +292,7 @@ function App() {
 }
 
 export default App;
+
 
 
 
