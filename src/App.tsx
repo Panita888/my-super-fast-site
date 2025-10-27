@@ -356,22 +356,75 @@ function App() {
     );
   }
 
-  // --- ABOUT PAGE ---
+// --- ABOUT PAGE ---
   if (currentStep === 'about') {
     return (
-      <div className="min-h-screen bg-white font-sans text-gray-900">
+      <div className="min-h-screen bg-gray-50/50 font-sans text-gray-900">
         <Navigation />
         <main className="max-w-5xl mx-auto px-6 py-20">
-          <h1 className="text-5xl font-extrabold text-blue-900 mb-8 text-center">About MyDataShield.org</h1>
-          <p className="text-lg text-gray-700 mb-6">
-            MyDataShield.org is dedicated to helping clinics and healthcare organizations in the UAE maintain **compliance with PDPL and NDHC regulations**. We provide tools, audits, and frameworks to safeguard patient data against modern AI-related risks.
-          </p>
-          <p className="text-lg text-gray-700 mb-6">
-            Our mission is simple: **protect healthcare professionals and patients** by ensuring that sensitive data never leaves your authorized environment and that all staff are trained and auditable.
-          </p>
-          <p className="text-lg text-gray-700">
-            With our solutions, clinics can confidently embrace modern digital workflows without compromising compliance or risking penalties.
-          </p>
+          <div className="text-center mb-16">
+            <h1 className="text-5xl font-extrabold text-blue-900 mb-4 tracking-tight">
+              A Mission Built on Regulatory Defense
+            </h1>
+            <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed font-normal">
+              We translate complex UAE data laws into simple, auditable technology solutions for healthcare leaders.
+            </p>
+          </div>
+
+          <div className="bg-white p-8 md:p-12 rounded-3xl shadow-2xl shadow-gray-100 border border-gray-100">
+
+            {/* Our Expertise Section */}
+            <div className="mb-12">
+              <div className="flex items-start sm:items-center gap-4 mb-4">
+                <Zap className="w-8 h-8 text-blue-900 flex-shrink-0 mt-1 sm:mt-0" />
+                <h2 className="text-3xl font-extrabold text-blue-900">Our Expertise</h2>
+              </div>
+              <p className="text-lg text-gray-700 leading-relaxed pl-0 sm:pl-12">
+                MyDataShield.org was founded by data privacy experts and former healthcare compliance officers who recognized a critical gap: traditional IT security doesn’t address the <strong>Strict Liability</strong> risks posed by modern AI and LLMs. Our focus is laser-targeted on the unique regulatory environment of the UAE.
+              </p>
+            </div>
+
+            {/* What We Provide Section */}
+            <div className="mb-12">
+              <div className="flex items-start sm:items-center gap-4 mb-4">
+                <Shield className="w-8 h-8 text-blue-900 flex-shrink-0 mt-1 sm:mt-0" />
+                <h2 className="text-3xl font-extrabold text-blue-900">What We Provide</h2>
+              </div>
+              <div className="space-y-6 text-lg text-gray-700 pl-0 sm:pl-12">
+                <p>
+                  <strong className="font-bold text-gray-900">Auditable TOMS (Technical & Organisational Measures):</strong> We deliver the provable technical controls required by law to prevent data leakage.
+                </p>
+                <p>
+                  <strong className="font-bold text-gray-900">AI Governance Frameworks:</strong> Custom policies and training modules tailored for NDHC and PDPL compliance.
+                </p>
+                <p>
+                  <strong className="font-bold text-gray-900">Risk Assessment and Auditing:</strong> A definitive audit trail that stands up to regulatory scrutiny, protecting your professional license.
+                </p>
+              </div>
+            </div>
+
+            {/* Quote Block */}
+            <div className="bg-gray-100/70 border border-gray-200 text-center p-8 rounded-2xl my-12">
+              <p className="text-2xl font-semibold text-gray-800 italic leading-snug">
+                “Compliance is not a document you file. It's a technical mechanism you must prove.”
+              </p>
+              <p className="text-sm text-gray-600 mt-4 tracking-wide">— The MyDataShield.org Compliance Team</p>
+            </div>
+
+            {/* CTA Button */}
+            <div className="text-center">
+              <button
+                onClick={() => setCurrentStep('questions')}
+                onMouseEnter={() => setIsHovered(true)}
+                onMouseLeave={() => setIsHovered(false)}
+                className="inline-flex items-center justify-center gap-3 bg-blue-900 text-white px-10 py-5 rounded-xl font-extrabold text-lg 
+                           shadow-lg shadow-blue-900/30 transition-all duration-300 hover:bg-blue-800 hover:-translate-y-0.5 transform"
+              >
+                Start Your Risk Assessment
+                <ArrowRight className={`w-5 h-5 transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`} />
+              </button>
+            </div>
+          </div>
         </main>
         <Footer />
       </div>
