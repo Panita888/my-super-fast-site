@@ -1,6 +1,6 @@
 import React, { useState, useMemo } from 'react';
 // Imported all necessary Lucide icons
-import { Shield, CheckCircle2, ArrowRight, XCircle, Briefcase, Users, FileText, Zap, BookOpen, Lock, Globe } from 'lucide-react';
+import { Shield, CheckCircle2, ArrowRight, XCircle, Briefcase, Users, FileText, Zap, BookOpen, Lock, Globe, Scale, Lightbulb } from 'lucide-react';
 
 // --- Compliance Questions (Unchanged) ---
 const questions = [
@@ -25,6 +25,7 @@ const questions = [
 function App() {
   // Robust state initialization
   const [answers, setAnswers] = useState({});
+  // Added 'about' and 'legal' as possible states
   const [currentStep, setCurrentStep] = useState('intro');
   const [isHovered, setIsHovered] = useState(false);
 
@@ -46,6 +47,11 @@ function App() {
     }
   }
 
+  // Helper function for nav item styling
+  const getNavLinkClass = (step) => (
+    `text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === step ? 'text-blue-900 border-b-2 border-blue-900' : ''}`
+  );
+
   // --- Shared Navigation (Clean White/Navy) ---
   const Navigation = () => (
     <nav className="bg-white sticky top-0 z-50 shadow-sm border-b border-gray-100">
@@ -55,9 +61,9 @@ function App() {
           <span className="text-2xl font-extrabold text-blue-900 tracking-tight">MyDataShield.org</span>
         </div>
         <div className="hidden sm:flex gap-8">
-          {/* Updated link to navigate to the new Solution page */}
-          <a onClick={() => setCurrentStep('solution')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'solution' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>Our Solution</a>
-          <a href="#" className="text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm">Legal Mandate</a>
+          <a onClick={() => setCurrentStep('solution')} className={getNavLinkClass('solution')}>Our Solution</a>
+          <a onClick={() => setCurrentStep('about')} className={getNavLinkClass('about')}>About Us</a>
+          <a onClick={() => setCurrentStep('legal')} className={getNavLinkClass('legal')}>Legal Mandate</a>
           <a href="#" className="text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm">Contact</a>
         </div>
       </div>
@@ -77,7 +83,7 @@ function App() {
     </footer>
   );
   
-  // --- INTRO SCREEN ---
+  // --- INTRO SCREEN (Unchanged) ---
   if (currentStep === 'intro') {
     return (
       <div className="min-h-screen bg-white font-sans text-gray-900">
@@ -85,7 +91,6 @@ function App() {
 
         <main className="max-w-7xl mx-auto px-6 py-24">
           
-          {/* Main Hero Section: Full Approved Copy */}
           <div className="text-center mb-16">
             <h1 className="text-6xl md:text-7xl font-extrabold mb-6 leading-tight tracking-tight">
               IS YOUR MEDICAL LICENSE <span className="text-red-600">EXPOSED</span>?
@@ -98,12 +103,10 @@ function App() {
             </p>
           </div>
 
-          {/* Regulatory Stakes Block - Structured to show mandates and risks */}
           <div className="bg-white rounded-3xl p-8 md:p-12 max-w-5xl mx-auto shadow-2xl shadow-gray-100 border border-gray-100">
             <h2 className="text-3xl font-extrabold mb-8 text-blue-900 border-b border-gray-200 pb-4">The Stakes are Immediate:</h2>
             <div className="grid md:grid-cols-3 gap-10 text-lg">
               
-              {/* Column 1: Mandates */}
               <div className="space-y-3 p-4 border border-gray-100 rounded-xl bg-gray-50/50">
                 <FileText className="w-6 h-6 text-blue-900"/>
                 <p className="font-bold text-lg text-blue-900">FEDERAL MANDATES</p>
@@ -111,7 +114,6 @@ function App() {
                 <p className="text-gray-700 text-sm leading-relaxed">**Federal Law No. 2 of 2019:** Explicitly safeguarding the confidentiality and security of Electronic Health Data.</p>
               </div>
               
-              {/* Column 2: Financial Risk */}
               <div className="space-y-3 p-4 border border-gray-100 rounded-xl bg-gray-50/50">
                 <Briefcase className="w-6 h-6 text-red-600"/>
                 <p className="font-bold text-lg text-blue-900">FINANCIAL LIABILITY</p>
@@ -119,7 +121,6 @@ function App() {
                 <p className="text-gray-700 text-sm leading-relaxed">The transition to **full PDPL enforcement in 2025** means the window for achieving auditable compliance is closing.</p>
               </div>
               
-              {/* Column 3: Career Risk */}
               <div className="space-y-3 p-4 border border-gray-100 rounded-xl bg-gray-50/50">
                 <Users className="w-6 h-6 text-red-600"/>
                 <p className="font-bold text-lg text-blue-900">CAREER RISK</p>
@@ -127,13 +128,11 @@ function App() {
               </div>
             </div>
             
-            {/* Disclaimer/Contractual Ban Statement */}
             <p className="mt-10 text-base text-gray-500 italic font-medium border-t border-gray-100 pt-4">
               **A Contractual Ban Is Not Enough.** Regulators require provable **Technical and Organizational Measures (TOMS)** to secure health data from digital leakage.
             </p>
           </div>
           
-          {/* CTA Button */}
           <div className="text-center mt-16">
             <button
               onClick={() => setCurrentStep('questions')}
@@ -156,85 +155,58 @@ function App() {
     );
   }
 
-  // --- SOLUTION SCREEN (New Page for Governance and Liability) ---
-  if (currentStep === 'solution') {
+  // --- NEW: ABOUT US SCREEN ---
+  if (currentStep === 'about') {
     return (
       <div className="min-h-screen bg-white font-sans text-gray-900">
         <Navigation />
 
-        <main className="max-w-7xl mx-auto px-6 py-20">
+        <main className="max-w-4xl mx-auto px-6 py-20">
           <div className="text-center mb-16">
             <h1 className="text-5xl font-extrabold text-blue-900 mb-4 tracking-tight">
-              Beyond the Ban: What UAE Regulators Truly Demand
+              A Mission Built on Regulatory Defense
             </h1>
             <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed font-normal">
-              Understanding the **Strict Liability** model: The question is not *if* your staff breached the rules, but *what you did* to prevent it.
+              We translate complex UAE data laws into simple, auditable technology solutions for healthcare leaders.
             </p>
           </div>
 
-          {/* Core Liability and Governance Sections */}
-          <div className="bg-white p-8 md:p-12 max-w-5xl mx-auto border border-gray-100 rounded-3xl shadow-xl shadow-gray-100/70">
-            <h2 className="text-3xl font-bold text-red-600 mb-8 border-b border-gray-200 pb-4">
-              The Regulatory Liability Trap
-            </h2>
-            <div className="text-gray-700 space-y-6 text-lg">
-              <p>
-                Under Federal Law and NDHC (National Unified Health Data System), medical facilities are held to a standard of **Strict Liability**. Your liability does not end by issuing a memo or a contractual ban on using public Large Language Models (LLMs).
+          <div className="bg-white p-8 md:p-12 max-w-5xl mx-auto border border-gray-100 rounded-3xl shadow-xl shadow-gray-100/70 space-y-10">
+            
+            <section>
+              <h2 className="flex items-center text-3xl font-bold text-blue-900 mb-4 border-b border-gray-200 pb-3">
+                <Lightbulb className="w-6 h-6 mr-3 text-blue-600" /> Our Expertise
+              </h2>
+              <p className="text-lg text-gray-700 leading-relaxed">
+                MyDataShield.org was founded by data privacy experts and former healthcare compliance officers who recognized a critical gap: traditional IT security doesn't address the **Strict Liability** risks posed by modern AI and LLMs. Our focus is laser-targeted on the unique regulatory environment of the UAE.
               </p>
-              <p className="font-semibold text-blue-900">
-                If a patient's data is transferred out of the country via an employee's LLM query, the regulator fines the **clinic owner and Medical Director**, not the employee. The defense requires **provable, auditable controls**.
-              </p>
-            </div>
+            </section>
 
-            <h2 className="text-3xl font-bold text-blue-900 mt-12 mb-8 border-b border-gray-200 pb-4">
-              The Three Non-Negotiable Pillars of Audit-Ready Compliance
-            </h2>
+            <section>
+              <h2 className="flex items-center text-3xl font-bold text-blue-900 mb-4 border-b border-gray-200 pb-3">
+                <Shield className="w-6 h-6 mr-3 text-blue-600" /> What We Provide
+              </h2>
+              <ul className="space-y-4 text-gray-700 list-disc list-inside ml-4">
+                <li>**Auditable TOMS (Technical & Organisational Measures):** We deliver the provable technical controls required by law to prevent data leakage.</li>
+                <li>**AI Governance Frameworks:** Custom policies and training modules tailored for NDHC and PDPL compliance.</li>
+                <li>**Risk Assessment and Auditing:** A definitive audit trail that stands up to regulatory scrutiny, protecting your professional license.</li>
+              </ul>
+            </section>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              {/* Pillar 1: TOMS */}
-              <div className="space-y-4 p-6 border-l-4 border-blue-600 bg-gray-50 rounded-lg">
-                <Lock className="w-8 h-8 text-blue-900"/>
-                <p className="text-xl font-extrabold text-blue-900">1. Technical & Organisational Measures (TOMS)</p>
-                <p className="text-sm text-gray-700 leading-relaxed">
-                  **Requirement:** Active technical measures to secure data.
-                  <br /><br />
-                  **The Gap:** Documentation showing you have mechanisms (e.g., redaction tools, sandboxed environments) to **physically stop** PHI/PII leakage into public AI tools, proving due diligence.
+            <section className="bg-blue-50/50 p-6 rounded-xl border border-blue-200">
+                <p className="text-xl font-semibold text-gray-800 italic">
+                    "Compliance is not a document you file. It's a technical mechanism you must prove."
                 </p>
-              </div>
-
-              {/* Pillar 2: Data Residency */}
-              <div className="space-y-4 p-6 border-l-4 border-blue-600 bg-gray-50 rounded-lg">
-                <Globe className="w-8 h-8 text-blue-900"/>
-                <p className="text-xl font-extrabold text-blue-900">2. Controlled Data Residency & Sovereignty</p>
-                <p className="text-sm text-gray-700 leading-relaxed">
-                  **Requirement:** Explicit control over the storage location of health data.
-                  <br /><br />
-                  **The Gap:** Any use of public AI is an unauthorized **cross-border data transfer** because the data is processed on servers outside the UAE's jurisdiction, violating data sovereignty mandates.
-                </p>
-              </div>
-
-              {/* Pillar 3: Auditable Competency */}
-              <div className="space-y-4 p-6 border-l-4 border-blue-600 bg-gray-50 rounded-lg">
-                <BookOpen className="w-8 h-8 text-blue-900"/>
-                <p className="text-xl font-extrabold text-blue-900">3. Auditable Staff Competency</p>
-                <p className="text-sm text-gray-700 leading-relaxed">
-                  **Requirement:** Provable evidence that all staff understand the risks.
-                  <br /><br />
-                  **The Gap:** You must demonstrate not just that training occurred, but that competency was tracked and that staff understand the specific nuances of PDPL and NDHC on modern technology.
-                </p>
-              </div>
-            </div>
-
-            <div className="text-center mt-12 pt-6 border-t border-gray-200">
-              <h3 className="text-2xl font-bold text-gray-800 mb-4">
-                We provide the necessary framework, tools, and documentation.
-              </h3>
+                <p className="text-sm text-blue-800 mt-2">— The MyDataShield.org Compliance Team</p>
+            </section>
+            
+            <div className="text-center pt-6">
               <button
                 onClick={() => setCurrentStep('questions')}
                 className="inline-flex items-center gap-4 bg-blue-900 text-white px-10 py-5 rounded-xl font-extrabold text-lg 
                            shadow-lg shadow-blue-900/30 transition-all duration-300 hover:bg-blue-800 hover:-translate-y-0.5"
               >
-                Assess Your Gaps Now
+                Start Your Risk Assessment
                 <ArrowRight className="w-5 h-5" />
               </button>
             </div>
@@ -246,7 +218,79 @@ function App() {
     );
   }
 
-  // --- QUESTIONS SCREEN (Clean and Focused) ---
+  // --- NEW: LEGAL MANDATE SCREEN ---
+  if (currentStep === 'legal') {
+    return (
+      <div className="min-h-screen bg-white font-sans text-gray-900">
+        <Navigation />
+
+        <main className="max-w-4xl mx-auto px-6 py-20">
+          <div className="text-center mb-16">
+            <h1 className="text-5xl font-extrabold text-red-600 mb-4 tracking-tight">
+              UAE Health Data: The Non-Negotiable Laws
+            </h1>
+            <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed font-normal">
+              A review of the federal decrees that place **Strict Liability** on clinic owners and medical directors.
+            </p>
+          </div>
+
+          <div className="bg-white p-8 md:p-12 max-w-5xl mx-auto border border-red-100 rounded-3xl shadow-xl shadow-red-50/70 space-y-10">
+            
+            <div className="flex items-start gap-4">
+                <Scale className="w-10 h-10 text-red-600 flex-shrink-0 mt-1" />
+                <div>
+                    <h2 className="text-2xl font-bold text-blue-900 mb-2">
+                        Federal Decree-Law No. 45/2021 (PDPL)
+                    </h2>
+                    <p className="text-lg text-gray-700">
+                        The primary federal law governing Personal Data (PD) protection, transfer, and processing within the UAE. Unauthorized use of public AI by staff constitutes a **cross-border data transfer without consent** or approved mechanism, placing the organization in direct violation.
+                    </p>
+                </div>
+            </div>
+
+            <div className="flex items-start gap-4">
+                <Zap className="w-10 h-10 text-red-600 flex-shrink-0 mt-1" />
+                <div>
+                    <h2 className="text-2xl font-bold text-blue-900 mb-2">
+                        Federal Law No. 2 of 2019
+                    </h2>
+                    <p className="text-lg text-gray-700">
+                        Explicitly mandates the **confidentiality and security of Electronic Health Data (EHD)**. This requires auditable technical controls to ensure patient records are not shared, even accidentally, with unauthorized third parties (like public LLMs).
+                    </p>
+                </div>
+            </div>
+            
+            <div className="p-6 bg-red-50 rounded-xl border-l-4 border-red-500 shadow-inner">
+                <h3 className="text-2xl font-extrabold text-red-700 mb-3 flex items-center gap-2">
+                    <Briefcase className="w-6 h-6" /> The Penalty Threshold
+                </h3>
+                <p className="text-xl font-bold text-gray-800">
+                    Administrative fines under PDPL can reach **AED 1,000,000**.
+                </p>
+                <p className="text-base text-gray-600 mt-2">
+                    Beyond fines, compliance failure demonstrates gross negligence in data security, directly threatening the **suspension or withdrawal of the Medical Director’s operating license**.
+                </p>
+            </div>
+          </div>
+          
+          <div className="text-center pt-10">
+            <button
+              onClick={() => setCurrentStep('questions')}
+              className="inline-flex items-center gap-4 bg-blue-900 text-white px-10 py-5 rounded-xl font-extrabold text-lg 
+                         shadow-lg shadow-blue-900/30 transition-all duration-300 hover:bg-blue-800 hover:-translate-y-0.5"
+            >
+              See Our Compliance Solution
+              <ArrowRight className="w-5 h-5" />
+            </button>
+          </div>
+        </main>
+
+        <Footer />
+      </div>
+    );
+  }
+
+  // --- QUESTIONS SCREEN (Unchanged) ---
   if (currentStep === 'questions') {
     return (
       <div className="min-h-screen bg-white font-sans text-gray-900">
@@ -346,7 +390,97 @@ function App() {
     );
   }
 
-  // --- RESULTS SCREEN (Updated Aesthetic) ---
+  // --- SOLUTION SCREEN (Unchanged) ---
+  if (currentStep === 'solution') {
+    return (
+      <div className="min-h-screen bg-white font-sans text-gray-900">
+        <Navigation />
+
+        <main className="max-w-7xl mx-auto px-6 py-20">
+          <div className="text-center mb-16">
+            <h1 className="text-5xl font-extrabold text-blue-900 mb-4 tracking-tight">
+              Beyond the Ban: What UAE Regulators Truly Demand
+            </h1>
+            <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed font-normal">
+              Understanding the **Strict Liability** model: The question is not *if* your staff breached the rules, but *what you did* to prevent it.
+            </p>
+          </div>
+
+          {/* Core Liability and Governance Sections */}
+          <div className="bg-white p-8 md:p-12 max-w-5xl mx-auto border border-gray-100 rounded-3xl shadow-xl shadow-gray-100/70">
+            <h2 className="text-3xl font-bold text-red-600 mb-8 border-b border-gray-200 pb-4">
+              The Regulatory Liability Trap
+            </h2>
+            <div className="text-gray-700 space-y-6 text-lg">
+              <p>
+                Under Federal Law and NDHC (National Unified Health Data System), medical facilities are held to a standard of **Strict Liability**. Your liability does not end by issuing a memo or a contractual ban on using public Large Language Models (LLMs).
+              </p>
+              <p className="font-semibold text-blue-900">
+                If a patient's data is transferred out of the country via an employee's LLM query, the regulator fines the **clinic owner and Medical Director**, not the employee. The defense requires **provable, auditable controls**.
+              </p>
+            </div>
+
+            <h2 className="text-3xl font-bold text-blue-900 mt-12 mb-8 border-b border-gray-200 pb-4">
+              The Three Non-Negotiable Pillars of Audit-Ready Compliance
+            </h2>
+
+            <div className="grid md:grid-cols-3 gap-8">
+              {/* Pillar 1: TOMS */}
+              <div className="space-y-4 p-6 border-l-4 border-blue-600 bg-gray-50 rounded-lg">
+                <Lock className="w-8 h-8 text-blue-900"/>
+                <p className="text-xl font-extrabold text-blue-900">1. Technical & Organisational Measures (TOMS)</p>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  **Requirement:** Active technical measures to secure data.
+                  <br /><br />
+                  **The Gap:** Documentation showing you have mechanisms (e.g., redaction tools, sandboxed environments) to **physically stop** PHI/PII leakage into public AI tools, proving due diligence.
+                </p>
+              </div>
+
+              {/* Pillar 2: Data Residency */}
+              <div className="space-y-4 p-6 border-l-4 border-blue-600 bg-gray-50 rounded-lg">
+                <Globe className="w-8 h-8 text-blue-900"/>
+                <p className="text-xl font-extrabold text-blue-900">2. Controlled Data Residency & Sovereignty</p>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  **Requirement:** Explicit control over the storage location of health data.
+                  <br /><br />
+                  **The Gap:** Any use of public AI is an unauthorized **cross-border data transfer** because the data is processed on servers outside the UAE's jurisdiction, violating data sovereignty mandates.
+                </p>
+              </div>
+
+              {/* Pillar 3: Auditable Competency */}
+              <div className="space-y-4 p-6 border-l-4 border-blue-600 bg-gray-50 rounded-lg">
+                <BookOpen className="w-8 h-8 text-blue-900"/>
+                <p className="text-xl font-extrabold text-blue-900">3. Auditable Staff Competency</p>
+                <p className="text-sm text-gray-700 leading-relaxed">
+                  **Requirement:** Provable evidence that all staff understand the risks.
+                  <br /><br />
+                  **The Gap:** You must demonstrate not just that training occurred, but that competency was tracked and that staff understand the specific nuances of PDPL and NDHC on modern technology.
+                </p>
+              </div>
+            </div>
+
+            <div className="text-center mt-12 pt-6 border-t border-gray-200">
+              <h3 className="text-2xl font-bold text-gray-800 mb-4">
+                We provide the necessary framework, tools, and documentation.
+              </h3>
+              <button
+                onClick={() => setCurrentStep('questions')}
+                className="inline-flex items-center gap-4 bg-blue-900 text-white px-10 py-5 rounded-xl font-extrabold text-lg 
+                           shadow-lg shadow-blue-900/30 transition-all duration-300 hover:bg-blue-800 hover:-translate-y-0.5"
+              >
+                Assess Your Gaps Now
+                <ArrowRight className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </main>
+
+        <Footer />
+      </div>
+    );
+  }
+
+  // --- RESULTS SCREEN (Unchanged) ---
   if (currentStep === 'results') {
     return (
       <div className="min-h-screen bg-white font-sans text-gray-900">
@@ -383,7 +517,7 @@ function App() {
     );
   }
   
-  // This is the absolute final fallback, guaranteed to render if a state-checking error occurs.
+  // Final fallback
   return (
     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-8">
       <Zap className="w-12 h-12 text-blue-600 animate-pulse mb-4" />
@@ -396,10 +530,9 @@ function App() {
 export default App;
 
 
-
-
-// import React, { useState } from 'react';
-// import { Shield, CheckCircle2, ArrowRight, XCircle, Briefcase, Users, FileText, Zap } from 'lucide-react';
+// import React, { useState, useMemo } from 'react';
+// // Imported all necessary Lucide icons
+// import { Shield, CheckCircle2, ArrowRight, XCircle, Briefcase, Users, FileText, Zap, BookOpen, Lock, Globe } from 'lucide-react';
 
 // // --- Compliance Questions (Unchanged) ---
 // const questions = [
@@ -422,18 +555,22 @@ export default App;
 
 // // Main App Component
 // function App() {
-//   // FIX: Simplified useState initialization to prevent possible type errors
+//   // Robust state initialization
 //   const [answers, setAnswers] = useState({});
 //   const [currentStep, setCurrentStep] = useState('intro');
 //   const [isHovered, setIsHovered] = useState(false);
 
-//   const handleAnswer = (questionId, answer) => {
-//     setAnswers(prev => ({...prev, [questionId]: answer }));
-//   };
+//   // Logic for quiz status, memoized for efficiency and safety
+//   const { allAnswered, hasAnyNo, allYes } = useMemo(() => {
+//       const allAnswered = questions.every(q => answers[q.id] !== undefined && answers[q.id] !== null);
+//       const hasAnyNo = Object.values(answers).some(answer => answer === false);
+//       const allYes = allAnswered && !hasAnyNo;
+//       return { allAnswered, hasAnyNo, allYes };
+//   }, [answers]);
 
-//   const allAnswered = questions.every(q => answers[q.id]!== undefined && answers[q.id]!== null);
-//   const hasAnyNo = Object.values(answers).some(answer => answer === false);
-//   const allYes = allAnswered &&!hasAnyNo;
+//   const handleAnswer = (questionId, answer) => {
+//     setAnswers(prev => ({ ...prev, [questionId]: answer }));
+//   };
 
 //   const handleProceed = () => {
 //     if (allAnswered) {
@@ -441,17 +578,17 @@ export default App;
 //     }
 //   }
 
-
 //   // --- Shared Navigation (Clean White/Navy) ---
 //   const Navigation = () => (
 //     <nav className="bg-white sticky top-0 z-50 shadow-sm border-b border-gray-100">
 //       <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-//         <div className="flex items-center gap-3">
+//         <div className="flex items-center gap-3 cursor-pointer" onClick={() => setCurrentStep('intro')}>
 //           <Shield className="w-8 h-8 text-blue-900" />
 //           <span className="text-2xl font-extrabold text-blue-900 tracking-tight">MyDataShield.org</span>
 //         </div>
 //         <div className="hidden sm:flex gap-8">
-//           <a href="#" className="text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm">Our Solution</a>
+//           {/* Updated link to navigate to the new Solution page */}
+//           <a onClick={() => setCurrentStep('solution')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'solution' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>Our Solution</a>
 //           <a href="#" className="text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm">Legal Mandate</a>
 //           <a href="#" className="text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm">Contact</a>
 //         </div>
@@ -472,7 +609,7 @@ export default App;
 //     </footer>
 //   );
   
-//   // --- INTRO SCREEN (Minimalist and Clean with Full Copy) ---
+//   // --- INTRO SCREEN ---
 //   if (currentStep === 'intro') {
 //     return (
 //       <div className="min-h-screen bg-white font-sans text-gray-900">
@@ -540,9 +677,99 @@ export default App;
 //                          w-full sm:w-auto uppercase tracking-wider"
 //             >
 //               START YOUR 30-SECOND RISK CHECK
-//               <ArrowRight className={`w-6 h-6 transition-transform duration-300 ${isHovered? 'translate-x-1' : ''}`} />
+//               <ArrowRight className={`w-6 h-6 transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`} />
 //             </button>
 //             <p className="text-sm text-gray-500 mt-5 font-normal">Answer 3 quick questions to instantly assess your clinic’s PDPL/AI exposure.</p>
+//           </div>
+//         </main>
+
+//         <Footer />
+//       </div>
+//     );
+//   }
+
+//   // --- SOLUTION SCREEN (New Page for Governance and Liability) ---
+//   if (currentStep === 'solution') {
+//     return (
+//       <div className="min-h-screen bg-white font-sans text-gray-900">
+//         <Navigation />
+
+//         <main className="max-w-7xl mx-auto px-6 py-20">
+//           <div className="text-center mb-16">
+//             <h1 className="text-5xl font-extrabold text-blue-900 mb-4 tracking-tight">
+//               Beyond the Ban: What UAE Regulators Truly Demand
+//             </h1>
+//             <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed font-normal">
+//               Understanding the **Strict Liability** model: The question is not *if* your staff breached the rules, but *what you did* to prevent it.
+//             </p>
+//           </div>
+
+//           {/* Core Liability and Governance Sections */}
+//           <div className="bg-white p-8 md:p-12 max-w-5xl mx-auto border border-gray-100 rounded-3xl shadow-xl shadow-gray-100/70">
+//             <h2 className="text-3xl font-bold text-red-600 mb-8 border-b border-gray-200 pb-4">
+//               The Regulatory Liability Trap
+//             </h2>
+//             <div className="text-gray-700 space-y-6 text-lg">
+//               <p>
+//                 Under Federal Law and NDHC (National Unified Health Data System), medical facilities are held to a standard of **Strict Liability**. Your liability does not end by issuing a memo or a contractual ban on using public Large Language Models (LLMs).
+//               </p>
+//               <p className="font-semibold text-blue-900">
+//                 If a patient's data is transferred out of the country via an employee's LLM query, the regulator fines the **clinic owner and Medical Director**, not the employee. The defense requires **provable, auditable controls**.
+//               </p>
+//             </div>
+
+//             <h2 className="text-3xl font-bold text-blue-900 mt-12 mb-8 border-b border-gray-200 pb-4">
+//               The Three Non-Negotiable Pillars of Audit-Ready Compliance
+//             </h2>
+
+//             <div className="grid md:grid-cols-3 gap-8">
+//               {/* Pillar 1: TOMS */}
+//               <div className="space-y-4 p-6 border-l-4 border-blue-600 bg-gray-50 rounded-lg">
+//                 <Lock className="w-8 h-8 text-blue-900"/>
+//                 <p className="text-xl font-extrabold text-blue-900">1. Technical & Organisational Measures (TOMS)</p>
+//                 <p className="text-sm text-gray-700 leading-relaxed">
+//                   **Requirement:** Active technical measures to secure data.
+//                   <br /><br />
+//                   **The Gap:** Documentation showing you have mechanisms (e.g., redaction tools, sandboxed environments) to **physically stop** PHI/PII leakage into public AI tools, proving due diligence.
+//                 </p>
+//               </div>
+
+//               {/* Pillar 2: Data Residency */}
+//               <div className="space-y-4 p-6 border-l-4 border-blue-600 bg-gray-50 rounded-lg">
+//                 <Globe className="w-8 h-8 text-blue-900"/>
+//                 <p className="text-xl font-extrabold text-blue-900">2. Controlled Data Residency & Sovereignty</p>
+//                 <p className="text-sm text-gray-700 leading-relaxed">
+//                   **Requirement:** Explicit control over the storage location of health data.
+//                   <br /><br />
+//                   **The Gap:** Any use of public AI is an unauthorized **cross-border data transfer** because the data is processed on servers outside the UAE's jurisdiction, violating data sovereignty mandates.
+//                 </p>
+//               </div>
+
+//               {/* Pillar 3: Auditable Competency */}
+//               <div className="space-y-4 p-6 border-l-4 border-blue-600 bg-gray-50 rounded-lg">
+//                 <BookOpen className="w-8 h-8 text-blue-900"/>
+//                 <p className="text-xl font-extrabold text-blue-900">3. Auditable Staff Competency</p>
+//                 <p className="text-sm text-gray-700 leading-relaxed">
+//                   **Requirement:** Provable evidence that all staff understand the risks.
+//                   <br /><br />
+//                   **The Gap:** You must demonstrate not just that training occurred, but that competency was tracked and that staff understand the specific nuances of PDPL and NDHC on modern technology.
+//                 </p>
+//               </div>
+//             </div>
+
+//             <div className="text-center mt-12 pt-6 border-t border-gray-200">
+//               <h3 className="text-2xl font-bold text-gray-800 mb-4">
+//                 We provide the necessary framework, tools, and documentation.
+//               </h3>
+//               <button
+//                 onClick={() => setCurrentStep('questions')}
+//                 className="inline-flex items-center gap-4 bg-blue-900 text-white px-10 py-5 rounded-xl font-extrabold text-lg 
+//                            shadow-lg shadow-blue-900/30 transition-all duration-300 hover:bg-blue-800 hover:-translate-y-0.5"
+//               >
+//                 Assess Your Gaps Now
+//                 <ArrowRight className="w-5 h-5" />
+//               </button>
+//             </div>
 //           </div>
 //         </main>
 
@@ -570,8 +797,8 @@ export default App;
 //               <div 
 //                 key={question.id} 
 //                 className={`bg-white p-6 sm:p-8 rounded-2xl shadow-xl transition-all duration-300 border
-//                             ${answers[question.id] === false? 'border-red-500 ring-2 ring-red-100' : 
-//                               answers[question.id] === true? 'border-emerald-600 ring-2 ring-emerald-100' : 
+//                             ${answers[question.id] === false ? 'border-red-500 ring-2 ring-red-100' : 
+//                               answers[question.id] === true ? 'border-emerald-600 ring-2 ring-emerald-100' : 
 //                               'border-gray-200 shadow-gray-50/50'}`}
 //               >
 //                 <h3 className="text-xl font-bold text-gray-800 mb-4 leading-relaxed">
@@ -609,7 +836,7 @@ export default App;
 //           <div className="text-center pt-8">
 //             {allAnswered && (
 //               <div className="bg-gray-50 p-8 rounded-2xl shadow-inner mb-8 border border-gray-200">
-//                 {allYes? (
+//                 {allYes ? (
 //                   <div className="text-emerald-700 flex items-center justify-center gap-3">
 //                     <CheckCircle2 className="w-8 h-8" />
 //                     <p className="font-bold text-xl">
@@ -657,13 +884,13 @@ export default App;
 //       <div className="min-h-screen bg-white font-sans text-gray-900">
 //         <Navigation />
 //         <main className="max-w-4xl mx-auto px-6 py-32 text-center">
-//           <div className={`bg-gray-50 p-12 rounded-2xl shadow-xl border ${hasAnyNo? 'border-red-400' : 'border-emerald-400'}`}>
+//           <div className={`bg-gray-50 p-12 rounded-2xl shadow-xl border ${hasAnyNo ? 'border-red-400' : 'border-emerald-400'}`}>
 //             <div className={`mx-auto w-20 h-20 rounded-full flex items-center justify-center mb-6 
-//                             ${hasAnyNo? 'bg-red-100 text-red-600' : 'bg-emerald-100 text-emerald-600'}`}>
-//               {hasAnyNo? <XCircle className="w-10 h-10" /> : <CheckCircle2 className="w-10 h-10" />}
+//                             ${hasAnyNo ? 'bg-red-100 text-red-600' : 'bg-emerald-100 text-emerald-600'}`}>
+//               {hasAnyNo ? <XCircle className="w-10 h-10" /> : <CheckCircle2 className="w-10 h-10" />}
 //             </div>
 //             <h2 className="text-3xl font-bold text-blue-900 mb-4">
-//               {hasAnyNo? 'Immediate Action Recommended.' : 'Compliance Confirmed. Next Steps.'}
+//               {hasAnyNo ? 'Immediate Action Recommended.' : 'Compliance Confirmed. Next Steps.'}
 //             </h2>
 //             <p className="text-lg text-gray-700 mb-8">
 //               {hasAnyNo
@@ -688,12 +915,17 @@ export default App;
 //     );
 //   }
   
-//   return null;
+//   // This is the absolute final fallback, guaranteed to render if a state-checking error occurs.
+//   return (
+//     <div className="flex flex-col items-center justify-center min-h-screen bg-gray-50 p-8">
+//       <Zap className="w-12 h-12 text-blue-600 animate-pulse mb-4" />
+//       <h1 className="text-xl font-semibold text-gray-700">Initializing Application...</h1>
+//       <p className="text-sm text-gray-500 mt-2">If this screen persists, please refresh.</p>
+//     </div>
+//   );
 // }
 
 // export default App;
-
-
 
 
 
