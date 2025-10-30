@@ -98,6 +98,7 @@ function App() {
                 <FileText className="w-6 h-6 text-blue-900"/>
                 <p className="font-bold text-lg text-blue-900">FEDERAL MANDATES</p>
                 <p className="text-gray-700 text-sm leading-relaxed"><strong>Federal Law No. 2 of 2019:</strong> The primary legal pillar safeguarding Electronic Health Data. Violation risks your ability to operate through <strong>NABIDH/Malaffi.</strong></p>
+                <div className="h-2"></div>
                 <p className="text-gray-700 text-sm leading-relaxed"><strong>Federal Decree-Law No. 45/2021 (PDPL):</strong> Reinforces strict security controls, governing confidentiality and cross-border security over all Sensitive Personal Data, including health data.</p>
               </div>
               <div className="space-y-3 p-4 border border-gray-100 rounded-xl bg-gray-50/50">
