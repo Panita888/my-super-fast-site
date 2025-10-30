@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 // Imported all necessary Lucide icons
-import { Shield, CheckCircle2, ArrowRight, XCircle, Briefcase, Users, FileText, Zap, BookOpen, Lock, Globe, Scale, FileWarning, Gavel, ShieldCheck } from 'lucide-react';
+import { Shield, CheckCircle2, ArrowRight, XCircle, Briefcase, Users, FileText, Zap, BookOpen, Lock, Globe, Scale, FileWarning, Gavel, ShieldCheck, Phone, Mail, MessageSquare, MapPin, CalendarDays } from 'lucide-react';
 
 // --- Compliance Questions (Unchanged) ---
 const questions = [
@@ -63,7 +63,7 @@ function App() {
           <a onClick={() => setCurrentStep('solution')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'solution' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>Compliance Solution</a>
           <a onClick={() => setCurrentStep('about')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'about' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>About</a>
           <a onClick={() => setCurrentStep('legal')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'legal' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>Legal Mandate</a>
-          <a href="#" className="text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm">Contact</a>
+          <a onClick={() => setCurrentStep('contact')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'contact' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>Contact</a>
         </div>
       </div>
     </nav>
@@ -753,6 +753,80 @@ function App() {
               Start Your Risk Assessment
               <ArrowRight className="w-5 h-5"/>
             </button>
+          </div>
+        </main>
+        <Footer />
+      </div>
+    );
+  }
+
+// --- CONTACT PAGE ---
+  if (currentStep === 'contact') {
+    return (
+      <div className="min-h-screen bg-gray-50/50 font-sans text-gray-900">
+        <Navigation />
+        <main className="max-w-6xl mx-auto px-6 py-20">
+          <div className="bg-white p-8 sm:p-12 rounded-3xl shadow-2xl shadow-gray-100/80 border border-gray-200">
+            <div className="grid md:grid-cols-2 gap-16 items-center">
+              
+              {/* --- LEFT COLUMN: Context and Reassurance --- */}
+              <div className="space-y-6">
+                <h1 className="text-5xl font-extrabold text-blue-900 leading-tight tracking-tight">
+                  Connect with a Compliance Expert
+                </h1>
+                <p className="text-lg text-gray-600 leading-relaxed">
+                  You don't have to navigate the complexities of UAE data law alone. Whether you have a specific question or need a comprehensive audit, we're here to provide clarity and help you build your auditable defense.
+                </p>
+                <p className="text-base text-gray-500 font-medium border-l-4 border-blue-200 pl-4">
+                  All consultations are confidential and tailored specifically to the challenges faced by Medical Directors and clinic owners in the UAE.
+                </p>
+              </div>
+
+              {/* --- RIGHT COLUMN: Actionable Contact Details --- */}
+              <div className="space-y-8">
+                
+                {/* Book a Call - Primary CTA */}
+                <div>
+                  <a 
+                    href="https://www.cal.com/mydatashield/medicaldirector" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-full inline-flex items-center justify-center gap-3 bg-blue-900 text-white px-10 py-5 rounded-xl font-extrabold text-lg 
+                               shadow-lg shadow-blue-900/30 transition-all duration-300 hover:bg-blue-800 hover:-translate-y-0.5 transform"
+                  >
+                    <CalendarDays className="w-6 h-6" />
+                    Book a Confidential Call
+                  </a>
+                  <p className="text-center text-sm text-gray-500 mt-3">The fastest way to get direct, expert advice.</p>
+                </div>
+
+                {/* Other Contact Methods */}
+                <div className="space-y-6 pt-8 border-t border-gray-200">
+                  <div className="flex items-start gap-4">
+                    <Mail className="w-6 h-6 text-blue-900 flex-shrink-0 mt-1" />
+                    <div>
+                      <p className="font-bold text-gray-800">Email</p>
+                      <a href="mailto:hello@mydatashield.org" className="text-gray-600 hover:text-blue-900 transition-colors">hello@mydatashield.org</a>
+                    </div>
+                  </div>
+                  <div className="flex items-start gap-4">
+                    <Phone className="w-6 h-6 text-blue-900 flex-shrink-0 mt-1" />
+                    <div>
+                      <p className="font-bold text-gray-800">Phone / WhatsApp</p>
+                      <a href="tel:+971585180338" className="text-gray-600 hover:text-blue-900 transition-colors">+971 58 518 0338</a>
+                    </div>
+                  </div>
+                   <div className="flex items-start gap-4">
+                    <MapPin className="w-6 h-6 text-blue-900 flex-shrink-0 mt-1" />
+                    <div>
+                      <p className="font-bold text-gray-800">Address</p>
+                      <p className="text-gray-600">AI Innovation Hub, DIFC, Dubai, UAE</p>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
           </div>
         </main>
         <Footer />
