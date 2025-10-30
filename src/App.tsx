@@ -6,7 +6,7 @@ import { Shield, CheckCircle2, ArrowRight, XCircle, Briefcase, Users, FileText, 
 const questions = [
   {
     id: 1,
-    text: 'Can you produce your TOMS (Technical & Organisational Measures) and all required data governance documents within 24 hours?',
+    text: 'Can you produce your TOMs (Technical & Organisational Measures) and all required data governance documents within 24 hours?',
     regulation: 'Regulation: Demonstrating immediate compliance is mandatory under NDHC Article 5 and Federal Law No. 2 of 2019.',
   },
   {
@@ -97,23 +97,24 @@ function App() {
               <div className="space-y-3 p-4 border border-gray-100 rounded-xl bg-gray-50/50">
                 <FileText className="w-6 h-6 text-blue-900"/>
                 <p className="font-bold text-lg text-blue-900">FEDERAL MANDATES</p>
-                <p className="text-gray-700 text-sm leading-relaxed"><strong>Federal Decree-Law No. 45/2021 (PDPL):</strong> Governing confidentiality and cross-border security of all Personal Data.</p>
-                <p className="text-gray-700 text-sm leading-relaxed"><strong>Federal Law No. 2 of 2019:</strong> Explicitly safeguarding the confidentiality and security of Electronic Health Data.</p>
+                <p className="text-gray-700 text-sm leading-relaxed"><strong>Federal Law No. 2 of 2019:</strong> The primary legal pillar safeguarding Electronic Health Data. Violation risks your ability to operate through <strong>NABIDH/Malaffi.</strong></p>
+                <p className="text-gray-700 text-sm leading-relaxed"><strong>Federal Decree-Law No. 45/2021 (PDPL):</strong> Reinforces strict security controls, governing confidentiality and cross-border security over all Sensitive Personal Data, including health data.</p>
               </div>
               <div className="space-y-3 p-4 border border-gray-100 rounded-xl bg-gray-50/50">
                 <Briefcase className="w-6 h-6 text-red-600"/>
                 <p className="font-bold text-lg text-blue-900">FINANCIAL LIABILITY</p>
-                <p className="text-gray-700 text-sm leading-relaxed">Violations expose the clinic owner to administrative fines up to <strong>AED 1,000,000</strong>.</p>
+                <p className="text-gray-700 text-sm leading-relaxed">Violations expose the clinic owner to administrative fines up to <strong>AED 1,000,000</strong>, with personal liability possible.</p>
                 <p className="text-gray-700 text-sm leading-relaxed">The transition to <strong>full PDPL enforcement in 2025</strong> means the window for achieving auditable compliance is closing.</p>
               </div>
               <div className="space-y-3 p-4 border border-gray-100 rounded-xl bg-gray-50/50">
                 <Users className="w-6 h-6 text-red-600"/>
-                <p className="font-bold text-lg text-blue-900">CAREER RISK</p>
-                <p className="text-gray-700 text-sm leading-relaxed">The failure to implement necessary controls (Technical and Organizational Measures, or <strong>TOMS</strong>) risks suspension or withdrawal of the Medical Director’s license.</p>
+                <p className="font-bold text-lg text-blue-900">CAREER & CLINICAL RISK</p>
+                <p className="text-gray-700 text-sm leading-relaxed">The failure to implement necessary controls risks immediate administrative action, including the <strong>suspension or withdrawal of the Medical Director’s license</strong> by the DHA/DOH.</p>
+                <p className="text-gray-700 text-sm leading-relaxed">Regulators require provable <strong>Technical and Organizational Measures (TOMs)</strong> - a contractual ban on staff using AI is not enough.</p>
               </div>
             </div>
             <p className="mt-10 text-base text-gray-500 italic font-medium border-t border-gray-100 pt-4">
-              <strong>A Contractual Ban Is Not Enough.</strong> Regulators require provable <strong>Technical and Organizational Measures (TOMS)</strong> to secure health data from digital leakage.
+              <strong>A Contractual Ban Is Not Enough.</strong> Regulators require provable <strong>Technical and Organizational Measures (TOMs)</strong> to secure health data from digital leakage.
             </p>
           </div>
 
@@ -172,7 +173,7 @@ function App() {
             <div className="grid md:grid-cols-3 gap-8">
               <div className="space-y-4 p-6 border-l-4 border-blue-600 bg-gray-50 rounded-lg">
                 <Lock className="w-8 h-8 text-blue-900"/>
-                <p className="text-xl font-extrabold text-blue-900">1. Technical & Organisational Measures (TOMS)</p>
+                <p className="text-xl font-extrabold text-blue-900">1. Technical & Organisational Measures (TOMs)</p>
                 <p className="text-sm text-gray-700 leading-relaxed">
                   <strong>Requirement:<strong> Active technical measures to secure data.
                   <br /><br />
@@ -392,7 +393,7 @@ function App() {
               </div>
               <div className="space-y-6 text-lg text-gray-700 pl-0 sm:pl-12">
                 <p>
-                  <strong className="font-bold text-gray-900">Auditable TOMS (Technical & Organisational Measures):</strong> We deliver the provable technical controls required by law to prevent data leakage.
+                  <strong className="font-bold text-gray-900">Auditable TOMs (Technical & Organisational Measures):</strong> We deliver the provable technical controls required by law to prevent data leakage.
                 </p>
                 <p>
                   <strong className="font-bold text-gray-900">AI Governance Frameworks:</strong> Custom policies and training modules tailored for NDHC and PDPL compliance.
@@ -542,7 +543,7 @@ export default App;
 // const questions = [
 //   {
 //     id: 1,
-//     text: 'Can you produce your TOMS (Technical & Organisational Measures) and all required data governance documents within 24 hours?',
+//     text: 'Can you produce your TOMs (Technical & Organisational Measures) and all required data governance documents within 24 hours?',
 //     regulation: 'Regulation: Demonstrating immediate compliance is mandatory under NDHC Article 5 and Federal Law No. 2 of 2019.',
 //   },
 //   {
@@ -659,13 +660,13 @@ export default App;
 //               <div className="space-y-3 p-4 border border-gray-100 rounded-xl bg-gray-50/50">
 //                 <Users className="w-6 h-6 text-red-600"/>
 //                 <p className="font-bold text-lg text-blue-900">CAREER RISK</p>
-//                 <p className="text-gray-700 text-sm leading-relaxed">The failure to implement necessary controls (Technical and Organizational Measures, or <strong>TOMS</strong>) risks suspension or withdrawal of the Medical Director’s license.</p>
+//                 <p className="text-gray-700 text-sm leading-relaxed">The failure to implement necessary controls (Technical and Organizational Measures, or <strong>TOMs</strong>) risks suspension or withdrawal of the Medical Director’s license.</p>
 //               </div>
 //             </div>
             
 //             {/* Disclaimer/Contractual Ban Statement */}
 //             <p className="mt-10 text-base text-gray-500 italic font-medium border-t border-gray-100 pt-4">
-//               <strong>A Contractual Ban Is Not Enough.</strong> Regulators require provable <strong>Technical and Organizational Measures (TOMS)</strong> to secure health data from digital leakage.
+//               <strong>A Contractual Ban Is Not Enough.</strong> Regulators require provable <strong>Technical and Organizational Measures (TOMs)</strong> to secure health data from digital leakage.
 //             </p>
 //           </div>
           
@@ -727,10 +728,10 @@ export default App;
 //             </h2>
 
 //             <div className="grid md:grid-cols-3 gap-8">
-//               {/* Pillar 1: TOMS */}
+//               {/* Pillar 1: TOMs */}
 //               <div className="space-y-4 p-6 border-l-4 border-blue-600 bg-gray-50 rounded-lg">
 //                 <Lock className="w-8 h-8 text-blue-900"/>
-//                 <p className="text-xl font-extrabold text-blue-900">1. Technical & Organisational Measures (TOMS)</p>
+//                 <p className="text-xl font-extrabold text-blue-900">1. Technical & Organisational Measures (TOMs)</p>
 //                 <p className="text-sm text-gray-700 leading-relaxed">
 //                   <strong>Requirement:</strong> Active technical measures to secure data.
 //                   <br /><br />
@@ -899,7 +900,7 @@ export default App;
 //             <p className="text-lg text-gray-700 mb-8">
 //               {hasAnyNo
 //               ? "Your 30-Second Check identified critical gaps in governance, staff training, or policy required by UAE law. Don't risk AED 2M fines."
-//                 : "Your foundation is strong! Now, let's verify every detail and ensure you have the full documentation (TOMS) required for inspection."
+//                 : "Your foundation is strong! Now, let's verify every detail and ensure you have the full documentation (TOMs) required for inspection."
 //               }
 //             </p>
             
