@@ -218,7 +218,7 @@ function App() {
 
             <div className="text-center mt-12 pt-6 border-t border-gray-200">
               <h3 className="text-2xl font-bold text-gray-800 mb-4">
-                We provide the necessary framework, tools, and documentation
+                We provide the necessary framework, training, tools, and documentation
                 <br />
                 THE COMPLETE, AUDIT-PROOF DEFENCE
               </h3>
