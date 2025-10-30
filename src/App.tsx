@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 // Imported all necessary Lucide icons
-import { Shield, CheckCircle2, ArrowRight, XCircle, Briefcase, Users, FileText, Zap, BookOpen, Lock, Globe, Scale, FileWarning } from 'lucide-react';
+import { Shield, CheckCircle2, ArrowRight, XCircle, Briefcase, Users, FileText, Zap, BookOpen, Lock, Globe, Scale, FileWarning, Gavel, ShieldCheck } from 'lucide-react';
 
 // --- Compliance Questions (Unchanged) ---
 const questions = [
@@ -667,78 +667,91 @@ function App() {
         <main className="max-w-5xl mx-auto px-6 py-20">
           <div className="text-center mb-16">
             <h1 className="text-5xl md:text-6xl font-extrabold text-blue-900 mb-6 leading-tight tracking-tight">
-              UAE Health Data: The Non-Negotiable Laws
+              Why UAE Health Data Laws Put Your License Directly at Risk
             </h1>
             <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed font-normal">
-              A review of the federal decrees that place <strong className="font-bold text-gray-900">Strict Liability</strong> on clinic owners and medical directors.
+              Under UAE Federal Law, the responsibility for data security isn't just corporate—it's personal. The Medical Director is the designated individual held accountable.
             </p>
           </div>
 
           <div className="bg-white p-8 sm:p-12 rounded-3xl shadow-2xl shadow-gray-100/80 border border-gray-200">
-            <div className="space-y-10">
-
-              {/* Federal Decree-Law No. 45/2021 (PDPL) */}
-              <div className="flex items-start gap-6">
-                <div className="flex-shrink-0">
-                  <Scale className="w-10 h-10 text-red-600" />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-extrabold text-blue-900 mb-2">
-                    Federal Decree-Law No. 45/2021 (PDPL)
-                  </h2>
-                  <p className="text-lg text-gray-700 leading-relaxed">
-                    The primary federal law governing Personal Data (PD) protection, transfer, and processing within the UAE. Unauthorized use of public AI by staff constitutes a <strong className="font-semibold text-gray-800">cross-border data transfer without consent</strong> or approved mechanism, placing the organization in direct violation.
-                  </p>
-                </div>
+            
+            {/* Section 1: Strict Liability */}
+            <div className="flex items-start gap-6 mb-12">
+              <div className="flex-shrink-0">
+                <Gavel className="w-10 h-10 text-red-600" />
               </div>
-
-              {/* Federal Law No. 2 of 2019 */}
-              <div className="flex items-start gap-6">
-                <div className="flex-shrink-0">
-                  <Zap className="w-10 h-10 text-red-600" />
-                </div>
-                <div>
-                  <h2 className="text-2xl font-extrabold text-blue-900 mb-2">
-                    Federal Law No. 2 of 2019
-                  </h2>
-                  <p className="text-lg text-gray-700 leading-relaxed">
-                    Explicitly mandates the <strong className="font-semibold text-gray-800">confidentiality and security of Electronic Health Data (EHD)</strong>. This requires auditable technical controls to ensure patient records are not shared, even accidentally, with unauthorized third parties (like public LLMs).
-                  </p>
-                </div>
+              <div>
+                <h2 className="text-2xl font-extrabold text-blue-900 mb-2">
+                  The Principle of "Strict Liability"
+                </h2>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  Regulators operate on a <strong>Strict Liability</strong> model. This means if a data breach occurs via an unauthorized tool (like public AI), the question is not whether you knew about it, but whether you had provable, auditable technical measures in place to prevent it. "We told our staff not to" is not a recognized legal defense.
+                </p>
               </div>
-
-              {/* The Penalty Threshold */}
-              <div className="bg-red-50 border-l-4 border-red-500 p-8 rounded-xl mt-8">
-                <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0">
-                    <FileWarning className="w-8 h-8 text-red-700 mt-1" />
-                  </div>
-                  <div>
-                    <h3 className="text-xl font-extrabold text-red-800 mb-2">The Penalty Threshold</h3>
-                    <p className="text-base text-red-900/90 font-medium">
-                      Administrative fines under PDPL can reach <strong className="font-bold">AED 1,000,000.</strong>
-                    </p>
-                    <p className="text-sm text-red-900/80 mt-2">
-                      Beyond fines, compliance failure demonstrates gross negligence in data security, directly threatening the <strong className="font-semibold">suspension or withdrawal of the Medical Director’s operating license.</strong>
-                    </p>
-                  </div>
-                </div>
-              </div>
-
             </div>
+
+            {/* Section 2: The Two Pillars of Your Personal Liability */}
+            <div>
+              <h2 className="text-3xl font-extrabold text-blue-900 mb-8 text-center border-t border-gray-200 pt-10">The Two Pillars of Your Personal Liability</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                
+                {/* Pillar 1: PDPL */}
+                <div className="p-6 bg-gray-50/70 rounded-xl border border-gray-100">
+                  <div className="flex items-center gap-3 mb-3">
+                    <FileText className="w-6 h-6 text-blue-900"/>
+                    <h3 className="text-xl font-bold text-gray-800">1. Your Role as Data Controller (PDPL)</h3>
+                  </div>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    <strong>Federal Decree-Law No. 45/2021 (PDPL)</strong> designates you, the Medical Director, as the "Controller" of patient data. You are personally responsible for ensuring no unauthorized <strong>cross-border data transfers</strong> occur. Staff using public AI for patient notes is a direct violation under your authority.
+                  </p>
+                </div>
+
+                {/* Pillar 2: Health Data Law */}
+                <div className="p-6 bg-gray-50/70 rounded-xl border border-gray-100">
+                  <div className="flex items-center gap-3 mb-3">
+                    <ShieldCheck className="w-6 h-6 text-blue-900"/>
+                    <h3 className="text-xl font-bold text-gray-800">2. The Mandate for Technical Controls (Law No. 2 of 2019)</h3>
+                  </div>
+                  <p className="text-sm text-gray-700 leading-relaxed">
+                    <strong>Federal Law No. 2 of 2019</strong> explicitly requires auditable <strong>Technical and Organisational Measures (TOMS)</strong> to protect Electronic Health Data. A simple contractual ban is insufficient; you must have provable technical systems that actively prevent data leakage. Failure to do so is considered professional negligence.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            {/* Section 3: The Penalty Threshold */}
+            <div className="bg-red-50 border-l-4 border-red-500 p-8 rounded-xl mt-12">
+              <div className="flex items-start gap-4">
+                <div className="flex-shrink-0">
+                  <FileWarning className="w-8 h-8 text-red-700 mt-1" />
+                </div>
+                <div>
+                  <h3 className="text-xl font-extrabold text-red-800 mb-2">Financial and Professional Consequences</h3>
+                  <p className="text-base text-red-900/90 font-medium">
+                    Failure to demonstrate compliance directly threatens the <strong>suspension or withdrawal of the Medical Director’s operating license.</strong>
+                  </p>
+                  <p className="text-sm text-red-900/80 mt-2">
+                    This is in addition to administrative fines on the facility, which can reach <strong>AED 1,000,000.</strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+
           </div>
 
           {/* CTA Button */}
           <div className="text-center mt-16">
+            <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-6">
+              Your professional reputation is on the line. Understanding your specific gaps is the first step to building an auditable defense.
+            </p>
             <button
               onClick={() => setCurrentStep('questions')}
-              onMouseEnter={() => setIsHovered(true)}
-              onMouseLeave={() => setIsHovered(false)}
               className="inline-flex items-center justify-center gap-3 bg-blue-900 text-white px-10 py-5 rounded-xl font-extrabold text-lg 
                          shadow-lg shadow-blue-900/30 transition-all duration-300 hover:bg-blue-800 hover:-translate-y-0.5 transform"
             >
               Start Your Risk Assessment
-              <ArrowRight className={`w-5 h-5 transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`} />
+              <ArrowRight className="w-5 h-5"/>
             </button>
           </div>
         </main>
