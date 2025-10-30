@@ -602,7 +602,7 @@ function App() {
 
           <div className="bg-white p-8 md:p-12 rounded-3xl shadow-2xl shadow-gray-100 border border-gray-100">
 
-            {/* Our Expertise Section */}
+            {/* Our Expertise Section (Unchanged) */}
             <div className="mb-12">
               <div className="flex items-start sm:items-center gap-4 mb-4">
                 <Zap className="w-8 h-8 text-blue-900 flex-shrink-0 mt-1 sm:mt-0" />
@@ -613,26 +613,27 @@ function App() {
               </p>
             </div>
 
-            {/* What We Provide Section */}
+            {/* What We Provide Section (UPDATED TO USE A LIST) */}
             <div className="mb-12">
               <div className="flex items-start sm:items-center gap-4 mb-4">
                 <Shield className="w-8 h-8 text-blue-900 flex-shrink-0 mt-1 sm:mt-0" />
                 <h2 className="text-3xl font-extrabold text-blue-900">What We Provide</h2>
               </div>
-              <div className="space-y-6 text-lg text-gray-700 pl-0 sm:pl-12">
-                <p>
-                  <strong className="font-bold text-gray-900">Auditable TOMs (Technical & Organisational Measures):</strong> We deliver the provable technical controls required by law to prevent data leakage.
-                </p>
-                <p>
+              {/* This is now a <ul> list for better structure */}
+              <ul className="space-y-6 text-lg text-gray-700 pl-0 sm:pl-12">
+                <li>
+                  <strong className="font-bold text-gray-900">Auditable TOMS (Technical & Organisational Measures):</strong> We deliver the provable technical controls required by law to prevent data leakage.
+                </li>
+                <li>
                   <strong className="font-bold text-gray-900">AI Governance Frameworks:</strong> Custom policies and training modules tailored for NDHC and PDPL compliance.
-                </p>
-                <p>
+                </li>
+                <li>
                   <strong className="font-bold text-gray-900">Risk Assessment and Auditing:</strong> A definitive audit trail that stands up to regulatory scrutiny, protecting your professional license.
-                </p>
-              </div>
+                </li>
+              </ul>
             </div>
 
-            {/* Quote Block */}
+            {/* Quote Block (Unchanged) */}
             <div className="bg-gray-100/70 border border-gray-200 text-center p-8 rounded-2xl my-12">
               <p className="text-2xl font-semibold text-gray-800 italic leading-snug">
                 “Compliance is not a document you file. It's a technical mechanism you must prove.”
@@ -640,17 +641,15 @@ function App() {
               <p className="text-sm text-gray-600 mt-4 tracking-wide">— The MyDataShield.org Compliance Team</p>
             </div>
 
-            {/* CTA Button */}
+            {/* CTA Button (Unchanged) */}
             <div className="text-center">
               <button
                 onClick={() => setCurrentStep('questions')}
-                onMouseEnter={() => setIsHovered(true)}
-                onMouseLeave={() => setIsHovered(false)}
                 className="inline-flex items-center justify-center gap-3 bg-blue-900 text-white px-10 py-5 rounded-xl font-extrabold text-lg 
                            shadow-lg shadow-blue-900/30 transition-all duration-300 hover:bg-blue-800 hover:-translate-y-0.5 transform"
               >
                 Start Your Risk Assessment
-                <ArrowRight className={`w-5 h-5 transition-transform duration-300 ${isHovered ? 'translate-x-1' : ''}`} />
+                <ArrowRight className={`w-5 h-5`} />
               </button>
             </div>
           </div>
