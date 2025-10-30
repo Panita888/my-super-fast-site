@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 // Imported all necessary Lucide icons
 import { Shield, CheckCircle2, ArrowRight, XCircle, Briefcase, Users, FileText, Zap, BookOpen, Lock, Globe, Scale, FileWarning } from 'lucide-react';
 
@@ -36,6 +36,12 @@ function App() {
       const allYes = allAnswered && !hasAnyNo;
       return { allAnswered, hasAnyNo, allYes };
   }, [answers]);
+
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [currentStep]);
+
 
   const handleAnswer = (questionId, answer) => {
     setAnswers(prev => ({ ...prev, [questionId]: answer }));
