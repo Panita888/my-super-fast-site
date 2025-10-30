@@ -87,7 +87,7 @@ function App() {
               The Uncontrolled Use of Public AI Risks Your Clinic’s Future and Your Professional License.
             </p>
             <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4 leading-relaxed">
-              The silent threat of staff using public Large Language Models (LLMs) for patient notes or administrative tasks is now an unauthorized **cross-border data transfer**, constituting a direct violation of two key federal mandates:
+              The silent threat of staff using public Large Language Models (LLMs) for patient notes or administrative tasks is now an unauthorized <strong>cross-border data transfer<strong>, constituting a direct violation of two key federal mandates:
             </p>
           </div>
 
