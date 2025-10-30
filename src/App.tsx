@@ -70,17 +70,74 @@ function App() {
   );
 
   // --- Shared Footer ---
-  const Footer = () => (
-    <footer className="border-t border-gray-100 mt-24 bg-white">
-      <div className="max-w-7xl mx-auto px-6 py-10 text-center text-sm text-gray-500">
-        <p className="space-x-4">
-          <span>© 2025 MyDataShield.org, a DPO Solutions Partner.</span>
-          <a href="#" className="hover:text-gray-700 transition-colors">Privacy Policy</a>
-          <a href="#" className="hover:text-gray-700 transition-colors">Terms of Service</a>
-        </p>
+    const Footer = () => (
+      <footer className="border-t border-gray-100 bg-white">
+        <div className="max-w-7xl mx-auto px-6 py-10 text-center text-sm text-gray-500">
+          <div className="space-x-4">
+            <span>© 2025 MyDataShield.org | A DPO Solutions Partner.</span>
+            <a onClick={() => setCurrentStep('privacy')} className="hover:text-gray-700 transition-colors cursor-pointer">Privacy Policy</a>
+            <a onClick={() => setCurrentStep('terms')} className="hover:text-gray-700 transition-colors cursor-pointer">Terms of Service</a>
+          </div>
+        </div>
+      </footer>
+    );
+
+  // --- PRIVACY POLICY PAGE ---
+    const PrivacyPolicyPage = () => (
+      <div className="bg-gray-50/50">
+        <main className="max-w-4xl mx-auto px-6 py-20 font-sans text-gray-800">
+          <h1 className="text-4xl font-extrabold text-blue-900 mb-8">Privacy Policy</h1>
+          <div className="space-y-6 text-base leading-relaxed bg-white p-8 sm:p-10 rounded-lg shadow-md border border-gray-200">
+            <p className="text-sm text-gray-500"><strong>Last Updated:</strong> October 30, 2025</p>
+            <p>MyDataShield.org ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, mydatashield.org (the "Site"), and use our services.</p>
+            <p>This policy is drafted in accordance with the UAE Federal Decree-Law No. 45/2021 on the Protection of Personal Data (the "PDPL") and incorporates principles from the General Data Protection Regulation (GDPR) and the Health Insurance Portability and Accountability Act (HIPAA) to reflect our commitment to global best practices in data protection.</p>
+            
+            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">1. Data Processing and Hosting</h2>
+            <p>All personal data we process is stored and processed on secure servers located exclusively within the United Arab Emirates (UAE). We do not transfer your personal data outside of the UAE.</p>
+            
+            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">2. Information We Collect</h2>
+            <p>We may collect information about you in a variety of ways. The information we may collect on the Site includes:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li><strong>Personal Data:</strong> Personally identifiable information, such as your name, email address, telephone number, and professional title, that you voluntarily give to us when you fill out a contact form, book a call, or otherwise contact us.</li>
+              <li><strong>Derivative Data:</strong> Information our servers automatically collect when you access the Site, such as your IP address, browser type, and the pages you have viewed.</li>
+              <li><strong>Information from Compliance Audits:</strong> When you engage our services, we will collect information about your clinic's operational procedures, policies, and technical measures. This information is treated with the highest level of confidentiality and is used solely for the purpose of providing our compliance audit and advisory services.</li>
+            </ul>
+            
+            {/* ... Add the rest of your policy sections here following the same pattern ... */}
+  
+            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">10. Contact Us</h2>
+            <p>If you have any questions about this Privacy Policy, please contact us:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li><strong>Email:</strong> hello@mydatashield.org</li>
+              <li><strong>Phone:</strong> +971 58 518 0338</li>
+              <li><strong>Address:</strong> AI Innovation Hub, DIFC, Dubai, UAE</li>
+            </ul>
+          </div>
+        </main>
       </div>
-    </footer>
-  );
+    );
+
+  // --- TERMS OF SERVICE PAGE ---
+    const TermsOfServicePage = () => (
+      <div className="bg-gray-50/50">
+        <main className="max-w-4xl mx-auto px-6 py-20 font-sans text-gray-800">
+          <h1 className="text-4xl font-extrabold text-blue-900 mb-8">Terms of Service</h1>
+          <div className="space-y-6 text-base leading-relaxed bg-white p-8 sm:p-10 rounded-lg shadow-md border border-gray-200">
+            <p className="text-sm text-gray-500"><strong>Last Updated:</strong> October 30, 2025</p>
+            <p>Please read these Terms of Service ("Terms") carefully before using the mydatashield.org website (the "Service") operated by MyDataShield.org ("us," "we," or "our").</p>
+            <p>Your access to and use of the Service is conditioned upon your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who wish to access or use the Service.</p>
+  
+            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">1. Scope of Services</h2>
+            <p><strong>Disclaimer: MyDataShield.org does not provide legal advice.</strong> The information and materials provided are for educational and informational purposes only. The ultimate responsibility for legal compliance rests with you, the Client. We strongly advise consulting with a qualified legal professional for advice on your specific compliance matters.</p>
+  
+            {/* ... Add the rest of your terms sections here ... */}
+            
+            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">7. Contact Us</h2>
+            <p>If you have any questions about these Terms, please contact us at hello@mydatashield.org.</p>
+          </div>
+        </main>
+      </div>
+    );
 
   // --- INTRO SCREEN ---
   if (currentStep === 'intro') {
@@ -833,6 +890,29 @@ function App() {
       </div>
     );
   }
+
+// --- PRIVACY POLICY RENDER ---
+  if (currentStep === 'privacy') {
+    return (
+      <div className="min-h-screen font-sans text-gray-900">
+        <Navigation />
+        <PrivacyPolicyPage />
+        <Footer />
+      </div>
+    );
+  }
+
+  // --- TERMS OF SERVICE RENDER ---
+  if (currentStep === 'terms') {
+    return (
+      <div className="min-h-screen font-sans text-gray-900">
+        <Navigation />
+        <TermsOfServicePage />
+        <Footer />
+      </div>
+    );
+  }
+
 
   return null;
 }
