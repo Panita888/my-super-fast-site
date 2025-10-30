@@ -97,23 +97,23 @@ function App() {
               <div className="space-y-3 p-4 border border-gray-100 rounded-xl bg-gray-50/50">
                 <FileText className="w-6 h-6 text-blue-900"/>
                 <p className="font-bold text-lg text-blue-900">FEDERAL MANDATES</p>
-                <p className="text-gray-700 text-sm leading-relaxed">**Federal Decree-Law No. 45/2021 (PDPL):** Governing confidentiality and cross-border security of all Personal Data.</p>
-                <p className="text-gray-700 text-sm leading-relaxed">**Federal Law No. 2 of 2019:** Explicitly safeguarding the confidentiality and security of Electronic Health Data.</p>
+                <p className="text-gray-700 text-sm leading-relaxed"><strong>Federal Decree-Law No. 45/2021 (PDPL):</strong> Governing confidentiality and cross-border security of all Personal Data.</p>
+                <p className="text-gray-700 text-sm leading-relaxed"><strong>Federal Law No. 2 of 2019:</strong> Explicitly safeguarding the confidentiality and security of Electronic Health Data.</p>
               </div>
               <div className="space-y-3 p-4 border border-gray-100 rounded-xl bg-gray-50/50">
                 <Briefcase className="w-6 h-6 text-red-600"/>
                 <p className="font-bold text-lg text-blue-900">FINANCIAL LIABILITY</p>
-                <p className="text-gray-700 text-sm leading-relaxed">Violations expose the clinic owner to administrative fines up to **AED 1,000,000**.</p>
-                <p className="text-gray-700 text-sm leading-relaxed">The transition to **full PDPL enforcement in 2025** means the window for achieving auditable compliance is closing.</p>
+                <p className="text-gray-700 text-sm leading-relaxed">Violations expose the clinic owner to administrative fines up to <strong>AED 1,000,000</strong>.</p>
+                <p className="text-gray-700 text-sm leading-relaxed">The transition to <strong>full PDPL enforcement in 2025</strong> means the window for achieving auditable compliance is closing.</p>
               </div>
               <div className="space-y-3 p-4 border border-gray-100 rounded-xl bg-gray-50/50">
                 <Users className="w-6 h-6 text-red-600"/>
                 <p className="font-bold text-lg text-blue-900">CAREER RISK</p>
-                <p className="text-gray-700 text-sm leading-relaxed">The failure to implement necessary controls (Technical and Organizational Measures, or **TOMS**) risks suspension or withdrawal of the Medical Director’s license.</p>
+                <p className="text-gray-700 text-sm leading-relaxed">The failure to implement necessary controls (Technical and Organizational Measures, or <strong>TOMS</strong>) risks suspension or withdrawal of the Medical Director’s license.</p>
               </div>
             </div>
             <p className="mt-10 text-base text-gray-500 italic font-medium border-t border-gray-100 pt-4">
-              **A Contractual Ban Is Not Enough.** Regulators require provable **Technical and Organizational Measures (TOMS)** to secure health data from digital leakage.
+              <strong>A Contractual Ban Is Not Enough.</strong> Regulators require provable <strong>Technical and Organizational Measures (TOMS)</strong> to secure health data from digital leakage.
             </p>
           </div>
 
@@ -149,7 +149,7 @@ function App() {
               Beyond the Ban: What UAE Regulators Truly Demand
             </h1>
             <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed font-normal">
-              Understanding the **Strict Liability** model: The question is not *if* your staff breached the rules, but *what you did* to prevent it.
+              Understanding the <strong>Strict Liability</strong> model: The question is not *if* your staff breached the rules, but *what you did* to prevent it.
             </p>
           </div>
 
@@ -159,10 +159,10 @@ function App() {
             </h2>
             <div className="text-gray-700 space-y-6 text-lg">
               <p>
-                Under Federal Law and NDHC (National Unified Health Data System), medical facilities are held to a standard of **Strict Liability**. Your liability does not end by issuing a memo or a contractual ban on using public Large Language Models (LLMs).
+                Under Federal Law and NDHC (National Unified Health Data System), medical facilities are held to a standard of <strong>Strict Liability</strong>. Your liability does not end by issuing a memo or a contractual ban on using public Large Language Models (LLMs).
               </p>
               <p className="font-semibold text-blue-900">
-                If a patient's data is transferred out of the country via an employee's LLM query, the regulator fines the **clinic owner and Medical Director**, not the employee. The defense requires **provable, auditable controls**.
+                If a patient's data is transferred out of the country via an employee's LLM query, the regulator fines the <strong>clinic owner and Medical Director</strong>, not the employee. The defense requires <strong>provable, auditable controls</strong>.
               </p>
             </div>
 
@@ -174,27 +174,27 @@ function App() {
                 <Lock className="w-8 h-8 text-blue-900"/>
                 <p className="text-xl font-extrabold text-blue-900">1. Technical & Organisational Measures (TOMS)</p>
                 <p className="text-sm text-gray-700 leading-relaxed">
-                  **Requirement:** Active technical measures to secure data.
+                  <strong>Requirement:<strong> Active technical measures to secure data.
                   <br /><br />
-                  **The Gap:** Documentation showing you have mechanisms (e.g., redaction tools, sandboxed environments) to **physically stop** PHI/PII leakage into public AI tools, proving due diligence.
+                  </strong>The Gap:</strong> Documentation showing you have mechanisms (e.g., redaction tools, sandboxed environments) to <strong>physically stop</strong> PHI/PII leakage into public AI tools, proving due diligence.
                 </p>
               </div>
               <div className="space-y-4 p-6 border-l-4 border-blue-600 bg-gray-50 rounded-lg">
                 <Globe className="w-8 h-8 text-blue-900"/>
                 <p className="text-xl font-extrabold text-blue-900">2. Controlled Data Residency & Sovereignty</p>
                 <p className="text-sm text-gray-700 leading-relaxed">
-                  **Requirement:** Explicit control over the storage location of health data.
+                  <strong>Requirement:<strong> Explicit control over the storage location of health data.
                   <br /><br />
-                  **The Gap:** Any use of public AI is an unauthorized **cross-border data transfer** because the data is processed on servers outside the UAE's jurisdiction, violating data sovereignty mandates.
+                  </strong>The Gap:</strong> Any use of public AI is an unauthorized <strong>cross-border data transfer</strong> because the data is processed on servers outside the UAE's jurisdiction, violating data sovereignty mandates.
                 </p>
               </div>
               <div className="space-y-4 p-6 border-l-4 border-blue-600 bg-gray-50 rounded-lg">
                 <BookOpen className="w-8 h-8 text-blue-900"/>
                 <p className="text-xl font-extrabold text-blue-900">3. Auditable Staff Competency</p>
                 <p className="text-sm text-gray-700 leading-relaxed">
-                  **Requirement:** Provable evidence that all staff understand the risks.
+                  <strong>Requirement:<strong> Provable evidence that all staff understand the risks.
                   <br /><br />
-                  **The Gap:** You must demonstrate not just that training occurred, but that competency was tracked and that staff understand the specific nuances of PDPL and NDHC on modern technology.
+                  </strong>The Gap:</strong> You must demonstrate not just that training occurred, but that competency was tracked and that staff understand the specific nuances of PDPL and NDHC on modern technology.
                 </p>
               </div>
             </div>
@@ -630,7 +630,7 @@ export default App;
 //               The Uncontrolled Use of Public AI Risks Your Clinic’s Future and Your Professional License.
 //             </p>
 //             <p className="text-lg text-gray-600 max-w-3xl mx-auto mt-4 leading-relaxed">
-//               The silent threat of staff using public Large Language Models (LLMs) for patient notes or administrative tasks is now an unauthorized **cross-border data transfer**, constituting a direct violation of two key federal mandates:
+//               The silent threat of staff using public Large Language Models (LLMs) for patient notes or administrative tasks is now an unauthorized <strong>cross-border data transfer</strong>, constituting a direct violation of two key federal mandates:
 //             </p>
 //           </div>
 
@@ -643,29 +643,29 @@ export default App;
 //               <div className="space-y-3 p-4 border border-gray-100 rounded-xl bg-gray-50/50">
 //                 <FileText className="w-6 h-6 text-blue-900"/>
 //                 <p className="font-bold text-lg text-blue-900">FEDERAL MANDATES</p>
-//                 <p className="text-gray-700 text-sm leading-relaxed">**Federal Decree-Law No. 45/2021 (PDPL):** Governing confidentiality and cross-border security of all Personal Data.</p>
-//                 <p className="text-gray-700 text-sm leading-relaxed">**Federal Law No. 2 of 2019:** Explicitly safeguarding the confidentiality and security of Electronic Health Data.</p>
+//                 <p className="text-gray-700 text-sm leading-relaxed"><strong>Federal Decree-Law No. 45/2021 (PDPL):</strong> Governing confidentiality and cross-border security of all Personal Data.</p>
+//                 <p className="text-gray-700 text-sm leading-relaxed"><strong>Federal Law No. 2 of 2019:</strong> Explicitly safeguarding the confidentiality and security of Electronic Health Data.</p>
 //               </div>
               
 //               {/* Column 2: Financial Risk */}
 //               <div className="space-y-3 p-4 border border-gray-100 rounded-xl bg-gray-50/50">
 //                 <Briefcase className="w-6 h-6 text-red-600"/>
 //                 <p className="font-bold text-lg text-blue-900">FINANCIAL LIABILITY</p>
-//                 <p className="text-gray-700 text-sm leading-relaxed">Violations expose the clinic owner to administrative fines up to **AED 1,000,000**.</p>
-//                 <p className="text-gray-700 text-sm leading-relaxed">The transition to **full PDPL enforcement in 2025** means the window for achieving auditable compliance is closing.</p>
+//                 <p className="text-gray-700 text-sm leading-relaxed">Violations expose the clinic owner to administrative fines up to <strong>AED 1,000,000</strong>.</p>
+//                 <p className="text-gray-700 text-sm leading-relaxed">The transition to <strong>full PDPL enforcement in 2025</strong> means the window for achieving auditable compliance is closing.</p>
 //               </div>
               
 //               {/* Column 3: Career Risk */}
 //               <div className="space-y-3 p-4 border border-gray-100 rounded-xl bg-gray-50/50">
 //                 <Users className="w-6 h-6 text-red-600"/>
 //                 <p className="font-bold text-lg text-blue-900">CAREER RISK</p>
-//                 <p className="text-gray-700 text-sm leading-relaxed">The failure to implement necessary controls (Technical and Organizational Measures, or **TOMS**) risks suspension or withdrawal of the Medical Director’s license.</p>
+//                 <p className="text-gray-700 text-sm leading-relaxed">The failure to implement necessary controls (Technical and Organizational Measures, or <strong>TOMS</strong>) risks suspension or withdrawal of the Medical Director’s license.</p>
 //               </div>
 //             </div>
             
 //             {/* Disclaimer/Contractual Ban Statement */}
 //             <p className="mt-10 text-base text-gray-500 italic font-medium border-t border-gray-100 pt-4">
-//               **A Contractual Ban Is Not Enough.** Regulators require provable **Technical and Organizational Measures (TOMS)** to secure health data from digital leakage.
+//               <strong>A Contractual Ban Is Not Enough.</strong> Regulators require provable <strong>Technical and Organizational Measures (TOMS)</strong> to secure health data from digital leakage.
 //             </p>
 //           </div>
           
@@ -704,7 +704,7 @@ export default App;
 //               Beyond the Ban: What UAE Regulators Truly Demand
 //             </h1>
 //             <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed font-normal">
-//               Understanding the **Strict Liability** model: The question is not *if* your staff breached the rules, but *what you did* to prevent it.
+//               Understanding the <strong>Strict Liability</strong> model: The question is not *if* your staff breached the rules, but *what you did* to prevent it.
 //             </p>
 //           </div>
 
@@ -715,10 +715,10 @@ export default App;
 //             </h2>
 //             <div className="text-gray-700 space-y-6 text-lg">
 //               <p>
-//                 Under Federal Law and NDHC (National Unified Health Data System), medical facilities are held to a standard of **Strict Liability**. Your liability does not end by issuing a memo or a contractual ban on using public Large Language Models (LLMs).
+//                 Under Federal Law and NDHC (National Unified Health Data System), medical facilities are held to a standard of <strong>Strict Liability</strong>. Your liability does not end by issuing a memo or a contractual ban on using public Large Language Models (LLMs).
 //               </p>
 //               <p className="font-semibold text-blue-900">
-//                 If a patient's data is transferred out of the country via an employee's LLM query, the regulator fines the **clinic owner and Medical Director**, not the employee. The defense requires **provable, auditable controls**.
+//                 If a patient's data is transferred out of the country via an employee's LLM query, the regulator fines the <strong>clinic owner and Medical Director</strong>, not the employee. The defense requires <strong>provable, auditable controls</strong>.
 //               </p>
 //             </div>
 
@@ -732,9 +732,9 @@ export default App;
 //                 <Lock className="w-8 h-8 text-blue-900"/>
 //                 <p className="text-xl font-extrabold text-blue-900">1. Technical & Organisational Measures (TOMS)</p>
 //                 <p className="text-sm text-gray-700 leading-relaxed">
-//                   **Requirement:** Active technical measures to secure data.
+//                   <strong>Requirement:</strong> Active technical measures to secure data.
 //                   <br /><br />
-//                   **The Gap:** Documentation showing you have mechanisms (e.g., redaction tools, sandboxed environments) to **physically stop** PHI/PII leakage into public AI tools, proving due diligence.
+//                   <strong>The Gap:</strong> Documentation showing you have mechanisms (e.g., redaction tools, sandboxed environments) to <strong>physically stop</strong> PHI/PII leakage into public AI tools, proving due diligence.
 //                 </p>
 //               </div>
 
@@ -743,9 +743,9 @@ export default App;
 //                 <Globe className="w-8 h-8 text-blue-900"/>
 //                 <p className="text-xl font-extrabold text-blue-900">2. Controlled Data Residency & Sovereignty</p>
 //                 <p className="text-sm text-gray-700 leading-relaxed">
-//                   **Requirement:** Explicit control over the storage location of health data.
+//                   <strong>Requirement:</strong> Explicit control over the storage location of health data.
 //                   <br /><br />
-//                   **The Gap:** Any use of public AI is an unauthorized **cross-border data transfer** because the data is processed on servers outside the UAE's jurisdiction, violating data sovereignty mandates.
+//                   <strong>The Gap:</strong> Any use of public AI is an unauthorized <strong>cross-border data transfer</strong> because the data is processed on servers outside the UAE's jurisdiction, violating data sovereignty mandates.
 //                 </p>
 //               </div>
 
@@ -754,9 +754,9 @@ export default App;
 //                 <BookOpen className="w-8 h-8 text-blue-900"/>
 //                 <p className="text-xl font-extrabold text-blue-900">3. Auditable Staff Competency</p>
 //                 <p className="text-sm text-gray-700 leading-relaxed">
-//                   **Requirement:** Provable evidence that all staff understand the risks.
+//                   <strong>Requirement:</strong> Provable evidence that all staff understand the risks.
 //                   <br /><br />
-//                   **The Gap:** You must demonstrate not just that training occurred, but that competency was tracked and that staff understand the specific nuances of PDPL and NDHC on modern technology.
+//                   <strong>The Gap:</strong> You must demonstrate not just that training occurred, but that competency was tracked and that staff understand the specific nuances of PDPL and NDHC on modern technology.
 //                 </p>
 //               </div>
 //             </div>
@@ -857,7 +857,7 @@ export default App;
 //                 )}
                 
 //                 <p className="text-gray-600 mt-4 max-w-xl mx-auto">
-//                     Take the next step: our **free, comprehensive audit** details your specific vulnerabilities and provides an actionable compliance roadmap.
+//                     Take the next step: our <strong>free, comprehensive audit</strong> details your specific vulnerabilities and provides an actionable compliance roadmap.
 //                 </p>
 //               </div>
 //             )}
