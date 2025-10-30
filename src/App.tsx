@@ -288,39 +288,52 @@ function App() {
           <div className="text-center pt-8 mt-12">
             {allAnswered && (
               <div className="bg-white p-8 rounded-2xl shadow-inner mb-8 border border-gray-200">
+                {/* --- Headline (Unchanged) --- */}
                 {allYes ? (
                   <div className="text-emerald-700 flex items-center justify-center gap-3">
                     <CheckCircle2 className="w-8 h-8" />
                     <p className="font-bold text-xl">
-                      Excellent! You show high compliance.
+                      Preliminary Compliance Score: Excellent! (High Vigilance)
                     </p>
                   </div>
                 ) : (
                   <div className="text-red-700 flex items-center justify-center gap-3">
                     <XCircle className="w-8 h-8" />
                     <p className="font-bold text-xl">
-                      Risk Detected! You have critical areas of exposure.
+                      Immediate Compliance Risk Detected! (Critical Exposure)
                     </p>
                   </div>
                 )}
                 
-                <p className="text-gray-600 mt-4 max-w-xl mx-auto">
-                  Take the next step: our <strong>free, comprehensive audit</strong> details your specific vulnerabilities and provides actionable guidance to close gaps before regulators intervene.
-                </p>
+                {/* --- Conditional Paragraph Text --- */}
+                {allYes ? (
+                  <p className="text-gray-600 mt-4 max-w-xl mx-auto">
+                    <strong>Take the Next Step:</strong> Secure your high standing with our <strong>Free, Comprehensive Compliance Audit.</strong> We will validate your current governance documentation and ensure your policies and TOMS are audit-proof and fully integrated with your NABIDH/Malaffi operational requirements.
+                  </p>
+                ) : (
+                  <p className="text-gray-600 mt-4 max-w-xl mx-auto">
+                    <strong>Take the Next Step:</strong> Get your <strong>Free, Comprehensive Compliance Audit.</strong> We will pinpoint your specific vulnerabilities, provide actionable guidance, and help you establish the required TOMS to close these gaps before regulators intervene.
+                  </p>
+                )}
               </div>
             )}
+
+            {/* --- "Answer all questions" message (Unchanged) --- */}
             {!allAnswered && (
               <p className="text-gray-500 italic">Answer all questions to see your risk profile.</p>
             )}
+            
+            {/* --- Conditional Button --- */}
             {allAnswered && (
               <button
                 onClick={() => setCurrentStep('results')}
                 className="mt-6 bg-blue-900 text-white px-12 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-blue-800 transition-all"
               >
-                View My Results
+                {/* The button text now changes based on the 'allYes' variable */}
+                {allYes ? 'VALIDATE YOUR COMPLIANCE' : 'SECURE YOUR AUDIT NOW'}
               </button>
             )}
-          </div>
+          </div>         
         </main>
         <Footer />
       </div>
