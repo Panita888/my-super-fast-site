@@ -284,11 +284,11 @@ function App() {
               </div>
             ))}
           </div>
-
           <div className="text-center pt-8 mt-12">
             {allAnswered && (
               <div className="bg-white p-8 rounded-2xl shadow-inner mb-8 border border-gray-200">
-                {/* --- Headline (Unchanged) --- */}
+                
+                {/* --- Headline Section (Unchanged) --- */}
                 {allYes ? (
                   <div className="text-emerald-700 flex items-center justify-center gap-3">
                     <CheckCircle2 className="w-8 h-8" />
@@ -305,15 +305,27 @@ function App() {
                   </div>
                 )}
                 
-                {/* --- Conditional Paragraph Text --- */}
+                {/* --- Main Body Text Section (Fully Updated) --- */}
                 {allYes ? (
-                  <p className="text-gray-600 mt-4 max-w-xl mx-auto">
-                    <strong>Take the Next Step:</strong> Secure your high standing with our <strong>Free, Comprehensive Compliance Audit.</strong> We will validate your current governance documentation and ensure your policies and TOMS are audit-proof and fully integrated with your NABIDH/Malaffi operational requirements.
-                  </p>
+                  // If all answers were "Yes", show BOTH "proactive" paragraphs:
+                  <>
+                    <p className="text-gray-600 mt-4 max-w-xl mx-auto">
+                      You are proactive! However, maintaining compliance requires continuous, auditable <strong>Technical and Organizational Measures (TOMs)</strong> and regular policy updates to meet the rapidly evolving <strong>2025 PDPL enforcement</strong> standards.
+                    </p>
+                    <p className="text-gray-600 mt-4 max-w-xl mx-auto">
+                      <strong>Take the Next Step:</strong> Secure your high standing with our <strong>Free, Comprehensive Compliance Audit.</strong> We will validate your current governance documentation and ensure your policies and TOMS are audit-proof and fully integrated with your <strong>NABIDH/Malaffi</strong> operational requirements.
+                    </p>
+                  </>
                 ) : (
-                  <p className="text-gray-600 mt-4 max-w-xl mx-auto">
-                    <strong>Take the Next Step:</strong> Get your <strong>Free, Comprehensive Compliance Audit.</strong> We will pinpoint your specific vulnerabilities, provide actionable guidance, and help you establish the required TOMS to close these gaps before regulators intervene.
-                  </p>
+                  // If there was a "No", show BOTH "risk" paragraphs:
+                  <>
+                    <p className="text-gray-600 mt-4 max-w-xl mx-auto">
+                      Your assessment indicates critical exposure to an unauthorized <strong>cross-border data transfer</strong> and gaps in your Technical and Organizational Measures <strong>(TOMs)</strong>. This puts you at risk of fines up to <strong>AED 1,000,000</strong> and potential administrative action by the <strong>DHA/DOH</strong>.
+                    </p>
+                    <p className="text-gray-600 mt-4 max-w-xl mx-auto">
+                      <strong>Take the Next Step:</strong> Get your <strong>Free, Comprehensive Compliance Audit.</strong> We will pinpoint your specific vulnerabilities, provide actionable guidance, and help you establish the required <strong>TOMs</strong> to close these gaps before regulators intervene.
+                    </p>
+                  </>
                 )}
               </div>
             )}
@@ -323,17 +335,16 @@ function App() {
               <p className="text-gray-500 italic">Answer all questions to see your risk profile.</p>
             )}
             
-            {/* --- Conditional Button --- */}
+            {/* --- Conditional Button (Unchanged) --- */}
             {allAnswered && (
               <button
                 onClick={() => setCurrentStep('results')}
                 className="mt-6 bg-blue-900 text-white px-12 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-blue-800 transition-all"
               >
-                {/* The button text now changes based on the 'allYes' variable */}
                 {allYes ? 'VALIDATE YOUR COMPLIANCE' : 'SECURE YOUR AUDIT NOW'}
               </button>
             )}
-          </div>         
+          </div>          
         </main>
         <Footer />
       </div>
