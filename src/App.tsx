@@ -625,7 +625,7 @@ function App() {
                   <strong className="font-bold text-gray-900">Auditable TOMS (Technical & Organisational Measures):</strong> We deliver the provable technical controls required by law to prevent data leakage.
                 </li>
                 <li>
-                  <strong className="font-bold text-gray-900">AI Governance Frameworks:</strong> Custom policies and training modules tailored for NDHC and PDPL compliance.
+                  <strong className="font-bold text-gray-900">Tech & AI Governance Frameworks:</strong> Custom policies and training modules tailored for compliance with the <strong>UAE Personal Data Protection Law (PDPL)</strong> and the <strong>Federal Law on the Use of ICT in Health Fields.</strong>
                 </li>
                 <li>
                   <strong className="font-bold text-gray-900">Risk Assessment and Auditing:</strong> A definitive audit trail that stands up to regulatory scrutiny, protecting your professional license.
