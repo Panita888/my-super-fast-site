@@ -330,19 +330,22 @@ function App() {
               </div>
             )}
 
+
             {/* --- "Answer all questions" message (Unchanged) --- */}
             {!allAnswered && (
               <p className="text-gray-500 italic">Answer all questions to see your risk profile.</p>
             )}
             
-            {/* --- Conditional Button (Unchanged) --- */}
+            {/* --- THIS IS THE UPDATED BUTTON --- */}
             {allAnswered && (
-              <button
-                onClick={() => setCurrentStep('results')}
-                className="mt-6 bg-blue-900 text-white px-12 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-blue-800 transition-all"
+              <a
+                href="https://tripetto.app/run/ETUCHJ0YTV"
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="inline-block mt-6 bg-blue-900 text-white px-12 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-blue-800 transition-all"
               >
                 {allYes ? 'VALIDATE YOUR COMPLIANCE' : 'SECURE YOUR AUDIT NOW'}
-              </button>
+              </a>
             )}
           </div>          
         </main>
