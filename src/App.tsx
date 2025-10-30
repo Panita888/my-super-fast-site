@@ -150,7 +150,7 @@ function App() {
     );
   }
 
-  // --- SOLUTION SCREEN ---
+// --- SOLUTION SCREEN ---
   if (currentStep === 'solution') {
     return (
       <div className="min-h-screen bg-white font-sans text-gray-900">
@@ -160,8 +160,9 @@ function App() {
             <h1 className="text-5xl font-extrabold text-blue-900 mb-4 tracking-tight">
               Beyond Banning LLMS/AI Tools: What UAE Regulators Truly Demand
             </h1>
+            {/* --- FIX: Corrected the mismatched </strong> tags --- */}
             <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed font-normal">
-              Understanding the <strong>Strict Liability</strong> model: The question is not <strong>if</strong> your staff breached the rules, but </strong>what you did</strong> to prevent it.
+              Understanding the <strong>Strict Liability</strong> model: The question is not <strong>if</strong> your staff breached the rules, but <strong>what you did</strong> to prevent it.
             </p>
           </div>
 
@@ -173,8 +174,9 @@ function App() {
               <p>
                 Under UAE Federal Law No. 2 of 2019 and Personal Data Protection Law (PDPL) Federal Decree Law 45 2021, medical facilities are held to a standard of <strong>Strict Liability</strong> regarding patient data security for Personally Identifiable Data and Personal Health Data.  Your defence does not end by simply issuing a memo or a contractual ban on using public Large Language Models (LLMs).
               </p>
+              {/* --- FIX: Correctly closed the paragraph tag with </p> --- */}
               <p className="font-semibold text-blue-900">
-                If a patient's data is transferred out of the country via an employee's LLM query, the regulator fines the <strong>clinic owner and Medical Director</strong> directly, not the employee. <strong>Without provable Technical and Organizational Measures (TOMs) in place, your defence fails, and liability is assumed.</strong> The only shield requires auditable controls.</
+                If a patient's data is transferred out of the country via an employee's LLM query, the regulator fines the <strong>clinic owner and Medical Director</strong> directly, not the employee. <strong>Without provable Technical and Organizational Measures (TOMs) in place, your defence fails, and liability is assumed.</strong> The only shield requires auditable controls.
               </p>
             </div>
 
@@ -185,28 +187,31 @@ function App() {
               <div className="space-y-4 p-6 border-l-4 border-blue-600 bg-gray-50 rounded-lg">
                 <Lock className="w-8 h-8 text-blue-900"/>
                 <p className="text-xl font-extrabold text-blue-900">1. Technical & Organisational Measures (TOMs)</p>
+                {/* --- FIX: Corrected the mismatched </strong> tag --- */}
                 <p className="text-sm text-gray-700 leading-relaxed">
                   <strong>Requirement:</strong> Active technical and procedural measures to secure data, as mandated by PDPL.
                   <br /><br />
-                  </strong>The Gap:</strong> You lack documentation showing you have technical mechanisms (e.g., redaction tools, sandboxed environments) to <strong>physically stop</strong> PHI/PII leakage into public AI tools.
+                  <strong>The Gap:</strong> You lack documentation showing you have technical mechanisms (e.g., redaction tools, sandboxed environments) to <strong>physically stop</strong> PHI/PII leakage into public AI tools.
                 </p>
               </div>
               <div className="space-y-4 p-6 border-l-4 border-blue-600 bg-gray-50 rounded-lg">
                 <Globe className="w-8 h-8 text-blue-900"/>
                 <p className="text-xl font-extrabold text-blue-900">2. Controlled Data Residency & Sovereignty</p>
+                {/* --- FIX: Corrected all mismatched <strong> tags --- */}
                 <p className="text-sm text-gray-700 leading-relaxed">
-                  <strong>Requirement:<strong> Explicit control over the storage location of all health data. <strong>Your NABIDH/Malaffi-compliant EMR is secure, but the LLM creates an unsecured back door.</strong>
+                  <strong>Requirement:</strong> Explicit control over the storage location of all health data. <strong>Your NABIDH/Malaffi-compliant EMR is secure, but the LLM creates an unsecured back door.</strong>
                   <br /><br />
-                  </strong>The Gap:</strong> Any use of a public, foreign-hosted AI model is an unauthorized <strong></strong>cross-border data transfer</strong> because the processing happens on servers outside the UAE's jurisdiction, violating data sovereignty mandates enforced by the DHA/DOH.
+                  <strong>The Gap:</strong> Any use of a public, foreign-hosted AI model is an unauthorized <strong>cross-border data transfer</strong> because the processing happens on servers outside the UAE's jurisdiction, violating data sovereignty mandates enforced by the DHA/DOH.
                 </p>
               </div>
               <div className="space-y-4 p-6 border-l-4 border-blue-600 bg-gray-50 rounded-lg">
                 <BookOpen className="w-8 h-8 text-blue-900"/>
                 <p className="text-xl font-extrabold text-blue-900">3. Auditable Staff Competency</p>
+                {/* --- FIX: Corrected all mismatched <strong> tags --- */}
                 <p className="text-sm text-gray-700 leading-relaxed">
-                  <strong>Requirement:<strong> Provable evidence that all staff understand the specific, modern risks.
+                  <strong>Requirement:</strong> Provable evidence that all staff understand the specific, modern risks.
                   <br /><br />
-                  </strong>The Gap:</strong> You must demonstrate not just that training occurred, but that competency was tracked and that staff understand the specific nuances of PDPL and the Federal Health Data Law on modern technology.
+                  <strong>The Gap:</strong> You must demonstrate not just that training occurred, but that competency was tracked and that staff understand the specific nuances of PDPL and the Federal Health Data Law on modern technology.
                 </p>
               </div>
             </div>
@@ -230,6 +235,87 @@ function App() {
       </div>
     );
   }
+  
+  // // --- SOLUTION SCREEN ---
+  // if (currentStep === 'solution') {
+  //   return (
+  //     <div className="min-h-screen bg-white font-sans text-gray-900">
+  //       <Navigation />
+  //       <main className="max-w-7xl mx-auto px-6 py-20">
+  //         <div className="text-center mb-16">
+  //           <h1 className="text-5xl font-extrabold text-blue-900 mb-4 tracking-tight">
+  //             Beyond Banning LLMS/AI Tools: What UAE Regulators Truly Demand
+  //           </h1>
+  //           <p className="text-xl text-gray-700 max-w-4xl mx-auto leading-relaxed font-normal">
+  //             Understanding the <strong>Strict Liability</strong> model: The question is not <strong>if</strong> your staff breached the rules, but </strong>what you did</strong> to prevent it.
+  //           </p>
+  //         </div>
+
+  //         <div className="bg-white p-8 md:p-12 max-w-5xl mx-auto border border-gray-100 rounded-3xl shadow-xl shadow-gray-100/70">
+  //           <h2 className="text-3xl font-bold text-red-600 mb-8 border-b border-gray-200 pb-4">
+  //             The Regulatory Liability Trap
+  //           </h2>
+  //           <div className="text-gray-700 space-y-6 text-lg">
+  //             <p>
+  //               Under UAE Federal Law No. 2 of 2019 and Personal Data Protection Law (PDPL) Federal Decree Law 45 2021, medical facilities are held to a standard of <strong>Strict Liability</strong> regarding patient data security for Personally Identifiable Data and Personal Health Data.  Your defence does not end by simply issuing a memo or a contractual ban on using public Large Language Models (LLMs).
+  //             </p>
+  //             <p className="font-semibold text-blue-900">
+  //               If a patient's data is transferred out of the country via an employee's LLM query, the regulator fines the <strong>clinic owner and Medical Director</strong> directly, not the employee. <strong>Without provable Technical and Organizational Measures (TOMs) in place, your defence fails, and liability is assumed.</strong> The only shield requires auditable controls.</
+  //             </p>
+  //           </div>
+
+  //           <h2 className="text-3xl font-bold text-blue-900 mt-12 mb-8 border-b border-gray-200 pb-4">
+  //             The Three Non-Negotiable Pillars of Audit-Ready Compliance
+  //           </h2>
+  //           <div className="grid md:grid-cols-3 gap-8">
+  //             <div className="space-y-4 p-6 border-l-4 border-blue-600 bg-gray-50 rounded-lg">
+  //               <Lock className="w-8 h-8 text-blue-900"/>
+  //               <p className="text-xl font-extrabold text-blue-900">1. Technical & Organisational Measures (TOMs)</p>
+  //               <p className="text-sm text-gray-700 leading-relaxed">
+  //                 <strong>Requirement:</strong> Active technical and procedural measures to secure data, as mandated by PDPL.
+  //                 <br /><br />
+  //                 </strong>The Gap:</strong> You lack documentation showing you have technical mechanisms (e.g., redaction tools, sandboxed environments) to <strong>physically stop</strong> PHI/PII leakage into public AI tools.
+  //               </p>
+  //             </div>
+  //             <div className="space-y-4 p-6 border-l-4 border-blue-600 bg-gray-50 rounded-lg">
+  //               <Globe className="w-8 h-8 text-blue-900"/>
+  //               <p className="text-xl font-extrabold text-blue-900">2. Controlled Data Residency & Sovereignty</p>
+  //               <p className="text-sm text-gray-700 leading-relaxed">
+  //                 <strong>Requirement:<strong> Explicit control over the storage location of all health data. <strong>Your NABIDH/Malaffi-compliant EMR is secure, but the LLM creates an unsecured back door.</strong>
+  //                 <br /><br />
+  //                 </strong>The Gap:</strong> Any use of a public, foreign-hosted AI model is an unauthorized <strong></strong>cross-border data transfer</strong> because the processing happens on servers outside the UAE's jurisdiction, violating data sovereignty mandates enforced by the DHA/DOH.
+  //               </p>
+  //             </div>
+  //             <div className="space-y-4 p-6 border-l-4 border-blue-600 bg-gray-50 rounded-lg">
+  //               <BookOpen className="w-8 h-8 text-blue-900"/>
+  //               <p className="text-xl font-extrabold text-blue-900">3. Auditable Staff Competency</p>
+  //               <p className="text-sm text-gray-700 leading-relaxed">
+  //                 <strong>Requirement:<strong> Provable evidence that all staff understand the specific, modern risks.
+  //                 <br /><br />
+  //                 </strong>The Gap:</strong> You must demonstrate not just that training occurred, but that competency was tracked and that staff understand the specific nuances of PDPL and the Federal Health Data Law on modern technology.
+  //               </p>
+  //             </div>
+  //           </div>
+
+  //           <div className="text-center mt-12 pt-6 border-t border-gray-200">
+  //             <h3 className="text-2xl font-bold text-gray-800 mb-4">
+  //               We provide the necessary framework, tools, and documentation - THE COMPLETE, AUDIT-PROOF DEFENSE
+  //             </h3>
+  //             <button
+  //               onClick={() => setCurrentStep('questions')}
+  //               className="inline-flex items-center gap-4 bg-blue-900 text-white px-10 py-5 rounded-xl font-extrabold text-lg 
+  //                          shadow-lg shadow-blue-900/30 transition-all duration-300 hover:bg-blue-800 hover:-translate-y-0.5"
+  //             >
+  //               Assess Your Gaps Now
+  //               <ArrowRight className="w-5 h-5" />
+  //             </button>
+  //           </div>
+  //         </div>
+  //       </main>
+  //       <Footer />
+  //     </div>
+  //   );
+  // }
 
 // --- QUESTIONS SCREEN ---
   if (currentStep === 'questions') {
