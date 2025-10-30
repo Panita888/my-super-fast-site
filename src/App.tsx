@@ -104,7 +104,7 @@ function App() {
                 <Briefcase className="w-6 h-6 text-red-600"/>
                 <p className="font-bold text-lg text-blue-900">FINANCIAL LIABILITY</p>
                 <p className="text-gray-700 text-sm leading-relaxed">Violations expose the clinic owner to administrative fines up to <strong>AED 1,000,000</strong>, with personal liability possible.</p>
-                <p className="text-gray-700 text-sm leading-relaxed">The transition to <strong>full PDPL enforcement in 2025</strong> means the window for achieving auditable compliance is closing.</p>
+                <p className="text-gray-700 text-sm leading-relaxed mt-4">The transition to <strong>full PDPL enforcement in 2025</strong> means the window for achieving auditable compliance is closing.</p>
               </div>
               <div className="space-y-3 p-4 border border-gray-100 rounded-xl bg-gray-50/50">
                 <Users className="w-6 h-6 text-red-600"/>
