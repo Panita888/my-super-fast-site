@@ -6,18 +6,21 @@ import { Shield, CheckCircle2, ArrowRight, XCircle, Briefcase, Users, FileText, 
 const questions = [
   {
     id: 1,
-    text: 'Can you produce your TOMs (Technical & Organisational Measures) and all required data governance documents within 24 hours?',
-    regulation: 'Regulation: Demonstrating immediate compliance is mandatory under NDHC Article 5 and Federal Law No. 2 of 2019.',
+    category: '1. Documentation Readiness',
+    text: 'Can your clinic produce all required Technical and Organizational Measures (TOMs) and Data Governance documentation for audit within 48 hours?',
+    regulation: 'Regulation: Demonstrating immediate, auditable compliance with TOMs is mandatory under the Personal Data Protection Law (PDPL) Federal Decree Law 45 2021 and the rigorous standards set by Federal Law No. 2 of 2019 for the transmission, residency and protection of Electronic Health Data.',
   },
   {
     id: 2,
-    text: "Can you guarantee your team aren't using unauthorised public LLMs or recording patient information with wearables?",
-    regulation: 'Regulation: Staff monitoring and security obligations under ADHICS & NDHC Article 9. Unauthorized recording is against UAE law.',
+    category: '2. Unauthorized Usage Risk',
+    text: "Can you guarantee your staff (clinical and non-clinical including HR, marketing, finance etc) are not using LLMs (eg, ChatGPT, Claude etc) or other similar tools at work or at home for the purpose of work?",
+    regulation: 'Unauthorized use of public AI can lead to an illegal cross-border data transfer, a direct violation of data localization rules enforced by DHA/DOH, whilst putting your DHA/DOH licensing and compliance with Federal Law No. 2 of 2019 at immediate risk.',
   },
   {
     id: 3,
-    text: "Do your current consent forms and staff policies explicitly cover the use of AI tools and personal recording technologies?",
-    regulation: 'Governance & accountability are non-negotiable – lack of documented procedures is not a defense against fines.',
+    category: '3. Policy and Consent Gaps',
+    text: "Do your current patient consent forms and staff policies AND staff training explicitly cover the use of AI tools (authorised and unauthorised) and personal recording technologies (including wearables and apps that automatically listen)?",
+    regulation: 'Lack of documented procedures and specific consent is not a defence. Governance gaps lead to immediate audit failure, exposing the clinic and Medical Director to full liability and fines up to AED 1,000,000.',
   }
 ];
 
@@ -222,10 +225,10 @@ function App() {
     );
   }
 
-  // --- QUESTIONS SCREEN ---
+// --- QUESTIONS SCREEN ---
   if (currentStep === 'questions') {
     return (
-      <div className="min-h-screen bg-white font-sans text-gray-900">
+      <div className="min-h-screen bg-gray-50/50 font-sans text-gray-900">
         <Navigation />
         <main className="max-w-4xl mx-auto px-6 py-20">
           <div className="text-center mb-16">
@@ -235,18 +238,25 @@ function App() {
             </p>
           </div>
 
-          <div className="space-y-8 mb-12">
-            {questions.map((question, index) => (
+          <div className="space-y-12"> {/* Increased spacing between cards */}
+            {questions.map((question) => (
               <div 
                 key={question.id} 
                 className={`bg-white p-6 sm:p-8 rounded-2xl shadow-xl transition-all duration-300 border
                             ${answers[question.id] === false ? 'border-red-500 ring-2 ring-red-100' : 
                               answers[question.id] === true ? 'border-emerald-600 ring-2 ring-emerald-100' : 
-                              'border-gray-200 shadow-gray-50/50'}`}
+                              'border-gray-200 shadow-gray-100'}`}
               >
+                {/* --- THIS IS THE NEW CATEGORY TITLE --- */}
+                <p className="text-lg font-extrabold text-blue-900 mb-3 tracking-tight">
+                  {question.category}
+                </p>
+                
+                {/* --- This is the original question text --- */}
                 <h3 className="text-xl font-bold text-gray-800 mb-4 leading-relaxed">
-                  <span className="text-blue-900 font-extrabold mr-2">{index + 1}.</span> {question.text}
+                  {question.text}
                 </h3>
+                
                 <p className="text-xs text-gray-500 mb-6 font-mono bg-gray-50 p-3 rounded border border-gray-100">{question.regulation}</p>
 
                 <div className="flex gap-4 justify-start max-w-lg mx-auto">
@@ -275,9 +285,9 @@ function App() {
             ))}
           </div>
 
-          <div className="text-center pt-8">
+          <div className="text-center pt-8 mt-12">
             {allAnswered && (
-              <div className="bg-gray-50 p-8 rounded-2xl shadow-inner mb-8 border border-gray-200">
+              <div className="bg-white p-8 rounded-2xl shadow-inner mb-8 border border-gray-200">
                 {allYes ? (
                   <div className="text-emerald-700 flex items-center justify-center gap-3">
                     <CheckCircle2 className="w-8 h-8" />
@@ -294,7 +304,6 @@ function App() {
                   </div>
                 )}
                 
-
                 <p className="text-gray-600 mt-4 max-w-xl mx-auto">
                   Take the next step: our <strong>free, comprehensive audit</strong> details your specific vulnerabilities and provides actionable guidance to close gaps before regulators intervene.
                 </p>
@@ -317,6 +326,102 @@ function App() {
       </div>
     );
   }
+  
+  // // --- QUESTIONS SCREEN ---
+  // if (currentStep === 'questions') {
+  //   return (
+  //     <div className="min-h-screen bg-white font-sans text-gray-900">
+  //       <Navigation />
+  //       <main className="max-w-4xl mx-auto px-6 py-20">
+  //         <div className="text-center mb-16">
+  //           <h1 className="text-4xl font-extrabold text-blue-900 mb-4 tracking-tight">The 30-Second Compliance Check</h1>
+  //           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+  //             Answer honestly to see your clinic's immediate risk profile regarding modern data security threats.
+  //           </p>
+  //         </div>
+
+  //         <div className="space-y-8 mb-12">
+  //           {questions.map((question, index) => (
+  //             <div 
+  //               key={question.id} 
+  //               className={`bg-white p-6 sm:p-8 rounded-2xl shadow-xl transition-all duration-300 border
+  //                           ${answers[question.id] === false ? 'border-red-500 ring-2 ring-red-100' : 
+  //                             answers[question.id] === true ? 'border-emerald-600 ring-2 ring-emerald-100' : 
+  //                             'border-gray-200 shadow-gray-50/50'}`}
+  //             >
+  //               <h3 className="text-xl font-bold text-gray-800 mb-4 leading-relaxed">
+  //                 <span className="text-blue-900 font-extrabold mr-2">{index + 1}.</span> {question.text}
+  //               </h3>
+  //               <p className="text-xs text-gray-500 mb-6 font-mono bg-gray-50 p-3 rounded border border-gray-100">{question.regulation}</p>
+
+  //               <div className="flex gap-4 justify-start max-w-lg mx-auto">
+  //                 <button
+  //                   onClick={() => handleAnswer(question.id, true)}
+  //                   className={`flex-1 py-3 px-8 rounded-lg font-bold transition-all duration-200 text-sm sm:text-base
+  //                     ${answers[question.id] === true
+  //                     ? 'bg-emerald-600 text-white shadow-md shadow-emerald-300'
+  //                       : 'bg-white text-gray-700 hover:bg-emerald-50 hover:text-emerald-700 border border-gray-300'
+  //                   }`}
+  //                 >
+  //                   Yes, We're Covered
+  //                 </button>
+  //                 <button
+  //                   onClick={() => handleAnswer(question.id, false)}
+  //                   className={`flex-1 py-3 px-8 rounded-lg font-bold transition-all duration-200 text-sm sm:text-base
+  //                     ${answers[question.id] === false
+  //                     ? 'bg-red-600 text-white shadow-md shadow-red-300'
+  //                       : 'bg-white text-gray-700 hover:bg-red-50 hover:text-red-700 border border-gray-300'
+  //                   }`}
+  //                 >
+  //                   No, We Are Exposed
+  //                 </button>
+  //               </div>
+  //             </div>
+  //           ))}
+  //         </div>
+
+  //         <div className="text-center pt-8">
+  //           {allAnswered && (
+  //             <div className="bg-gray-50 p-8 rounded-2xl shadow-inner mb-8 border border-gray-200">
+  //               {allYes ? (
+  //                 <div className="text-emerald-700 flex items-center justify-center gap-3">
+  //                   <CheckCircle2 className="w-8 h-8" />
+  //                   <p className="font-bold text-xl">
+  //                     Excellent! You show high compliance.
+  //                   </p>
+  //                 </div>
+  //               ) : (
+  //                 <div className="text-red-700 flex items-center justify-center gap-3">
+  //                   <XCircle className="w-8 h-8" />
+  //                   <p className="font-bold text-xl">
+  //                     Risk Detected! You have critical areas of exposure.
+  //                   </p>
+  //                 </div>
+  //               )}
+                
+
+  //               <p className="text-gray-600 mt-4 max-w-xl mx-auto">
+  //                 Take the next step: our <strong>free, comprehensive audit</strong> details your specific vulnerabilities and provides actionable guidance to close gaps before regulators intervene.
+  //               </p>
+  //             </div>
+  //           )}
+  //           {!allAnswered && (
+  //             <p className="text-gray-500 italic">Answer all questions to see your risk profile.</p>
+  //           )}
+  //           {allAnswered && (
+  //             <button
+  //               onClick={() => setCurrentStep('results')}
+  //               className="mt-6 bg-blue-900 text-white px-12 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-blue-800 transition-all"
+  //             >
+  //               View My Results
+  //             </button>
+  //           )}
+  //         </div>
+  //       </main>
+  //       <Footer />
+  //     </div>
+  //   );
+  // }
 
   // --- RESULTS SCREEN ---
   if (currentStep === 'results') {
