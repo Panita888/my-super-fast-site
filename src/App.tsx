@@ -139,7 +139,7 @@ function App() {
               <li>The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions.</li>
               <li>The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions.</li>
             </ul>
-            <p>To exercise these rights, please contact us at hello@mydatashield.org.</p>
+            <p>To exercise these rights, please contact us at <a href="mailto:hello@mydatashield.org" className="text-blue-600 hover:underline">hello@mydatashield.org</a>.</p>
 
             
             <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">8. Cookies</h2>
@@ -155,7 +155,7 @@ function App() {
             <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">10. Contact Us</h2>
             <p>If you have any questions about this Privacy Policy, please contact us:</p>
             <ul className="list-disc pl-6 space-y-2">
-              <li><strong>Email:</strong> hello@mydatashield.org</li>
+              <li><strong>Email:</strong> <a href="mailto:hello@mydatashield.org" className="text-blue-600 hover:underline">hello@mydatashield.org</a></li>
               <li><strong>Phone:</strong> +971 58 518 0338</li>
               <li><strong>Address:</strong> AI Innovation Hub, DIFC, Dubai, UAE</li>
             </ul>
