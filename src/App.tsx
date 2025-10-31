@@ -189,10 +189,10 @@ function App() {
             <p>In no event shall MyDataShield.org, nor its directors, employees, or partners, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, or other intangible losses, resulting from your access to or use of the Service.</p>
             <p>Our service is designed to guide and assist you in achieving compliance. However, we do not guarantee that the use of our Services will result in full compliance or protect you from regulatory fines or legal action. The responsibility for implementing and maintaining compliant Technical and Organizational Measures (TOMS) remains solely with you.</p>
             
-            <h2> className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">5. Governing Law</h2>
+            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">5. Governing Law</h2>
             <p>These Terms shall be governed and construed in accordance with the laws of the United Arab Emirates, as applied in the Emirate of Dubai. You agree to submit to the exclusive jurisdiction of the courts of the Dubai International Financial Centre (DIFC).</p>
             
-            <h2> className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200"6. Changes to Terms</h2>
+            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200"6. Changes to Terms</h2>
             <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. We will provide at least 30 days' notice prior to any new terms taking effect.</p>
             
             {/* ... Add the rest of your terms sections here ... */}
