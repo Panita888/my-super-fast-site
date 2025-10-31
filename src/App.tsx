@@ -88,7 +88,7 @@ function App() {
         <main className="max-w-4xl mx-auto px-6 py-20 font-sans text-gray-800">
           <h1 className="text-4xl font-extrabold text-blue-900 mb-8">Privacy Policy</h1>
           <div className="space-y-6 text-base leading-relaxed bg-white p-8 sm:p-10 rounded-lg shadow-md border border-gray-200">
-            <p className="text-sm text-gray-500"><strong>Last Updated:</strong> October 30, 2025</p>
+            <p className="text-sm text-gray-500"><strong>Last Updated:</strong> 1st July, 2025</p>
             <p>MyDataShield.org ("we," "us," or "our") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, mydatashield.org (the "Site"), and use our services.</p>
             <p>This policy is drafted in accordance with the UAE Federal Decree-Law No. 45/2021 on the Protection of Personal Data (the "PDPL") and incorporates principles from the General Data Protection Regulation (GDPR) and the Health Insurance Portability and Accountability Act (HIPAA) to reflect our commitment to global best practices in data protection.</p>
             
@@ -170,7 +170,7 @@ function App() {
         <main className="max-w-4xl mx-auto px-6 py-20 font-sans text-gray-800">
           <h1 className="text-4xl font-extrabold text-blue-900 mb-8">Terms of Service</h1>
           <div className="space-y-6 text-base leading-relaxed bg-white p-8 sm:p-10 rounded-lg shadow-md border border-gray-200">
-            <p className="text-sm text-gray-500"><strong>Last Updated:</strong> October 30, 2025</p>
+            <p className="text-sm text-gray-500"><strong>Last Updated:</strong> 1st July, 2025</p>
             <p>Please read these Terms of Service ("Terms") carefully before using the mydatashield.org website (the "Service") operated by MyDataShield.org ("us," "we," or "our").</p>
             <p>Your access to and use of the Service is conditioned upon your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who wish to access or use the Service.</p>
   
