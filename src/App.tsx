@@ -125,7 +125,8 @@ function App() {
 
             <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">5. Data Security and HIPAA Principles</h2>
             <p>While we may not be a "Covered Entity" under US law, we recognize the sensitivity of health-related data. We have implemented administrative, technical, and physical security measures aligned with the core principles of the HIPAA Security Rule to protect any information we handle. This includes measures to ensure the confidentiality, integrity, and availability of data, such as encryption, access controls, and regular security assessments.<p>
-            
+            <ul className="list-disc pl-6 space-y-2">
+            </ul>
             {/* ... Add the rest of your policy sections here following the same pattern ... */}
   
             <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">10. Contact Us</h2>
