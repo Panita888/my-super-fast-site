@@ -102,6 +102,29 @@ function App() {
               <li><strong>Derivative Data:</strong> Information our servers automatically collect when you access the Site, such as your IP address, browser type, and the pages you have viewed.</li>
               <li><strong>Information from Compliance Audits:</strong> When you engage our services, we will collect information about your clinic's operational procedures, policies, and technical measures. This information is treated with the highest level of confidentiality and is used solely for the purpose of providing our compliance audit and advisory services.</li>
             </ul>
+
+            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">3. Lawful Basis for Processing</h2>
+            <p>We process your personal data based on the following lawful bases under the PDPL and GDPR:</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li><strong>Consent:</strong> Where you have given us clear consent to process your personal data for a specific purpose (e.g., subscribing to a newsletter).</li>
+              <li><strong>Contract:</strong> Where the processing is necessary for a contract we have with you, or because you have asked us to take specific steps before entering into a contract (e.g., providing a quote or an audit).</li>
+              <li><strong>Legitimate Interests:</strong> Where the processing is necessary for our legitimate interests (e.g., to improve our services and for administrative purposes).</li>
+            </ul>
+
+
+            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">4. How We Use Your Information</h2>
+            <p>We use the information we collect to:<p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Provide, operate, and maintain our Site and services.</li>
+              <li>Respond to your comments, questions, and requests.</li>
+              <li>Conduct compliance audits and generate reports.</li>
+              <li>Send you administrative information, such as updates to our terms and policies.</li>
+              <li>Improve our website and service offerings.</li>
+            </ul>
+
+
+            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">5. Data Security and HIPAA Principles</h2>
+            <p>While we may not be a "Covered Entity" under US law, we recognize the sensitivity of health-related data. We have implemented administrative, technical, and physical security measures aligned with the core principles of the HIPAA Security Rule to protect any information we handle. This includes measures to ensure the confidentiality, integrity, and availability of data, such as encryption, access controls, and regular security assessments.<p>
             
             {/* ... Add the rest of your policy sections here following the same pattern ... */}
   
