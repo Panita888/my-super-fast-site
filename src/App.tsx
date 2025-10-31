@@ -143,7 +143,7 @@ function App() {
 
             
             <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">8. Cookies</h2>
-            <p>We may use cookies and similar tracking technologies to track the activity on our Site and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.<p>
+            <p>We may use cookies and similar tracking technologies to track the activity on our Site and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.</p>
 
             <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">9. Changes to This Privacy Policy</h2>
             <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
