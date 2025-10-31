@@ -113,7 +113,7 @@ function App() {
 
 
             <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">4. How We Use Your Information</h2>
-            <p>We use the information we collect to:<p>
+            <p>We use the information we collect to:</p>
             <ul className="list-disc pl-6 space-y-2">
               <li>Provide, operate, and maintain our Site and services.</li>
               <li>Respond to your comments, questions, and requests.</li>
@@ -124,9 +124,32 @@ function App() {
 
 
             <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">5. Data Security and HIPAA Principles</h2>
-            <p>While we may not be a "Covered Entity" under US law, we recognize the sensitivity of health-related data. We have implemented administrative, technical, and physical security measures aligned with the core principles of the HIPAA Security Rule to protect any information we handle. This includes measures to ensure the confidentiality, integrity, and availability of data, such as encryption, access controls, and regular security assessments.<p>
+            <p>While we may not be a "Covered Entity" under US law, we recognize the sensitivity of health-related data. We have implemented administrative, technical, and physical security measures aligned with the core principles of the HIPAA Security Rule to protect any information we handle. This includes measures to ensure the confidentiality, integrity, and availability of data, such as encryption, access controls, and regular security assessments.</p>
+
+            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">6. Data Sharing</h2>
+            <p>We do not sell, trade, or otherwise transfer your personal data to outside parties. We may disclose your information where we are legally required to do so in order to comply with applicable law, governmental requests, or legal process.</p>
+
+
+            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">7. Your Data Protection Rights</h2>
+            <p>Under the PDPL and GDPR, you have the following rights:</p>
             <ul className="list-disc pl-6 space-y-2">
+              <li>The right to access – You have the right to request copies of your personal data.</li>
+              <li>The right to rectification – You have the right to request that we correct any information you believe is inaccurate.</li>
+              <li>The right to erasure – You have the right to request that we erase your personal data, under certain conditions.</li>
+              <li>The right to restrict processing – You have the right to request that we restrict the processing of your personal data, under certain conditions.</li>
+              <li>The right to object to processing – You have the right to object to our processing of your personal data, under certain conditions.</li>
             </ul>
+            <p>To exercise these rights, please contact us at hello@mydatashield.org.</p>
+
+            
+            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">8. Cookies</h2>
+            <p>We may use cookies and similar tracking technologies to track the activity on our Site and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent.<p>
+
+            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">9. Changes to This Privacy Policy</h2>
+            <p>We may update this Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page.</p>
+            
+            
+            
             {/* ... Add the rest of your policy sections here following the same pattern ... */}
   
             <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">10. Contact Us</h2>
