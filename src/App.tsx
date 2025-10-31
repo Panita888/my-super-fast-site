@@ -1,6 +1,6 @@
 import React, { useState, useMemo, useEffect } from 'react';
 // Imported all necessary Lucide icons
-import { Shield, CheckCircle2, ArrowRight, XCircle, Briefcase, Users, FileText, Zap, BookOpen, Lock, Globe, Scale, FileWarning, Gavel, ShieldCheck, Phone, Mail, MessageSquare, MapPin, CalendarDays } from 'lucide-react';
+import { Shield, CheckCircle2, ArrowRight, XCircle, Briefcase, Users, FileText, Zap, BookOpen, Lock, Globe, Scale, FileWarning, Gavel, ShieldCheck, Phone, Mail, MessageSquare, MapPin, CalendarDays, Menu, X } from 'lucide-react';
 
 // --- Compliance Questions (Unchanged) ---
 const questions = [
@@ -29,6 +29,7 @@ function App() {
   const [answers, setAnswers] = useState({});
   const [currentStep, setCurrentStep] = useState('intro');
   const [isHovered, setIsHovered] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const { allAnswered, hasAnyNo, allYes } = useMemo(() => {
       const allAnswered = questions.every(q => answers[q.id] !== undefined && answers[q.id] !== null);
@@ -51,23 +52,71 @@ function App() {
     if (allAnswered) setCurrentStep('results');
   }
 
+
   // --- Shared Navigation ---
   const Navigation = () => (
     <nav className="bg-white sticky top-0 z-50 shadow-sm border-b border-gray-100">
-      <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
-        <div className="flex items-center gap-3 cursor-pointer" onClick={() => setCurrentStep('intro')}>
-          <Shield className="w-8 h-8 text-blue-900" />
-          <span className="text-2xl font-extrabold text-blue-900 tracking-tight">MyDataShield.org</span>
+      <div className="max-w-7xl mx-auto px-6 py-5">
+        <div className="flex justify-between items-center">
+          
+          {/* --- Logo and Title (Unchanged) --- */}
+          <div className="flex items-center gap-3 cursor-pointer" onClick={() => { setCurrentStep('intro'); setIsMenuOpen(false); }}>
+            <Shield className="w-8 h-8 text-blue-900" />
+            <span className="text-2xl font-extrabold text-blue-900 tracking-tight">MyDataShield.org</span>
+          </div>
+
+          {/* --- Desktop Navigation Links (Unchanged) --- */}
+          <div className="hidden sm:flex gap-8">
+            <a onClick={() => setCurrentStep('solution')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'solution' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>Our Solution</a>
+            <a onClick={() => setCurrentStep('about')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'about' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>About</a>
+            <a onClick={() => setCurrentStep('legal')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'legal' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>Legal Mandate</a>
+            <a onClick={() => setCurrentStep('contact')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'contact' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>Contact</a>
+          </div>
+
+          {/* --- Hamburger Button (Visible on Mobile) --- */}
+          <div className="sm:hidden">
+            <button onClick={() => setIsMenuOpen(!isMenuOpen)}>
+              {isMenuOpen ? (
+                <X className="w-8 h-8 text-blue-900" />
+              ) : (
+                <Menu className="w-8 h-8 text-blue-900" />
+              )}
+            </button>
+          </div>
         </div>
-        <div className="hidden sm:flex gap-8">
-          <a onClick={() => setCurrentStep('solution')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'solution' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>Compliance Solution</a>
-          <a onClick={() => setCurrentStep('about')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'about' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>About</a>
-          <a onClick={() => setCurrentStep('legal')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'legal' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>Legal Mandate</a>
-          <a onClick={() => setCurrentStep('contact')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'contact' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>Contact</a>
-        </div>
+
+        {/* --- Mobile Menu Panel --- */}
+        {isMenuOpen && (
+          <div className="sm:hidden mt-4 pt-4 border-t border-gray-200">
+            <div className="flex flex-col items-start gap-4">
+              <a onClick={() => { setCurrentStep('solution'); setIsMenuOpen(false); }} className="text-gray-700 hover:text-blue-900 font-semibold cursor-pointer">Our Solution</a>
+              <a onClick={() => { setCurrentStep('about'); setIsMenuOpen(false); }} className="text-gray-700 hover:text-blue-900 font-semibold cursor-pointer">About</a>
+              <a onClick={() => { setCurrentStep('legal'); setIsMenuOpen(false); }} className="text-gray-700 hover:text-blue-900 font-semibold cursor-pointer">Legal Mandate</a>
+              <a onClick={() => { setCurrentStep('contact'); setIsMenuOpen(false); }} className="text-gray-700 hover:text-blue-900 font-semibold cursor-pointer">Contact</a>
+            </div>
+          </div>
+        )}
       </div>
     </nav>
   );
+
+  // // --- Shared Navigation ---
+  // const Navigation = () => (
+  //   <nav className="bg-white sticky top-0 z-50 shadow-sm border-b border-gray-100">
+  //     <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
+  //       <div className="flex items-center gap-3 cursor-pointer" onClick={() => setCurrentStep('intro')}>
+  //         <Shield className="w-8 h-8 text-blue-900" />
+  //         <span className="text-2xl font-extrabold text-blue-900 tracking-tight">MyDataShield.org</span>
+  //       </div>
+  //       <div className="hidden sm:flex gap-8">
+  //         <a onClick={() => setCurrentStep('solution')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'solution' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>Compliance Solution</a>
+  //         <a onClick={() => setCurrentStep('about')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'about' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>About</a>
+  //         <a onClick={() => setCurrentStep('legal')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'legal' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>Legal Mandate</a>
+  //         <a onClick={() => setCurrentStep('contact')} className={`text-gray-700 hover:text-blue-900 transition-colors font-semibold text-sm cursor-pointer ${currentStep === 'contact' ? 'text-blue-900 border-b-2 border-blue-900' : ''}`}>Contact</a>
+  //       </div>
+  //     </div>
+  //   </nav>
+  // );
 
   // --- Shared Footer ---
     const Footer = () => (
@@ -75,8 +124,8 @@ function App() {
         <div className="max-w-7xl mx-auto px-6 py-10 text-center text-sm text-gray-500">
           <div className="space-x-4">
             <span>© 2025 MyDataShield.org | A DPO Solutions Partner.</span>
-            <a onClick={() => setCurrentStep('privacy')} className="hover:text-gray-700 transition-colors cursor-pointer">Privacy Policy</a>
-            <a onClick={() => setCurrentStep('terms')} className="hover:text-gray-700 transition-colors cursor-pointer">Terms of Service</a>
+            <a onClick={() => setCurrentStep('privacy')} className="hover:text-gray-700 transition-colors cursor-pointer underline">Privacy Policy</a>
+            <a onClick={() => setCurrentStep('terms')} className="hover:text-gray-700 transition-colors cursor-pointer underline">Terms of Service</a>
           </div>
         </div>
       </footer>
