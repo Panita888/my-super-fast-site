@@ -192,13 +192,13 @@ function App() {
             <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">5. Governing Law</h2>
             <p>These Terms shall be governed and construed in accordance with the laws of the United Arab Emirates, as applied in the Emirate of Dubai. You agree to submit to the exclusive jurisdiction of the courts of the Dubai International Financial Centre (DIFC).</p>
             
-            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200"6. Changes to Terms</h2>
+            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">6. Changes to Terms</h2>
             <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. We will provide at least 30 days' notice prior to any new terms taking effect.</p>
             
             {/* ... Add the rest of your terms sections here ... */}
             
             <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">7. Contact Us</h2>
-            <p>If you have any questions about these Terms, please contact us at hello@mydatashield.org.</p>
+            <p>If you have any questions about these Terms, please contact us at <a href="mailto:hello@mydatashield.org" className="text-blue-600 hover:underline">hello@mydatashield.org</a>.</p>
           </div>
         </main>
       </div>
