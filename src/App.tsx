@@ -175,8 +175,26 @@ function App() {
             <p>Your access to and use of the Service is conditioned upon your acceptance of and compliance with these Terms. These Terms apply to all visitors, users, and others who wish to access or use the Service.</p>
   
             <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">1. Scope of Services</h2>
+            <p>MyDataShield.org provides tools, audits, and informational frameworks ("Services") to assist healthcare clinics and professionals ("you" or "the Client") in understanding their compliance obligations under UAE data protection laws, including the UAE Personal Data Protection Law (PDPL) and Federal Law No. 2 of 2019.</p>
             <p><strong>Disclaimer: MyDataShield.org does not provide legal advice.</strong> The information and materials provided are for educational and informational purposes only. The ultimate responsibility for legal compliance rests with you, the Client. We strongly advise consulting with a qualified legal professional for advice on your specific compliance matters.</p>
-  
+
+
+            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">2. Use of the Service</h2>
+            <p>By using our Service, you agree to provide accurate and complete information as required for any compliance audit or consultation. You are responsible for implementing any recommendations and for maintaining compliance within your organization.</p>
+
+            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">3. Intellectual Property</h2>
+            <p>The Service and its original content, features, and functionality, including all audit frameworks, training materials, and documentation provided, are and will remain the exclusive property of MyDataShield.org and its licensors. Our materials may not be used, copied, or distributed without our prior written consent.</p>
+            
+            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">4. Limitation of Liability</h2>
+            <p>In no event shall MyDataShield.org, nor its directors, employees, or partners, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, or other intangible losses, resulting from your access to or use of the Service.</p>
+            <p>Our service is designed to guide and assist you in achieving compliance. However, we do not guarantee that the use of our Services will result in full compliance or protect you from regulatory fines or legal action. The responsibility for implementing and maintaining compliant Technical and Organizational Measures (TOMS) remains solely with you.</p>
+            
+            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">5. Governing Law</h2>
+            <p>These Terms shall be governed and construed in accordance with the laws of the United Arab Emirates, as applied in the Emirate of Dubai. You agree to submit to the exclusive jurisdiction of the courts of the Dubai International Financial Centre (DIFC).</p>
+            
+            <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200"6. Changes to Terms</h2>
+            <p>We reserve the right, at our sole discretion, to modify or replace these Terms at any time. We will provide at least 30 days' notice prior to any new terms taking effect.</p>
+            
             {/* ... Add the rest of your terms sections here ... */}
             
             <h2 className="text-2xl font-bold text-blue-900 pt-4 border-t border-gray-200">7. Contact Us</h2>
